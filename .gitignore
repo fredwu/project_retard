@@ -1,0 +1,11 @@
+.DS_Store
+config/database.yml
+public/stylesheets/compiled/*
+public/stylesheets/compiled/**/*
+log/*.log
+tmp/*
+tmp/**/*
+*.swp
+*.swo
+public/uploads
+public/javascripts/cached/*
