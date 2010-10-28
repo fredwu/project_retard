@@ -1,35 +1,36 @@
-!!!
-%html
-  %head
-    %title
+! doctype html
+html
+  head
+    title
       = @site_title ||= '2threads Shop'
-      \-
+      | -
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
-    
-    = stylesheet_link_tag 'compiled/application', :media => 'all'
+
+    = stylesheet_link_tag 'compiled/screen', :media => 'all'
     = javascript_include_tag(Rails.env == :production ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" : "jquery.min")
-    = javascript_include_tag              |
-      "jquery.inline-confirmation",       |
-      "application",                      |
-      :cache => "cached/application.all"  |
+    = javascript_include_tag        \
+      "jquery.inline-confirmation", \
+      "application",                \
+      :cache => "cached/application.all"
     = csrf_meta_tag
-  
-  %body
+
+  body
     #wrapper
       #ajax_loader Loading ...
       #ajax_error Error occurred! Please try again later.
 
       #header
-        %h1#logo 2threads Shop
-      
+        h1#logo 2threads Shop
+
       #flash
         - flash.each do |type, message|
-          %p= message
+          p= message
 
       #content
         = yield
-        
+
       #footer
-        Copyright &copy;
+        | Copyright &copy;&nbsp;
         = Time.now.year
+        | &nbsp;
         = link_to "2threads", "http://2threads.com/", :target => "_blank"
