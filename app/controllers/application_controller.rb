@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError do |exception|
     flash[:errormsg] = "The page you are trying to access does not exist."
     redirect_to root_url
-  end if Rails.env == "production"
+  end if Rails.env.production?
 
   before_filter :pass_current_user_to_model
 
