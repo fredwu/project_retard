@@ -34,11 +34,22 @@ SimpleNavigation::Configuration.run do |navigation|
       products.item :products_new, "Add New Product", new_product_path
     end
 
-    menu.item :sizes, "Sizes", sizes_path
+    menu.item :colours, "Colours", colours_path do |sizes|
+      sizes.item :colours_new, "Add New Colour", new_colour_path
+    end
 
-    menu.item :orders, "Orders", orders_path
+    menu.item :sizes, "Sizes", sizes_path do |sizes|
+      sizes.item :sizes_new, "Add New Size", new_size_path
+    end
 
-    menu.item :retailers, "Retailers", retailers_path
+    menu.item :orders, "Orders", orders_path do |orders|
+      orders.item :orders_new, "New Orders", orders_path
+      orders.item :orders_fullfied, "Fullfied Orders", orders_path
+    end
+
+    menu.item :retailers, "Retailers", retailers_path do |retailers|
+      retailers.item :retailers_new, "Add New Retailer", new_retailer_path
+    end
 
     menu.item :users, "Users", users_path
 
