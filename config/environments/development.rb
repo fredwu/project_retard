@@ -36,5 +36,7 @@ Shop2T::Application.configure do
     Bullet.alert                 = false
     Bullet.xmpp                  = false
   end
+
+  Slim::Engine.set_default_options :pretty => true
 end
 

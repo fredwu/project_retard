@@ -50,6 +50,18 @@ GIT
       activesupport (~> 3.0)
 
 GIT
+  remote: git://github.com/judofyr/temple.git
+  revision: ec30cca60b2a5cfc1fbd3210f499a8ed4751273e
+  specs:
+    temple (0.1.4)
+
+GIT
+  remote: git://github.com/leogalmeida/slim-rails.git
+  revision: 69cde303e428bb4d5bc9e0ccfd8823a524a0505d
+  specs:
+    slim-rails (0.1.1)
+
+GIT
   remote: git://github.com/meskyanichi/deployer.git
   revision: 3a897c0f4d0c0a22e9341b46ca5753a26918b63a
   specs:
@@ -110,7 +122,7 @@ GIT
 
 GIT
   remote: git://github.com/stonean/slim.git
-  revision: 51aeb4cf25e2f0bcb30e7b922fea5c08fe724e96
+  revision: 48115c28eb0654cbae86d633e57df21b22e0168e
   specs:
     slim (0.7.1)
       temple (~> 0.1.4)
@@ -149,7 +161,6 @@ GEM
       haml (>= 3.0.4)
     configuration (1.1.0)
     culerity (0.2.12)
-    daemons (1.1.0)
     dalli (0.11.0)
     database_cleaner (0.6.0)
     datamappify (0.2.2)
@@ -162,19 +173,17 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    eventmachine (0.12.10)
     ffaker (0.4.0)
     ffi (0.6.3)
       rake (>= 0.8.7)
     haml (3.0.23)
     has_scope (0.5.0)
     highline (1.6.1)
-    hpricot (0.8.3)
     i18n (0.4.2)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    inherited_resources_views (0.4.0)
+    inherited_resources_views (0.4.1)
       inherited_resources (>= 1.0)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -204,7 +213,6 @@ GEM
     rails_config (0.1.8)
       activesupport (~> 3.0)
     rake (0.8.7)
-    rdiscount (1.6.5)
     responders (0.6.2)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
@@ -218,23 +226,15 @@ GEM
       rspec-expectations (~> 2.0.1)
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
-    ruby_parser (2.0.5)
-      sexp_processor (~> 3.0)
     rubyzip (0.9.4)
-    sanitize (1.2.1)
-      nokogiri (~> 1.4.1)
     selenium-webdriver (0.0.29)
       childprocess (>= 0.0.7)
       ffi (~> 0.6.3)
       json_pure
       rubyzip
-    sexp_processor (3.0.5)
+    simple-navigation (3.0.2)
+      activesupport (>= 2.3.2)
     simple_form (1.2.2)
-    temple (0.1.4)
-    thin (1.2.7)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     thor (0.14.3)
     tilt (1.1)
     treetop (1.4.8)
@@ -268,7 +268,6 @@ DEPENDENCIES
   factory_girl!
   ffaker (>= 0.4.0)
   haml (~> 3.0.18)
-  hpricot (>= 0.8.2)
   inherited_resources (~> 1.1.2)
   inherited_resources_views
   launchy
@@ -277,14 +276,13 @@ DEPENDENCIES
   parallel_tests!
   rails!
   rails_config
-  rdiscount (>= 1.6.5)
   rspec-rails (~> 2.0.0)
-  ruby_parser (>= 2.0.4)
-  sanitize
+  simple-navigation (~> 3.0.0)
   simple_form (~> 1.2.0)
   slim!
+  slim-rails!
   steak!
-  thin
+  temple!
   vidibus-routing_error
   will_paginate (~> 3.0.pre)
   xpath

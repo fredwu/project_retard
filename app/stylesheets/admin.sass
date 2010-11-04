@@ -1,0 +1,95 @@
+@import '_common'
+
+table
+  width: 100%
+  td
+    vertical-align: top
+    &.more_info span
+      border-bottom: 1px dotted $colour_faded
+    .more_info_holder
+      display: none
+      position: absolute
+      width: 500px
+      background: #000
+      .more_info_header
+        text-transform: uppercase
+        font-size: 10px
+        font-weight: bold
+        color: $colour_faded
+        padding: 10px
+      .more_info_container
+        color: #999
+        padding: 20px
+  .col-delete
+    width: 42px
+
+a
+  &.confirm-delete
+    color: #f00
+  &.confirm-cancel
+    color: $colour_faded
+
+#nav_menu
+  float: left
+  padding: 0 20px
+  height: 40px
+  color: $colour_faded
+  a
+    color: $colour_faded
+    font-weight: bold
+    &:hover
+      color: #111
+
+#user_bar
+  float: right
+  margin-bottom: 20px
+  ul li
+    float: left
+    margin-left: 10px
+
+.block a.button
+  display: block
+  width: 85px
+  height: 30px
+  line-height: 30px
+  background: url(../../adminus/green/images/btns.gif) top center no-repeat
+  border: 0
+  font-family: "Titillium800", "Trebuchet MS", Arial, sans-serif
+  font-size: 14px
+  font-weight: normal
+  text-transform: uppercase
+  color: #fff
+  text-shadow: 1px 1px 0 #0a5482
+  cursor: pointer
+  margin-right: 10px
+  text-align: center
+  vertical-align: middle
+  &:hover
+    background: url(../../adminus/green/images/btns_.gif) top center no-repeat
+    text-shadow: 1px 1px 0 #b55f10
+  &.tiny
+    width: 105px
+    height: 20px
+    line-height: 20px
+    padding-bottom: 2px
+    vertical-align: middle
+    font-family: "Lucida Grande", Arial, Helvetica, sans-serif
+    font-size: 10px
+    font-weight: bold
+    text-transform: none
+    background: url(../../adminus/green/images/tiny.gif) top center no-repeat
+    &:hover
+      background: url(../../adminus/green/images/tiny_.gif) top center no-repeat
+  &.mid
+    width: 115px
+    background: url(../../adminus/green/images/btnm.gif) top center no-repeat
+    &:hover
+      background: url(../../adminus/green/images/btnm_.gif) top center no-repeat
+  &.long
+    width: 165px
+    background: url(../../adminus/green/images/btnb.gif) top center no-repeat
+    &:hover
+      background: url(../../adminus/green/images/btnb_.gif) top center no-repeat
+
+#footer
+  text-align: center

@@ -42,7 +42,7 @@ module Shop2T
 
     config.generators do |g|
       g.orm             :active_record
-      g.template_engine :haml
+      g.template_engine :slim
       g.test_framework  :rspec
     end
   end

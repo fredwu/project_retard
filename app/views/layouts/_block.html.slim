@@ -1,0 +1,14 @@
+.block class=classes
+  .block_head
+    .bheadl
+    .bheadr
+    h2= title
+    ul
+      - if defined?(show_add_link) && show_add_link == true
+        li= link_to "Add", new_polymorphic_path(controller_name.singularize)
+      - if defined?(show_edit_link) && show_edit_link == true
+        li= link_to "Edit", edit_polymorphic_path(controller_name.singularize)
+  .block_content
+    = content
+  .bendl
+  .bendr

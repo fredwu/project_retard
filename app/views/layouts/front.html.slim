@@ -6,7 +6,7 @@ html
       | &nbsp;-&nbsp;
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
-    = stylesheet_link_tag 'compiled/screen', :media => 'all'
+    = stylesheet_link_tag 'compiled/front', :media => 'all'
     = javascript_include_tag(Rails.env.production? ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" : "jquery.min")
     = javascript_include_tag        \
       "jquery.inline-confirmation", \
@@ -15,16 +15,21 @@ html
     = csrf_meta_tag
 
   body
-    #wrapper
+    .wrapper
       #ajax_loader Loading ...
       #ajax_error Error occurred! Please try again later.
 
       #header
         h1#logo 2threads Shop
 
-      #flash
-        - flash.each do |type, message|
-          p= message
+      - flash.each do |type, message|
+        - type = case type
+          - when :notice then :info
+          - when :alert  then :errormsg
+          - else type
+        .block.nostyle
+          .message class=type
+            p= message
 
       #content
         = yield

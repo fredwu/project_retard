@@ -1,0 +1,12 @@
+ul
+  li
+    span Welcome
+    span
+      = link_to current_user.first_name, current_user
+      | !
+  li
+    | You can
+    = link_to "edit your profile", edit_user_registration_path
+    | or
+    = link_to "logout", destroy_user_session_path
+    | .

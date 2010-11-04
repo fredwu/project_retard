@@ -1,0 +1,18 @@
+table.collection class=collection.first.class.to_s.downcase.pluralize
+  thead
+    tr
+      - collection.first.attributes.each_pair do |field, value|
+        - next if ['id', 'created_at', 'updated_at'].include?(field)
+        th= field.titleize
+      th Show
+      th Edit
+      th Destroy
+  tbody
+    - collection.each do |r|
+      tr data-id=r.id
+        - r.attributes.each_pair do |field, value|
+          - next if ['id', 'created_at', 'updated_at'].include?(field)
+          td= value
+        td= link_to "Show", r
+        td= link_to "Edit", edit_resource_url(r)
+        td= link_to_deletion "Destroy", r

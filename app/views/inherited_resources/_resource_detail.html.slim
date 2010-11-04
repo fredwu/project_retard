@@ -1,0 +1,7 @@
+table.detail class=collection.first.class.to_s.downcase
+  - resource.attributes.each_pair do |attr, value|
+    - next if ['id', 'created_at', 'updated_at'].include?(attr)
+    tr
+      th= attr.titleize
+      td= value
+p= link_to "Back", collection_url

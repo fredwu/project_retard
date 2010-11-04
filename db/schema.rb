@@ -12,15 +12,85 @@
 
 ActiveRecord::Schema.define(:version => 0) do
 
-  create_table "products", :force => true do |t|
+  create_table "colours", :force => true do |t|
+    t.string   :label,      :limit => nil
+    t.string   :hex,        :limit => nil
+    t.integer  :product_id, :limit => nil
+    t.datetime :created_at
+    t.datetime :updated_at
   end
 
+  add_index "colours", [:product_id, :label, :hex], :name => "index_colours_on_product_id_and_label_and_hex"
+
+  create_table "orders", :force => true do |t|
+    t.string   :first_name, :limit => 50
+    t.string   :last_name,  :limit => 50
+    t.text     :address
+    t.string   :postcode,   :limit => 10
+    t.string   :state,      :limit => 30
+    t.string   :country,    :limit => 50
+    t.decimal  :subtotal,                 :precision => 8, :scale => 2
+    t.decimal  :use_credit,               :precision => 6, :scale => 2
+    t.decimal  :shipping,                 :precision => 6, :scale => 2
+    t.decimal  :total,                    :precision => 8, :scale => 2
+    t.text     :notes
+    t.datetime :shipped_at
+    t.datetime :created_at
+    t.datetime :updated_at
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   :code,               :limit => 20
+    t.string   :name,               :limit => nil
+    t.text     :details
+    t.text     :shipping_info
+    t.decimal  :rrp,                               :precision => 6, :scale => 2, :default => 0.0
+    t.decimal  :price,                             :precision => 6, :scale => 2
+    t.integer  :limit_per_customer, :limit => 2,                                 :default => 0
+    t.boolean  :is_voucher,         :limit => nil,                               :default => false
+    t.integer  :retailer_id,        :limit => nil
+    t.datetime :created_at
+    t.datetime :updated_at
+  end
+
+  add_index "products", :is_voucher, :name => "index_products_on_is_voucher"
+  add_index "products", :name, :name => "index_products_on_name"
+
+  create_table "product_items", :force => true do |t|
+    t.integer :product_id, :limit => nil
+    t.integer :colour_id,  :limit => nil
+    t.integer :size_id,    :limit => nil
+    t.integer :user_id,    :limit => nil
+  end
+
+  add_index "product_items", :product_id, :name => "index_product_items_on_product_id"
+  add_index "product_items", :user_id, :name => "index_product_items_on_user_id"
+
+  create_table "retailers", :force => true do |t|
+    t.string   :name,       :limit => nil
+    t.string   :code,       :limit => 10
+    t.text     :info
+    t.datetime :created_at
+    t.datetime :updated_at
+  end
+
+  add_index "retailers", :code, :name => "index_retailers_on_code"
+  add_index "retailers", :name, :name => "index_retailers_on_name"
+
+  create_table "sizes", :force => true do |t|
+    t.string   :label,      :limit => nil
+    t.datetime :created_at
+    t.datetime :updated_at
+  end
+
+  add_index "sizes", :label, :name => "index_sizes_on_label"
+
   create_table "users", :force => true do |t|
-    t.string   :email,                :limit => nil, :default => "", :null => false
+    t.string   :email,                :limit => nil, :default => "",    :null => false
     t.string   :first_name,           :limit => 50
     t.string   :last_name,            :limit => 50
-    t.string   :encrypted_password,   :limit => 128, :default => "", :null => false
-    t.string   :password_salt,        :limit => nil, :default => "", :null => false
+    t.string   :encrypted_password,   :limit => 128, :default => "",    :null => false
+    t.string   :password_salt,        :limit => nil, :default => "",    :null => false
     t.string   :reset_password_token, :limit => nil
     t.string   :remember_token,       :limit => nil
     t.datetime :remember_created_at
@@ -32,6 +102,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   :confirmation_token,   :limit => nil
     t.datetime :confirmed_at
     t.datetime :confirmation_sent_at
+    t.boolean  :is_admin,             :limit => nil, :default => false
+    t.integer  :retailer_id,          :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end
@@ -39,5 +111,13 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "users", :confirmation_token, :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", :email, :name => "index_users_on_email", :unique => true
   add_index "users", :reset_password_token, :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "products_sizes", :id => false, :force => true do |t|
+    t.integer "product_id", :limit => nil
+    t.integer "size_id",    :limit => nil
+  end
+
+  add_index "products_sizes", "product_id", :name => "index_products_sizes_on_product_id"
+  add_index "products_sizes", "size_id", :name => "index_products_sizes_on_size_id"
 
 end

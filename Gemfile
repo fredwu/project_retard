@@ -28,19 +28,21 @@ gem 'carrierwave',               :git => 'git://github.com/jnicklas/carrierwave.
 #   Presentation
 # --------------------
 gem 'haml',                      '~> 3.0.18'
+gem 'temple',                    :git => 'git://github.com/judofyr/temple.git'
 gem 'slim',                      :git => 'git://github.com/stonean/slim.git'
+gem 'slim-rails',                :git => 'git://github.com/leogalmeida/slim-rails.git'
 # gem 'slim',                      :path => '/Users/fred/Downloads/Repos/Rails/slim'
 gem 'compass'
 gem 'simple_form',               '~> 1.2.0'
-# gem 'simple-navigation',         '~> 3.0.0'
+gem 'simple-navigation',         '~> 3.0.0'
 gem 'will_paginate',             '~> 3.0.pre'
 
 # --------------------
 #   Assets
 # --------------------
 gem 'rails_config'
-gem 'rdiscount',                 '>= 1.6.5'
-gem 'sanitize'
+# gem 'rdiscount',                 '>= 1.6.5'
+# gem 'sanitize'
 # gem 'csv-mapper',                '>= 0.5.0'
 gem 'ffaker',                    '>= 0.4.0'
 gem 'xpath'
@@ -50,14 +52,11 @@ gem 'xpath'
 # --------------------
 gem 'vidibus-routing_error'
 gem 'dalli'
-gem 'thin'
 gem 'capistrano-ext'
 gem 'deployer',                  :git => 'git://github.com/meskyanichi/deployer.git'
 
 group :development do
   gem 'bullet',                  '~> 2.0.0.rc1'
-  gem 'hpricot',                 '>= 0.8.2'
-  gem 'ruby_parser',             '>= 2.0.4'
   gem 'parallel_tests',          :git => 'git://github.com/grosser/parallel_tests.git'
 end
 

@@ -1,2 +1,62 @@
 module ApplicationHelper
+  # renders the default errors block in forms
+  #
+  # @param [Object] resource ActiveRecord object
+  def display_errors!(resource)
+    html = ""
+    if resource.errors.any?
+      html << "<div class='message errormsg nohide'>"
+      html << "<h2>#{pluralize(resource.errors.count, 'error')} found:</h2>"
+      html << "<ul>"
+      resource.errors.full_messages.each do |msg|
+        html << "<li>#{msg}</li>"
+      end
+      html << "</ul>"
+      html << "</div>"
+    end
+    html.html_safe
+  end
+
+  # renders a block with some default structrual HTML
+  #
+  # @param [Hash] options
+  # @param [Block] block HTML content that goes into the block
+  def render_block(options = {}, &block)
+    options.merge!(:content => capture(&block))
+    options = {
+      :layout  => "layouts/block",
+      :classes => ""
+    }.merge(options)
+    render :partial => options[:layout], :locals => options
+  end
+
+  def link_to_ajax(label, resource, options={})
+    options.key?(:class) ? options[:class] << " ajaxify" : options[:class] = "ajaxify"
+
+    link_to(label, resource, options)
+  end
+
+  # set up the destroy action for use with jQuery Inline Confirmation
+  #
+  # @param [String] label link_to() label
+  # @param [Object] resource target resource
+  # @param [Hash] options
+  def link_to_deletion(label, resource, options={})
+    options = {
+      :class => "del-resource",
+      :"data-id" => resource.id
+    }.merge(options)
+
+    link_to(label, resource, options)
+  end
+
+  # removes :controller and :action elements so that the params can be passed on
+  #
+  # @return [Hash]
+  def keep_params
+    params.delete(:controller)
+    params.delete(:action)
+    params.delete(:page)
+    params
+  end
 end

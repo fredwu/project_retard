@@ -1,7 +1,14 @@
 Shop2T::Application.routes.draw do
   devise_for :users
 
-  resources :products
+  scope "admin" do
+    resources :colours
+    resources :orders
+    resources :products
+    resources :retailers
+    resources :sizes
+    resources :users
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

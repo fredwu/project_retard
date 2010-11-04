@@ -1,0 +1,55 @@
+! doctype html
+html
+  head
+    title
+      = @site_title ||= "2threads Shop"
+      | &nbsp;-&nbsp;
+      = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
+
+    = stylesheet_link_tag "../adminus/green/css/style", "compiled/admin", :media => "all"
+    = javascript_include_tag(Rails.env.production? ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" : "jquery.min")
+    = javascript_tag "$.fn.facebox = $.fn.select_skin = $.fn.tablesorter = $.fn.wysiwyg = $.fn.date_input = function() {} // dummies for Adminus"
+    = javascript_include_tag                       \
+      "../adminus/green/js/jquery.img.preload",    \
+      "../adminus/green/js/jquery.filestyle.mini", \
+      "../adminus/green/js/jquery.pngfix",         \
+      "../adminus/green/js/custom",                \
+      :cache => "../adminus/green/js/adminus.all"
+
+    = javascript_include_tag        \
+      "jquery.inline-confirmation", \
+      "application",                \
+      :cache => "cached/application.all"
+    = csrf_meta_tag
+
+  body
+    .wrapper
+      #ajax_loader Loading ...
+      #ajax_error Error occurred! Please try again later.
+
+      #header
+        .hdrl
+        .hdrr
+        h1#logo 2threads Shop
+        = render_navigation :expand_all => true, :level => 1..2
+
+      - flash.each do |type, message|
+        - type = case type
+          - when :notice then :info
+          - when :alert  then :errormsg
+          - else type
+        .block.nostyle
+          .message class=type
+            p= message
+
+      #content
+        #nav_menu= render_navigation :renderer => :breadcrumbs, :join_with => " &gt; "
+        #user_bar= render "layouts/user_bar" if current_user
+        .clear
+        = yield
+
+      #footer
+        | Copyright &copy;&nbsp;
+        = Time.now.year
+        | &nbsp;
+        = link_to "2threads", "http://2threads.com/", :target => "_blank"

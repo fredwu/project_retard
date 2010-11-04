@@ -12,25 +12,38 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :first_name, :last_name, :payment_email, :password, :password_confirmation
 
-  property  :email, :string, :default => "", :null => false
-  property  :first_name, :string, :limit => 50
-  property  :last_name, :string, :limit => 50
-  property  :encrypted_password, :string, :limit => 128, :default => "", :null => false
-  property  :password_salt, :string, :default => "", :null => false
+  property  :email,                :string,  :default => "", :null => false
+  property  :first_name,           :string,  :limit => 50
+  property  :last_name,            :string,  :limit => 50
+  property  :encrypted_password,   :string,  :limit => 128, :default => "", :null => false
+  property  :password_salt,        :string,  :default => "", :null => false
   property  :reset_password_token, :string
-  property  :remember_token, :string
-  property  :remember_created_at, :datetime
-  property  :sign_in_count, :integer, :default => 0
-  property  :current_sign_in_at, :datetime
-  property  :last_sign_in_at, :datetime
-  property  :current_sign_in_ip, :string
-  property  :last_sign_in_ip, :string
-  property  :confirmation_token, :string
-  property  :confirmed_at, :datetime
+  property  :remember_token,       :string
+  property  :remember_created_at,  :datetime
+  property  :sign_in_count,        :integer, :default => 0
+  property  :current_sign_in_at,   :datetime
+  property  :last_sign_in_at,      :datetime
+  property  :current_sign_in_ip,   :string
+  property  :last_sign_in_ip,      :string
+  property  :confirmation_token,   :string
+  property  :confirmed_at,         :datetime
   property  :confirmation_sent_at, :datetime
+  property  :is_admin,             :boolean, :default => 0
   property  :timestamps
 
-  add_index :email, :unique => true
-  add_index :confirmation_token, :unique => true
+  add_index :email,                :unique => true
+  add_index :confirmation_token,   :unique => true
   add_index :reset_password_token, :unique => true
+
+  belongs_to :retailer
+
+  validates_presence_of   :first_name
+  validates_presence_of   :last_name
+  validates_presence_of   :email
+  validates_uniqueness_of :email
+  validates_format_of     :email, :with => EMAIL_REGEX
+
+  def is_admin?
+    is_admin
+  end
 end
