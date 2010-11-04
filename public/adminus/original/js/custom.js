@@ -8,7 +8,7 @@ $(function () {
 	$('#header #nav li:last').addClass('nobg');
 	$('.block_head ul').each(function() { $('li:first', this).addClass('nobg'); });
 	$('.block form input[type=file]').addClass('file');
-	
+			
 	
 	// Web stats
 	$('table.stats').each(function() {
@@ -22,7 +22,7 @@ $(function () {
 			type: statsType,	// 'bar', 'area', 'pie', 'line'
 			width: chart_width,
 			height: '240px',
-			colors: ['#9dc453', '#ec8526', '#6fb9e8', '#ddd74c']
+			colors: ['#6fb9e8', '#ec8526', '#9dc453', '#ddd74c']
 		});
 	});
 	
@@ -34,7 +34,7 @@ $(function () {
 	});
 	
 	$('.block table tr th.header').css('cursor', 'pointer');
-	
+		
 	
 	// Check / uncheck all checkboxes
 	$('.check_all').click(function() {
@@ -82,6 +82,7 @@ $(function () {
 	});
 	
 	
+	
 	// Sidebar Tabs
 	$(".sidebar_content").hide();
 	
@@ -105,8 +106,9 @@ $(function () {
 		$(this).parents('.block').find(".sidebar_content").hide();			
 		$(activeTab).show();
 		return false;
-	});
-		
+	});	
+	
+	
 	
 	// Block search
 	$('.block .block_head form .text').bind('click', function() { $(this).attr('value', ''); });
@@ -160,7 +162,7 @@ $(function () {
 	
 	// Date picker
 	$('input.date_picker').date_input();
-		
+	
 
 	// Navigation dropdown fix for IE6
 	if(jQuery.browser.version.substr(0,1) < 7) {

@@ -1,5 +1,5 @@
 /*	
-Template Name: Adminus Green
+Template Name: Adminus
 Description: Beautiful admin panel interface
 Version: 1.4.3
 Author: enstyled
@@ -29,7 +29,7 @@ ul li { list-style: none; }
 .clear { clear: both; }
 
 a {
-	color: #499510;
+	color: #008ee8;
 	text-decoration: none;
 	outline: none;
 	}
@@ -95,7 +95,7 @@ a:hover {
 	}
 
 #header h1 a { color: #fff; }
-#header h1 a:hover { color: #499510; }
+#header h1 a:hover { color: #008ee8; }
 	
 
 /* Navigation */
@@ -175,6 +175,10 @@ a:hover {
 	
 #header #nav li.active a { color: #ddd; }
 #header #nav li.active a:hover { color: #fff; }
+
+#header #nav a.hasmore {
+	border: 1px solid red;
+	}
 
 /* Root Menu Hover Persistence */
 #header #nav a:hover,
@@ -350,7 +354,7 @@ a:hover {
 	}
 
 .block .block_head ul li.active a { color: #888; }
-.block .block_head ul li a:hover { color: #499510; }
+.block .block_head ul li a:hover { color: #008ee8; }
 
 .block .block_head form {
 	float: right;
@@ -418,7 +422,7 @@ a:hover {
 	text-align: left;
 	margin-bottom: 15px;
 	}
-	
+
 .block table tr.even td {
 	background: #fbfbfb;
 	}
@@ -489,8 +493,8 @@ a:hover {
 	}
 
 .block .pagination a.active {
-	background: #7abb22;
-	border: 1px solid #3a7a0a;
+	background: #39a3e6;
+	border: 1px solid #0082d5;
 	color: #fff;
 	}
 
@@ -660,6 +664,7 @@ a:hover {
 	width: 245px;
 	height: 18px;
 	margin-right: 20px;
+	cursor: pointer;
 	}
 	
 .block form .cmf-skinned-select {

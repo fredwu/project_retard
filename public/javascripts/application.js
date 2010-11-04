@@ -32,7 +32,7 @@ $(document).ready(function() {
   $("#error_explanation").addClass("message errormsg");
   $("p.field_with_errors > span.error").addClass("note");
   $(".nohide").children(".close").hide();
-  $("input.file").parent("div").css("background-image", "url(/adminus/green/images/upload.gif)");
+  $("input.file").parent("div").css("background-image", "url(/adminus/original/images/upload.gif)");
   $(".pagination").addClass("paggination right");
   $(".pagination em").wrap("<a class='active'>").css("font-style", "normal");
   $(".pagination span.disabled").hide();
