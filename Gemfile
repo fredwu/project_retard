@@ -32,7 +32,7 @@ gem 'slim',                      :git => 'git://github.com/stonean/slim.git'
 # gem 'slim',                      :path => '/Users/fred/Downloads/Repos/Rails/slim'
 gem 'compass'
 gem 'simple_form',               '~> 1.2.0'
-gem 'simple-navigation',         '~> 3.0.0'
+# gem 'simple-navigation',         '~> 3.0.0'
 gem 'will_paginate',             '~> 3.0.pre'
 
 # --------------------
@@ -41,7 +41,7 @@ gem 'will_paginate',             '~> 3.0.pre'
 gem 'rails_config'
 gem 'rdiscount',                 '>= 1.6.5'
 gem 'sanitize'
-gem 'csv-mapper',                '>= 0.5.0'
+# gem 'csv-mapper',                '>= 0.5.0'
 gem 'ffaker',                    '>= 0.4.0'
 gem 'xpath'
 
