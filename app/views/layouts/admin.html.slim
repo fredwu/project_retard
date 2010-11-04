@@ -7,7 +7,7 @@ html
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
     = stylesheet_link_tag "../adminus/green/css/style", "compiled/admin", :media => "all"
-    = javascript_include_tag(Rails.env.production? ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" : "jquery.min")
+    = javascript_include_tag(Rails.env.production? ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" : "jquery.min")
     = javascript_tag "$.fn.facebox = $.fn.select_skin = $.fn.tablesorter = $.fn.wysiwyg = $.fn.date_input = function() {} // dummies for Adminus"
     = javascript_include_tag                       \
       "../adminus/green/js/jquery.img.preload",    \
