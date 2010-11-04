@@ -46,4 +46,8 @@ class User < ActiveRecord::Base
   def is_admin?
     is_admin
   end
+
+  def is_retailer?
+    !!retailer
+  end
 end

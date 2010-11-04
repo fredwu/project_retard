@@ -1,0 +1,7 @@
+= f.input :first_name
+= f.input :last_name
+= f.input :email
+- if defined?(show_password)
+  = f.input :password
+  = f.input :password_confirmation
+p.input= f.button :submit, :class => "submit mid"

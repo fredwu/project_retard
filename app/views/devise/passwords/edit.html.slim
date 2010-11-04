@@ -1,0 +1,8 @@
+= render_block :classes => "small center login", :title => "Change Your Password" do
+  = simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put } do |f|
+    = devise_error_messages!
+    = f.hidden_field :reset_password_token
+    p= f.input :password
+    p= f.input :password_confirmation
+    p= f.submit "Change", :class => "submit"
+  = render "devise/shared/links"

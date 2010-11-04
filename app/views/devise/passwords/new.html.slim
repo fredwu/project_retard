@@ -1,0 +1,6 @@
+= render_block :classes => "small center login", :title => "Forgot Your Password?" do
+  = simple_form_for resource, :as => resource_name, :url => password_path(resource_name) do |f|
+    = devise_error_messages!
+    p= f.input :email
+    p= f.submit "Send", :class => "submit"
+  = render "devise/shared/links"
