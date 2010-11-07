@@ -34,7 +34,7 @@ require "rvm/capistrano"
 # Assumes Application and Git Repository are located on the same server
 set :appname,   "shop.2threads.com"     # the name of your application
 set :ip,        "111.118.174.9"   # the ip address of the production server
-set :user,      "root"        # the user that will deploy to the production server
+set :user,      "deployer"        # the user that will deploy to the production server
 set :remote,    "origin"          # the remote that should be deployed
 set :branch,    "master"      # the branch that should be deployed
 
