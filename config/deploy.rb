@@ -67,7 +67,7 @@ set :repository_url, "git@github.com:fredwu/shop.2threads.com.git"
 # Use this to skip database deployment tasks (db:create, db:migrate)
 # Useful when, for example, not using ActiveRecord, but MongoDB with Mongoid instead
 
-# set :skip_database, true
+set :skip_database, true
 
 
 ##
