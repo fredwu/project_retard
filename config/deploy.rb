@@ -115,7 +115,7 @@ set :additional_shared_folders,
 # db/production.sqlite3 = RAILS_ROOT/db/production.sqlite3  => SHARED_PATH/db/production.sqlite3
 
 set :additional_shared_symlinks,
-  %w(public/system public/assets)
+  %w(public/system public/assets config/database.yml)
 
 
 ##
