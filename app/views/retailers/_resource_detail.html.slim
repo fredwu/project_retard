@@ -1,0 +1,11 @@
+table.detail class=collection.first.class.to_s.downcase
+  tr
+    th Code
+    td= resource.code
+  tr
+    th Name
+    td= resource.name
+  tr
+    th Info
+    td= resource.info
+p= link_to "Back", collection_url
