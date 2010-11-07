@@ -16,6 +16,18 @@ u = User.new({
 })
 u.save :validate => false
 
+u = User.new({
+  :email                 => 'riley@socialistamedia.com',
+  :password              => 'bondi1000',
+  :password_confirmation => 'bondi1000',
+  :first_name            => 'Riley',
+  :last_name             => 'Batchelor',
+  :confirmed_at          => Time.now,
+  :is_admin              => true,
+  :retailer_id           => 1,
+})
+u.save :validate => false
+
 Size.create({:name => "S"})
 Size.create({:name => "M"})
 Size.create({:name => "L"})
