@@ -13,14 +13,14 @@
 ActiveRecord::Schema.define(:version => 0) do
 
   create_table "colours", :force => true do |t|
-    t.string   :label,      :limit => nil
-    t.string   :hex,        :limit => nil
-    t.integer  :product_id, :limit => nil
+    t.string   :label,           :limit => nil
+    t.string   :hex,             :limit => nil
+    t.integer  :product_item_id, :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end
 
-  add_index "colours", [:product_id, :label, :hex], :name => "index_colours_on_product_id_and_label_and_hex"
+  add_index "colours", [:product_item_id, :label, :hex], :name => "index_colours_on_product_item_id_and_label_and_hex"
 
   create_table "orders", :force => true do |t|
     t.string   :first_name, :limit => 50
@@ -60,11 +60,9 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer :product_id, :limit => nil
     t.integer :colour_id,  :limit => nil
     t.integer :size_id,    :limit => nil
-    t.integer :user_id,    :limit => nil
   end
 
   add_index "product_items", :product_id, :name => "index_product_items_on_product_id"
-  add_index "product_items", :user_id, :name => "index_product_items_on_user_id"
 
   create_table "retailers", :force => true do |t|
     t.string   :name,       :limit => nil
@@ -111,13 +109,5 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "users", :confirmation_token, :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", :email, :name => "index_users_on_email", :unique => true
   add_index "users", :reset_password_token, :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "products_sizes", :id => false, :force => true do |t|
-    t.integer "product_id", :limit => nil
-    t.integer "size_id",    :limit => nil
-  end
-
-  add_index "products_sizes", "product_id", :name => "index_products_sizes_on_product_id"
-  add_index "products_sizes", "size_id", :name => "index_products_sizes_on_size_id"
 
 end

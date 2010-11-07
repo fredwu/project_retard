@@ -1,0 +1,6 @@
+= render_block :title => "#{action_name} Size" do
+  = simple_form_for resource do |f|
+    = display_errors!(resource)
+    = f.input :label
+    p.input= f.button :submit, :class => "submit long"
+  p= link_to "Back", resource

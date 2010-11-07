@@ -8,5 +8,5 @@ class Size < ActiveRecord::Base
 
   validates_presence_of :label
 
-  has_and_belongs_to_many :products
+  has_many :products, :through => :product_items
 end
