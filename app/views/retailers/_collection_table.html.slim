@@ -1,0 +1,16 @@
+table.collection class="retailers"
+  thead
+    tr
+      th Code
+      th Name
+      th Show
+      th Edit
+      th Destroy
+  tbody
+    - collection.each do |r|
+      tr data-id=r.id
+        td= r.code
+        td= r.name
+        td= link_to "Show", r
+        td= link_to "Edit", edit_resource_url(r)
+        td= link_to_deletion "Destroy", r

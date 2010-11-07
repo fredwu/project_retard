@@ -4,6 +4,7 @@ Shop2T::Application.routes.draw do
   scope "admin" do
     resources :colours
     resources :orders
+    resources :product_items
     resources :products
     resources :retailers
     resources :sizes

@@ -1,0 +1,18 @@
+table.collection class=collection.first.class.to_s.downcase.pluralize
+  thead
+    tr
+      th Product
+      th Colour
+      th Size
+      th Stock
+      th Edit
+      th Destroy
+  tbody
+    - collection.each do |r|
+      tr data-id=r.id
+        td= link_to r.product.name, product_url(r.product)
+        td= r.colour.name
+        td= r.size.name
+        td= r.stock
+        td= link_to "Edit", edit_resource_url(r)
+        td= link_to_deletion "Destroy", r

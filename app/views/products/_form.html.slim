@@ -8,9 +8,9 @@
     = f.input :shipping_info
     = f.input :rrp
     = f.input :price
-    = f.input :limit_per_customer
     = f.input :is_voucher
-    = f.association :colours, :as => :check_boxes, :label_method => :label
-    = f.association :sizes, :as => :check_boxes, :label_method => :label
+    = f.input :limit_per_customer
+    / = f.association :colours, :as => :check_boxes
+    / = f.association :sizes, :as => :check_boxes
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource

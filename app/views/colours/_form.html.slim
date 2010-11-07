@@ -1,7 +1,7 @@
 = render_block :title => "#{action_name} Colour" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    = f.input :label
+    = f.input :name
     = f.input :hex
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource

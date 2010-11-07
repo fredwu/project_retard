@@ -1,0 +1,12 @@
+table.collection class="sizes"
+  thead
+    tr
+      th Size
+      th Edit
+      th Destroy
+  tbody
+    - collection.each do |r|
+      tr data-id=r.id
+        td= r.name
+        td= link_to "Edit", edit_resource_url(r)
+        td= link_to_deletion "Destroy", r

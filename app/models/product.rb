@@ -22,16 +22,18 @@ class Product < ActiveRecord::Base
   validates_presence_of   :retailer_id
   validates_uniqueness_of :code
 
-  belongs_to :retailer
-  has_many :colours, :through => :product_items
-  has_many :sizes, :through => :product_items
   has_many :product_items
+  has_many :colours, :through => :product_items
+  has_many :sizes,   :through => :product_items
+  belongs_to :retailer
+
+  default_scope order(:updated_at.desc)
 
   def is_voucher?
     is_voucher
   end
 
   def nice_price
-    number_to_currency price
+    number_to_currency(price)
   end
 end

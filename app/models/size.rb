@@ -1,12 +1,14 @@
 class Size < ActiveRecord::Base
   include Datamappify::Resource
 
-  property :label, :string
+  property :name, :string
   property :timestamps
 
-  add_index :label
+  add_index :name
 
-  validates_presence_of :label
+  validates_presence_of :name
 
   has_many :products, :through => :product_items
+
+  default_scope order(:name)
 end

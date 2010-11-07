@@ -42,6 +42,10 @@ SimpleNavigation::Configuration.run do |navigation|
       sizes.item :sizes_new, "Add New Size", new_size_path
     end
 
+    menu.item :items, "Items", product_items_path do |items|
+      items.item :items_new, "Add New Item", new_product_item_path
+    end
+
     menu.item :orders, "Orders", orders_path do |orders|
       orders.item :orders_new, "New Orders", orders_path
       orders.item :orders_fullfied, "Fullfied Orders", orders_path

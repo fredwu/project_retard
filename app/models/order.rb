@@ -15,4 +15,5 @@ class Order < ActiveRecord::Base
   property :shipped_at, :datetime
   property :timestamps
 
+  default_scope order(:created_at.desc)
 end

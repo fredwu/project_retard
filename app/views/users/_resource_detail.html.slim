@@ -1,0 +1,29 @@
+table.detail class=collection.first.class.to_s.downcase
+  tr
+    th First Name
+    td= resource.first_name
+  tr
+    th Last Name
+    td= resource.last_name
+  tr
+    th Email
+    td= resource.email
+  tr
+    th Retailer
+    td= resource.retailer.name if resource.retailer
+  tr
+    th Is Admin
+    td= resource.is_admin ? "Yes" : "No"
+  tr
+    th Current Sign In At
+    td= resource.current_sign_in_at
+  tr
+    th Current Sign In IP
+    td= resource.current_sign_in_ip
+  tr
+    th Last Sign In At
+    td= resource.last_sign_in_at
+  tr
+    th Last Sign In IP
+    td= resource.last_sign_in_ip
+p= link_to "Back", collection_url

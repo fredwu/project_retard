@@ -1,14 +1,17 @@
 class Colour < ActiveRecord::Base
   include Datamappify::Resource
 
-  property :label, :string
+  property :name, :string
   property :hex,   :string
   property :timestamps
 
-  add_index [:product_item_id, :label, :hex]
+  add_index :name
+  add_index :hex
 
-  validates_presence_of :label
+  validates_presence_of :name
   validates_presence_of :hex
 
-  belongs_to :product_item
+  has_many :products, :through => :product_items
+
+  default_scope order(:name)
 end

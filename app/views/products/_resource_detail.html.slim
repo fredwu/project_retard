@@ -1,0 +1,35 @@
+table.detail class="product"
+  tr
+    th Retailer
+    td= resource.retailer.name
+  tr
+    th Code
+    td= resource.code
+  tr
+    th Name
+    td= resource.name
+  tr
+    th Details
+    td= resource.details
+  tr
+    th Shipping Info
+    td= resource.shipping_info
+  tr
+    th RRP
+    td= resource.rrp
+  tr
+    th Price
+    td= resource.price
+  tr
+    th Is Voucher?
+    td= resource.is_voucher ? "Yes" : "No"
+  tr
+    th Limit Per Customer
+    td= resource.limit_per_customer > 0 ? resource.limit_per_customer : "None"
+  tr
+    th Colours
+    td= resource.colours.map(&:name) * ", "
+  tr
+    th Sizes
+    td= resource.sizes.map(&:name) * ", "
+p= link_to "Back", collection_url

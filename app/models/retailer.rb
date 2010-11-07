@@ -16,4 +16,6 @@ class Retailer < ActiveRecord::Base
 
   has_many :products
   has_many :users
+
+  default_scope order(:code)
 end

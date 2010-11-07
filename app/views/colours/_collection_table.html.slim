@@ -1,0 +1,14 @@
+table.collection class="colours"
+  thead
+    tr
+      th Colour
+      th Hex
+      th Edit
+      th Destroy
+  tbody
+    - collection.each do |r|
+      tr data-id=r.id
+        td= r.name
+        td= r.hex
+        td= link_to "Edit", edit_resource_url(r)
+        td= link_to_deletion "Destroy", r
