@@ -30,6 +30,12 @@ module ApplicationHelper
     render :partial => options[:layout], :locals => options
   end
 
+  # a shortcut for ajaxified link_to
+  #
+  # @param [String] label link_to() label
+  # @param [Object] resource target resource
+  # @param [Hash] options
+  # @return [String]
   def link_to_ajax(label, resource, options={})
     options.key?(:class) ? options[:class] << " ajaxify" : options[:class] = "ajaxify"
 
@@ -58,5 +64,13 @@ module ApplicationHelper
     params.delete(:action)
     params.delete(:page)
     params
+  end
+
+  # outputs "Yes" or "No"
+  #
+  # @param [String] attribute
+  # @return [String]
+  def yes_or_no?(attribute)
+    attribute ? "Yes" : "No"
   end
 end
