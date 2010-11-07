@@ -1,6 +1,8 @@
 = render_block :title => "#{action_name} Product" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
+    = f.input :is_published, :label => "Publish!"
+    hr
     = f.association :retailer
     = f.input :code
     = f.input :name
@@ -10,7 +12,5 @@
     = f.input :price
     = f.input :is_voucher
     = f.input :limit_per_customer
-    / = f.association :colours, :as => :check_boxes
-    / = f.association :sizes, :as => :check_boxes
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource

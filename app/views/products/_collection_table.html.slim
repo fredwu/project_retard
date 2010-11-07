@@ -7,18 +7,18 @@ table.collection class="products"
       th Price
       th Voucher?
       th Limit P/C
-      th Show
+      th Published
       th Edit
       th Destroy
   tbody
     - collection.each do |r|
       tr data-id=r.id
         td= r.code
-        td= r.name
+        td= link_to r.name, r
         td= r.rrp
         td= r.price
         td= r.is_voucher ? "Yes" : "No"
         td= r.limit_per_customer
-        td= link_to "Show", r
+        td= r.is_published ? "Yes" : "No"
         td= link_to "Edit", edit_resource_url(r)
         td= link_to_deletion "Destroy", r

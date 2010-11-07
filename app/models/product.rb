@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   property :price,              :decimal, :precision => 6, :scale => 2
   property :limit_per_customer, :integer, :limit => 2, :default => 0
   property :is_voucher,         :boolean, :default => false
+  property :is_published,       :boolean, :default => false
   property :timestamps
 
   add_index :name
