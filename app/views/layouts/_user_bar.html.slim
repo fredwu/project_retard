@@ -1,12 +1,11 @@
 ul
   li
-    span Welcome
-    span
-      = link_to current_user.first_name, current_user
-      | !
+    | Welcome&nbsp;
+    = link_to current_user.first_name, current_user
+    | !
   li
-    | You can
+    | You can&nbsp;
     = link_to "edit your profile", edit_user_registration_path
-    | or
+    | &nbsp;or&nbsp;
     = link_to "logout", destroy_user_session_path
     | .
