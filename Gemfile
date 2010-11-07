@@ -54,9 +54,9 @@ gem 'vidibus-routing_error'
 gem 'dalli'
 gem 'capistrano-ext'
 gem 'deployer',                  :git => 'git://github.com/meskyanichi/deployer.git'
+gem 'bullet',                    '~> 2.0.0.rc1'
 
 group :development do
-  gem 'bullet',                  '~> 2.0.0.rc1'
   gem 'parallel_tests',          :git => 'git://github.com/grosser/parallel_tests.git'
 end
 
