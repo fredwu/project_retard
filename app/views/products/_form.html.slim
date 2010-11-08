@@ -1,14 +1,17 @@
 = render_block :title => "#{action_name} Product" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    = f.input :publish_on
+    p
+      = check_box_tag :to_publish
+      = label_tag :to_publish
+    = f.input :published_on, :label => "Publish(ed) On", :disabled => true
     hr
     = f.association :retailer
     = f.input :code
     = f.input :name
     = f.input :details
     = f.input :shipping_info
-    = f.input :rrp
+    = f.input :rrp, :label => "RRP"
     = f.input :price
     = f.input :is_voucher
     = f.input :limit_per_customer

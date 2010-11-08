@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   property :price,              :decimal, :precision => 6, :scale => 2
   property :limit_per_customer, :integer, :limit => 2, :default => 0
   property :is_voucher,         :boolean, :default => false
-  property :publish_on,         :date
+  property :published_on,       :date
   property :timestamps
 
   add_index :name
@@ -22,25 +22,26 @@ class Product < ActiveRecord::Base
   validates_presence_of   :price
   validates_presence_of   :retailer_id
   validates_uniqueness_of :code
+  validates_format_of     :code, :with => /^[a-zA-Z0-9]+$/, :message => "can only contain alphanumeric characters"
 
   has_many :product_items
+  has_many :product_vouchers
   has_many :colours, :through => :product_items
   has_many :sizes,   :through => :product_items
   belongs_to :retailer
 
-  default_scope order(:updated_at.desc)
+  default_scope order("products.published_on IS NULL DESC" ,:published_on.desc, :updated_at.desc)
+  scope :vouchers, where(:is_voucher => true)
+  scope :items, where(:is_voucher => false)
+  scope :published, where(:published_on => true)
+  scope :unpublished, where(:published_on => false)
 
-  def published_on
-    publish_on
+  def publish_on
+    published_on
   end
 
   def is_voucher?
     is_voucher
-  end
-
-  def full_name
-    name << " (Voucher)" if is_voucher?
-    name
   end
 
   def nice_price

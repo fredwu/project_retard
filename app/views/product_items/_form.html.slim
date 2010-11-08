@@ -1,12 +1,9 @@
 = render_block :title => "#{action_name} Product Item" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    = f.association :product, :label_method => :full_name
-    #item_block
-      = f.association :colour
-      = f.association :size
-    #voucher_block
-      = f.input :voucher_code
+    = f.association :product, :collection => Product.items
+    = f.association :colour
+    = f.association :size
     = f.input :stock
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource

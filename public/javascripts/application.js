@@ -75,28 +75,18 @@ $(document).ready(function() {
   });
 
   /* --------------------
-    Product item block show/hide
+    Product publish toggle
   -------------------- */
 
-  $("select#product_item_product_id").change(function() {
-    show_or_hide_item_block($(this));
-  });
-
-  if ($("select#product_item_product_id option:selected").length >= 0) {
-    show_or_hide_item_block($("select#product_item_product_id"));
-  }
-
-  function show_or_hide_item_block(scope) {
-    var selected_text = $("option:selected", scope).text();
-    if (/\(Voucher\)/.test(selected_text)) {
-      $("#item_block").hide_and_clean();
-      $("#voucher_block").fadeIn();
-    } else if (/\s/.test(selected_text)) {
-      $("#voucher_block").hide_and_clean();
-      $("#item_block").fadeIn();
+  $("input#to_publish").change(function() {
+    if ($(this).attr("checked")) {
+      $("select#product_published_on_1i").attr("disabled", false);
+      $("select#product_published_on_2i").attr("disabled", false);
+      $("select#product_published_on_3i").attr("disabled", false);
     } else {
-      $("#voucher_block").hide_and_clean();
-      $("#item_block").hide_and_clean();
+      $("select#product_published_on_1i").attr("disabled", true);
+      $("select#product_published_on_2i").attr("disabled", true);
+      $("select#product_published_on_3i").attr("disabled", true);
     }
-  }
+  });
 });

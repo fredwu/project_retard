@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.decimal  :price,                             :precision => 6, :scale => 2
     t.integer  :limit_per_customer, :limit => 2,                                 :default => 0
     t.boolean  :is_voucher,         :limit => nil,                               :default => false
-    t.date     :publish_on
+    t.date     :published_on
     t.integer  :retailer_id,        :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
@@ -58,17 +58,25 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "products", :name, :name => "index_products_on_name"
 
   create_table "product_items", :force => true do |t|
-    t.integer :stock,                       :default => 0
-    t.string  :voucher_code, :limit => 20
-    t.integer :product_id,   :limit => nil
-    t.integer :colour_id,    :limit => nil
-    t.integer :size_id,      :limit => nil
+    t.integer :stock,                     :default => 0
+    t.integer :product_id, :limit => nil
+    t.integer :colour_id,  :limit => nil
+    t.integer :size_id,    :limit => nil
   end
 
   add_index "product_items", :colour_id, :name => "index_product_items_on_colour_id"
   add_index "product_items", :product_id, :name => "index_product_items_on_product_id"
   add_index "product_items", :size_id, :name => "index_product_items_on_size_id"
   add_index "product_items", [:product_id, :colour_id, :size_id], :name => "index_product_items_on_product_id_and_colour_id_and_size_id"
+
+  create_table "product_vouchers", :force => true do |t|
+    t.string  :code,       :limit => 20
+    t.integer :limit,                     :default => 0
+    t.integer :product_id, :limit => nil
+  end
+
+  add_index "product_vouchers", :product_id, :name => "index_product_vouchers_on_product_id"
+  add_index "product_vouchers", [:product_id, :code], :name => "index_product_vouchers_on_product_id_and_code"
 
   create_table "retailers", :force => true do |t|
     t.string   :name,       :limit => nil

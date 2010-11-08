@@ -5,6 +5,7 @@ Shop2T::Application.routes.draw do
     resources :colours
     resources :orders
     resources :product_items
+    resources :product_vouchers
     resources :products
     resources :retailers
     resources :sizes

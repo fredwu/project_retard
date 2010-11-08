@@ -13,9 +13,10 @@ class Retailer < ActiveRecord::Base
   validates_presence_of   :code
   validates_uniqueness_of :name
   validates_uniqueness_of :code
+  validates_format_of     :code, :with => /^[a-zA-Z0-9]+$/, :message => "can only contain alphanumeric characters"
 
   has_many :products
   has_many :users
 
-  default_scope order(:code)
+  default_scope order(:name)
 end

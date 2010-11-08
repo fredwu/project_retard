@@ -46,6 +46,10 @@ SimpleNavigation::Configuration.run do |navigation|
       items.item :items_new, "Add New Item", new_product_item_path
     end
 
+    menu.item :vouchers, "Vouchers", product_vouchers_path do |vouchers|
+      vouchers.item :vouchers_new, "Add New Voucher", new_product_voucher_path
+    end
+
     menu.item :orders, "Orders", orders_path do |orders|
       orders.item :orders_new, "New Orders", orders_path
       orders.item :orders_fullfied, "Fullfied Orders", orders_path

@@ -1,18 +1,16 @@
-table.collection class="product_items"
+table.collection class="product_vouchers"
   thead
     tr
       th Product
-      th Colour
-      th Size
-      th Stock
+      th Voucher Code
+      th Limit
       th Edit
       th Destroy
   tbody
     - collection.each do |r|
       tr data-id=r.id
         td= link_to r.product.name, product_url(r.product)
-        td= r.colour.name if r.colour
-        td= r.size.name if r.size
-        td= r.stock
+        td= r.code
+        td= r.limit
         td= link_to "Edit", edit_resource_url(r)
         td= link_to_deletion "Destroy", r

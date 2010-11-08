@@ -1,0 +1,2 @@
+module ProductVouchersHelper
+end

@@ -78,13 +78,13 @@ Product.create({
   :limit_per_customer => 0,
   :is_voucher         => true,
   :retailer_id        => 1,
-  :publish_on         => Time.now.tomorrow,
+  :published_on       => Time.now.tomorrow,
 })
 
-  ProductItem.create({
-    :stock        => 10,
-    :product_id   => 2,
-    :voucher_code => "VOUCHER_TEST_PROD_2",
+  ProductVoucher.create({
+    :code       => "VOUCHER_TEST_PROD_2",
+    :limit      => 10,
+    :product_id => 2,
   })
 
 Product.create({
@@ -97,7 +97,7 @@ Product.create({
   :limit_per_customer => 1,
   :is_voucher         => false,
   :retailer_id        => 1,
-  :publish_on         => Time.now,
+  :published_on       => Time.now,
 })
 
   ProductItem.create({
