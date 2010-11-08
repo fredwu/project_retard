@@ -4,4 +4,8 @@ class ProductsController < ApplicationController
   def current
     render :layout => "front"
   end
+
+  def past
+    render :layout => "front"
+  end
 end
