@@ -2,25 +2,25 @@ table.collection class="products"
   thead
     tr
       th Publish(ed) On
+      th Ready?
       th Code
       th Name
       th RRP
       th Price
       th Voucher?
       th Limit P/C
-      th Valid?
       th Edit
       th Destroy
   tbody
     - collection.each do |r|
       tr data-id=r.id
         td= r.published_on || "Not yet"
+        td= yes_or_no?(r.is_complete?)
         td= r.code
         td= link_to r.name, r
         td= r.rrp
         td= r.price
         td= yes_or_no? r.is_voucher
         td= r.limit_per_customer
-        td= yes_or_no?(r.product_items.any? || r.product_vouchers.any?)
         td= link_to "Edit", edit_resource_url(r)
         td= link_to_deletion "Destroy", r

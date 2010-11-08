@@ -1,9 +1,13 @@
 = render_block :title => "#{action_name} Product" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    p
-      = check_box_tag :to_publish
-      = label_tag :to_publish
+    - if resource.is_complete?
+      p
+        = check_box_tag :to_publish
+        = label_tag :to_publish
+    - else
+      .message.warning.nohide
+        | This product is not yet ready to be published, please add at least one item or voucher to it.
     = f.input :published_on, :label => "Publish(ed) On", :disabled => true
     hr
     = f.association :retailer

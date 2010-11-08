@@ -44,6 +44,10 @@ class Product < ActiveRecord::Base
     is_voucher
   end
 
+  def is_complete?
+    product_items.any? || product_vouchers.any?
+  end
+
   def nice_price
     number_to_currency(price)
   end
