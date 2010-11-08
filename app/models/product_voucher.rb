@@ -10,6 +10,7 @@ class ProductVoucher < ActiveRecord::Base
   belongs_to :product
 
   validates_presence_of     :product_id
+  validates_presence_of     :code
   validates_numericality_of :limit, :greater_than_or_equal_to => 0
 
   default_scope joins(:product.outer).order(:product_id.desc, :code)
