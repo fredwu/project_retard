@@ -68,9 +68,13 @@ module ApplicationHelper
 
   # outputs "Yes" or "No"
   #
-  # @param [String] attribute
+  # @param [Mixed] attribute
   # @return [String]
   def yes_or_no?(attribute)
-    attribute ? "Yes" : "No"
+    if attribute.respond_to?(:any?)
+      attribute.any? ? "Yes" : "No"
+    else
+      attribute ? "Yes" : "No"
+    end
   end
 end

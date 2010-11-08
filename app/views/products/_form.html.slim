@@ -1,7 +1,7 @@
 = render_block :title => "#{action_name} Product" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    = f.input :is_published, :label => "Publish!"
+    = f.input :publish_on
     hr
     = f.association :retailer
     = f.input :code

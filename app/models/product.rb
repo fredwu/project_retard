@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   property :price,              :decimal, :precision => 6, :scale => 2
   property :limit_per_customer, :integer, :limit => 2, :default => 0
   property :is_voucher,         :boolean, :default => false
-  property :is_published,       :boolean, :default => false
+  property :publish_on,         :date
   property :timestamps
 
   add_index :name
@@ -30,8 +30,17 @@ class Product < ActiveRecord::Base
 
   default_scope order(:updated_at.desc)
 
+  def published_on
+    publish_on
+  end
+
   def is_voucher?
     is_voucher
+  end
+
+  def full_name
+    name << " (Voucher)" if is_voucher?
+    name
   end
 
   def nice_price
