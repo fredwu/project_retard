@@ -22,7 +22,7 @@ table.detail class="product"
     td= resource.price
   tr
     th Is Voucher?
-    td= resource.is_voucher ? "Yes" : "No"
+    td= yes_or_no? resource.is_voucher
   tr
     th Limit Per Customer
     td= resource.limit_per_customer > 0 ? resource.limit_per_customer : "None"

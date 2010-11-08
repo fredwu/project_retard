@@ -13,7 +13,7 @@ table.detail class=collection.first.class.to_s.downcase
     td= resource.retailer.name if resource.retailer
   tr
     th Is Admin
-    td= resource.is_admin ? "Yes" : "No"
+    td= yes_or_no? resource.is_admin
   tr
     th Current Sign In At
     td= resource.current_sign_in_at
