@@ -106,3 +106,13 @@ Product.create({
     :colour_id  => 2,
     :size_id    => 2,
   })
+
+Product.create({
+  :code               => "TEST_PROD_4",
+  :name               => "Test Product 4",
+  :details            => "This is a test product as well.",
+  :rrp                => 9.95,
+  :price              => 4.95,
+  :limit_per_customer => 1,
+  :retailer_id        => 1,
+})
