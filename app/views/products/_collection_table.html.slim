@@ -21,6 +21,6 @@ table.collection class="products"
         td= r.price
         td= yes_or_no? r.is_voucher
         td= r.limit_per_customer
-        td= yes_or_no? r.product_items
+        td= yes_or_no?(r.product_items.any? || r.product_vouchers.any?)
         td= link_to "Edit", edit_resource_url(r)
         td= link_to_deletion "Destroy", r
