@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   validates_presence_of   :price
   validates_presence_of   :retailer_id
   validates_uniqueness_of :code
-  validates_format_of     :code, :with => /^[a-zA-Z0-9_]+$/, :message => "can only contain alphanumeric and underscore characters"
+  validates_format_of     :code, :with => /^[a-zA-Z0-9_]*$/, :message => "can only contain alphanumeric and underscore characters"
 
   has_many :product_items
   has_many :product_vouchers
