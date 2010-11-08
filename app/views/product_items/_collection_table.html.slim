@@ -1,18 +1,22 @@
-table.collection class="product_items"
-  thead
-    tr
-      th Product
-      th Colour
-      th Size
-      th Stock
-      th Edit
-      th Destroy
-  tbody
-    - collection.each do |r|
-      tr data-id=r.id
-        td= link_to r.product.name, product_url(r.product)
-        td= r.colour.name if r.colour
-        td= r.size.name if r.size
-        td= r.stock
-        td= link_to "Edit", edit_resource_url(r)
-        td= link_to_deletion "Destroy", r
+- if collection.empty?
+  .message.info.nohide
+    | No product items found.
+- else
+  table.collection.product_items
+    thead
+      tr
+        th Product
+        th Colour
+        th Size
+        th Stock
+        th Edit
+        th Destroy
+    tbody
+      - collection.each do |r|
+        tr data-id=r.id
+          td= link_to r.product.name, product_url(r.product)
+          td= r.colour.name if r.colour
+          td= r.size.name if r.size
+          td= r.stock
+          td= link_to "Edit", edit_resource_url(r)
+          td= link_to_deletion "Destroy", r

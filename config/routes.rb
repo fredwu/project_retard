@@ -6,7 +6,10 @@ Shop2T::Application.routes.draw do
     resources :orders
     resources :product_items
     resources :product_vouchers
-    resources :products
+    resources :products do
+      resources :product_items
+      resources :product_vouchers
+    end
     resources :retailers
     resources :sizes
     resources :users

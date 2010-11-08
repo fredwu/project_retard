@@ -4,8 +4,11 @@
     .bheadr
     h2= title
     ul
-      - if defined?(show_add_link) && show_add_link == true
-        li= link_to "Add", new_polymorphic_path(controller_name.singularize)
+      - if defined?(show_add_link)
+        - if show_add_link.is_a?(String)
+          li= link_to "Add", show_add_link
+        - elsif show_add_link == true
+          li= link_to "Add", new_polymorphic_path(controller_name.singularize)
       - if defined?(show_edit_link) && show_edit_link == true
         li= link_to "Edit", edit_polymorphic_path(controller_name.singularize)
   .block_content

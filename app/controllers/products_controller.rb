@@ -8,4 +8,10 @@ class ProductsController < ApplicationController
   def past
     render :layout => "front"
   end
+
+  protected
+
+  def collection
+    @products ||= Product.list_order
+  end
 end

@@ -1,16 +1,20 @@
-table.collection class="product_vouchers"
-  thead
-    tr
-      th Product
-      th Voucher Code
-      th Limit
-      th Edit
-      th Destroy
-  tbody
-    - collection.each do |r|
-      tr data-id=r.id
-        td= link_to r.product.name, product_url(r.product)
-        td= r.code
-        td= r.limit
-        td= link_to "Edit", edit_resource_url(r)
-        td= link_to_deletion "Destroy", r
+- if collection.empty?
+  .message.info.nohide
+    | No product vouchers found.
+- else
+  table.collection.product_vouchers
+    thead
+      tr
+        th Product
+        th Voucher Code
+        th Limit
+        th Edit
+        th Destroy
+    tbody
+      - collection.each do |r|
+        tr data-id=r.id
+          td= link_to r.product.name, product_url(r.product)
+          td= r.code
+          td= r.limit
+          td= link_to "Edit", edit_resource_url(r)
+          td= link_to_deletion "Destroy", r

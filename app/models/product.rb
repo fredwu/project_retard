@@ -30,7 +30,10 @@ class Product < ActiveRecord::Base
   has_many :sizes,   :through => :product_items
   belongs_to :retailer
 
-  default_scope order("products.published_on IS NULL DESC" ,:published_on.desc, :updated_at.desc)
+  default_scope order("products.published_on IS NULL DESC", :published_on.desc)
+  scope :list_order, includes(:product_items, :product_vouchers).order(
+    { :product_items => :id, :product_vouchers => :id }, :updated_at.desc
+  )
   scope :vouchers, where(:is_voucher => true)
   scope :items, where(:is_voucher => false)
   scope :published, where(:published_on => true)
@@ -44,8 +47,16 @@ class Product < ActiveRecord::Base
     is_voucher
   end
 
+  def is_item?
+    !is_voucher
+  end
+
   def is_complete?
     product_items.any? || product_vouchers.any?
+  end
+
+  def is_incomplete?
+    !is_complete?
   end
 
   def nice_price

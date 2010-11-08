@@ -85,7 +85,7 @@ require "bundler/capistrano"
 # Set options for bundle install
 # Can speed up deployment by skipping the bundle install on test and development gems
 
-# set :bundle_options, "--without test --without development"
+set :bundle_options, "--path /var/www/shared/bundle --deployment --quiet --without development test"
 
 
 ##
