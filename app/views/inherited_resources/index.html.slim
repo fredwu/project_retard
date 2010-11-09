@@ -1,5 +1,6 @@
 = render_block :title => controller.controller_name.titleize, :show_add_link => true do
   - if collection.any?
     = render "collection_table"
+    = will_paginate collection if collection.respond_to?(:total_pages)
   - else
     p= "There is no #{controller.controller_name.titleize}."

@@ -12,4 +12,13 @@ class ProductItemsController < ApplicationController
       success.html { redirect_to collection_url }
     end
   end
+
+  protected
+
+  def collection
+    @product_items ||= end_of_association_chain.paginate(
+      :page     => params[:page],
+      :per_page => Settings.collection.per_page
+    )
+  end
 end

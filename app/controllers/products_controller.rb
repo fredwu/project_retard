@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
   protected
 
   def collection
-    @products ||= Product.list_order
+    @products ||= end_of_association_chain.paginate(
+      :page     => params[:page],
+      :per_page => Settings.collection.per_page
+    )
   end
 end
