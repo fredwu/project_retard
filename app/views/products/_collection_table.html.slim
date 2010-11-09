@@ -5,8 +5,9 @@
   table.collection.products
     thead
       tr
-        th Publish(ed) On
         th Ready?
+        th Start
+        th End
         th Code
         th Name
         th Price (RRP)
@@ -18,8 +19,9 @@
     tbody
       - collection.each do |r|
         tr data-id=r.id
-          td= r.published_on || "Not yet"
-          td= yes_or_no?(r.is_complete?)
+          td= yes_or_no?(r.is_ready?)
+          td= r.start_at || "Not yet"
+          td= r.end_at || "Not set"
           td= r.code
           td= link_to r.name, r
           td= "#{r.nice_price} (#{r.nice_rrp})"

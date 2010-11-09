@@ -1,7 +1,7 @@
 = render_block :title => "Product", :show_edit_link => true do
   = render "resource_detail"
 
-- if resource.is_complete?
+- if resource.is_ready?
   - if resource.is_voucher?
     = render_block :title => "Product Vouchers", :show_add_link => new_product_product_voucher_path(:product_id => resource.id) do
       = render "product_vouchers/collection_table", :collection => resource.product_vouchers

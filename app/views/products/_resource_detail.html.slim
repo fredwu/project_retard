@@ -1,4 +1,4 @@
-= render "no_item_or_voucher" if resource.is_incomplete?
+= render "no_item_or_voucher" unless resource.is_ready?
 table.detail class="product"
   tr
     th Retailer

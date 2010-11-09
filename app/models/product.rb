@@ -12,11 +12,16 @@ class Product < ActiveRecord::Base
   property :minimum_purchases,  :integer, :limit => 3, :default => 50
   property :is_activated,       :boolean, :default => false
   property :is_voucher,         :boolean, :default => false
-  property :published_on,       :date
+  property :start_at,           :datetime
+  property :end_at,             :datetime
   property :timestamps
 
   add_index :name
   add_index :is_voucher
+  add_index :is_activated
+  add_index [:is_voucher, :is_activated]
+  add_index [:start_at, :end_at]
+  add_index [:start_at, :end_at, :is_activated]
 
   validates_presence_of   :code
   validates_presence_of   :name
@@ -32,18 +37,14 @@ class Product < ActiveRecord::Base
   has_many :sizes,   :through => :product_items
   belongs_to :retailer
 
-  default_scope order("products.published_on IS NULL DESC", :published_on.desc)
+  before_save :set_end_at
+
+  default_scope order("products.start_at IS NULL DESC", :end_at.desc)
   scope :list_order, includes(:product_items, :product_vouchers).order(
     { :product_items => :id, :product_vouchers => :id }, :updated_at.desc
   )
   scope :vouchers, where(:is_voucher => true)
   scope :items, where(:is_voucher => false)
-  scope :published, where(:published_on => true)
-  scope :unpublished, where(:published_on => false)
-
-  def publish_on
-    published_on
-  end
 
   def is_voucher?
     is_voucher
@@ -53,12 +54,12 @@ class Product < ActiveRecord::Base
     !is_voucher
   end
 
-  def is_complete?
+  def is_ready?
     product_items.any? || product_vouchers.any?
   end
 
-  def is_incomplete?
-    !is_complete?
+  def is_not_ready?
+    !is_ready?
   end
 
   def nice_rrp
@@ -71,5 +72,11 @@ class Product < ActiveRecord::Base
 
   def total_purchases
     0
+  end
+
+  private
+
+  def set_end_at
+    self.end_at = 24.hours.since(start_at) if end_at.nil? && start_at
   end
 end

@@ -48,15 +48,21 @@ ActiveRecord::Schema.define(:version => 0) do
     t.decimal  :price,                             :precision => 6, :scale => 2
     t.integer  :limit_per_customer, :limit => 2,                                 :default => 0
     t.integer  :minimum_purchases,  :limit => 3,                                 :default => 50
+    t.boolean  :is_activated,       :limit => nil,                               :default => false
     t.boolean  :is_voucher,         :limit => nil,                               :default => false
-    t.date     :published_on
+    t.datetime :start_at
+    t.datetime :end_at
     t.integer  :retailer_id,        :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end
 
+  add_index "products", :is_activated, :name => "index_products_on_is_activated"
   add_index "products", :is_voucher, :name => "index_products_on_is_voucher"
   add_index "products", :name, :name => "index_products_on_name"
+  add_index "products", [:is_voucher, :is_activated], :name => "index_products_on_is_voucher_and_is_activated"
+  add_index "products", [:start_at, :end_at, :is_activated], :name => "index_products_on_start_at_and_end_at_and_is_activated"
+  add_index "products", [:start_at, :end_at], :name => "index_products_on_start_at_and_end_at"
 
   create_table "product_items", :force => true do |t|
     t.integer :stock,                     :default => 0

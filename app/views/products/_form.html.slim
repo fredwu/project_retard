@@ -2,13 +2,19 @@
   = simple_form_for resource do |f|
     = display_errors!(resource)
     - if resource.persisted?
-      - if resource.is_incomplete?
+      - unless resource.is_ready?
         = render "no_item_or_voucher"
       - else
-        p
-          = check_box_tag :to_publish
-          = label_tag :to_publish
-      = f.input :published_on, :label => "Publish(ed) On", :disabled => true
+        #start_at
+          p
+            = check_box_tag :to_publish
+            = label_tag :to_publish
+          = f.input :start_at, :disabled => true
+      #end_at
+        p#to_set_end_at
+          = check_box_tag :set_end_at
+          = label_tag :set_end_at
+        = f.input :end_at
       hr
     = f.association :retailer
     = f.input :code

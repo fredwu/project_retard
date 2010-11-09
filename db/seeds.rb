@@ -79,7 +79,7 @@ Product.create({
   :limit_per_customer => 0,
   :is_voucher         => true,
   :retailer_id        => 1,
-  :published_on       => Time.now.tomorrow,
+  :start_at           => Time.now.tomorrow,
 })
 
   ProductVoucher.create({
@@ -98,7 +98,8 @@ Product.create({
   :limit_per_customer => 1,
   :is_voucher         => false,
   :retailer_id        => 1,
-  :published_on       => Time.now,
+  :start_at           => Time.now,
+  :end_at             => 3.days.from_now,
 })
 
   ProductItem.create({
