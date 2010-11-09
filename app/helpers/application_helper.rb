@@ -6,7 +6,7 @@ module ApplicationHelper
     options = { :sanitize => true }.merge(options)
     html    = RDiscount.new(str, :autolink).to_html
 
-    options[:sanitize] ? Sanitize.clean(html, Sanitize::Config::BASIC).html_safe : html.html_safe
+    options[:sanitize] ? Sanitize.clean(html, Sanitize::Config::RELAXED).html_safe : html.html_safe
   end
 
   # renders the default errors block in forms
