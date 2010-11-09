@@ -1,4 +1,14 @@
 module ApplicationHelper
+  # converts the string to HTML via MarkDown
+  #
+  # @param [String] str
+  def markdownize(str, options={})
+    options = { :sanitize => true }.merge(options)
+    html    = RDiscount.new(str, :autolink).to_html
+
+    options[:sanitize] ? Sanitize.clean(html, Sanitize::Config::BASIC).html_safe : html.html_safe
+  end
+
   # renders the default errors block in forms
   #
   # @param [Object] resource ActiveRecord object

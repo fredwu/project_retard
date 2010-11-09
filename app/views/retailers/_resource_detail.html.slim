@@ -10,5 +10,5 @@ table.detail class=collection.first.class.to_s.downcase
     td= resource.website
   tr
     th Contact Details
-    td= resource.contact_details
+    td= markdownize(resource.contact_details)
 p= link_to "Back", collection_url

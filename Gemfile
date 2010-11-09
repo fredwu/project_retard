@@ -41,8 +41,8 @@ gem 'will_paginate',             '~> 3.0.pre'
 #   Assets
 # --------------------
 gem 'rails_config'
-# gem 'rdiscount',                 '>= 1.6.5'
-# gem 'sanitize'
+gem 'rdiscount',                 '>= 1.6.5'
+gem 'sanitize'
 # gem 'csv-mapper',                '>= 0.5.0'
 gem 'ffaker',                    '>= 0.4.0'
 gem 'xpath'

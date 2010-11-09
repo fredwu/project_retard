@@ -11,13 +11,13 @@ table.detail class="product"
     td= resource.name
   tr
     th Details
-    td= resource.details
+    td= markdownize(resource.details)
   tr
     th Highlights
-    td= resource.highlights
+    td= markdownize(resource.highlights)
   tr
     th Terms
-    td= resource.terms
+    td= markdownize(resource.terms)
   tr
     th RRP
     td= resource.rrp

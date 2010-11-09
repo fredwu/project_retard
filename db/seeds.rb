@@ -2,7 +2,15 @@ Retailer.create({
   :code            => "TEST_RET",
   :name            => "Test Retailer",
   :website         => "http://www.2threads.com/",
-  :contact_details => "2threads - Sydney Head Office\n6 Kings Lane\nDarlinghurst\nNSW Australia 2010\nPh: 02 9357 7356\nFax: 02 8356 9180\nEmail: feedback@2threads.com",
+  :contact_details => %q{
+2threads - Sydney Head Office
+6 Kings Lane
+Darlinghurst
+NSW Australia 2010
+Ph: 02 9357 7356
+Fax: 02 8356 9180
+Email: feedback@2threads.com
+},
 })
 
 u = User.new({

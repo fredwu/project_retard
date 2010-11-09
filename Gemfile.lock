@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/carrierwave.git
-  revision: 43ab0bc20edffe7106434c54c502c015c9972d5e
+  revision: 272c9aac1f2f30c4bd2990e28a3b1403c9820f37
   specs:
     carrierwave (0.5.0)
       activesupport (~> 3.0)
@@ -77,7 +77,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: c7fac8c6ea2590e3cafe50c1e71de78bad9303c1
+  revision: 4b33bd9888262d55789b5e72c67aa9ac75f3a03c
   branch: 3-0-stable
   specs:
     actionmailer (3.0.2.pre)
@@ -213,6 +213,7 @@ GEM
     rails_config (0.1.8)
       activesupport (~> 3.0)
     rake (0.8.7)
+    rdiscount (1.6.5)
     responders (0.6.2)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
@@ -227,6 +228,8 @@ GEM
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
     rubyzip (0.9.4)
+    sanitize (1.2.1)
+      nokogiri (~> 1.4.1)
     selenium-webdriver (0.0.29)
       childprocess (>= 0.0.7)
       ffi (~> 0.6.3)
@@ -276,7 +279,9 @@ DEPENDENCIES
   parallel_tests!
   rails!
   rails_config
+  rdiscount (>= 1.6.5)
   rspec-rails (~> 2.0.0)
+  sanitize
   simple-navigation (~> 3.0.0)
   simple_form (~> 1.2.0)
   slim!
