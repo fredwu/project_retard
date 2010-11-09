@@ -43,7 +43,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   :code,               :limit => 20
     t.string   :name,               :limit => nil
     t.text     :details
-    t.text     :shipping_info
+    t.text     :highlights
+    t.text     :terms
     t.decimal  :rrp,                               :precision => 6, :scale => 2, :default => 0.0
     t.decimal  :price,                             :precision => 6, :scale => 2
     t.integer  :limit_per_customer, :limit => 2,                                 :default => 0

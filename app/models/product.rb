@@ -5,7 +5,8 @@ class Product < ActiveRecord::Base
   property :code,               :string,  :limit => 20
   property :name,               :string
   property :details,            :text
-  property :shipping_info,      :text
+  property :highlights,         :text
+  property :terms,              :text
   property :rrp,                :decimal, :precision => 6, :scale => 2, :default => 0
   property :price,              :decimal, :precision => 6, :scale => 2
   property :limit_per_customer, :integer, :limit => 2, :default => 0
