@@ -9,10 +9,10 @@
         th Ready?
         th Code
         th Name
-        th RRP
-        th Price
+        th Price (RRP)
         th Voucher?
-        th Limit P/C
+        th Min.P
+        th Total.P
         th Edit
         th Destroy
     tbody
@@ -22,9 +22,9 @@
           td= yes_or_no?(r.is_complete?)
           td= r.code
           td= link_to r.name, r
-          td= r.rrp
-          td= r.price
+          td= "#{r.nice_price} (#{r.nice_rrp})"
           td= yes_or_no? r.is_voucher
-          td= r.limit_per_customer
+          td= r.minimum_purchases
+          td= r.total_purchases
           td= link_to "Edit", edit_resource_url(r)
           td= link_to_deletion "Destroy", r

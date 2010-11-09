@@ -43,6 +43,7 @@ Product.create({
   :rrp                => 99.95,
   :price              => 49.95,
   :limit_per_customer => 3,
+  :minimum_purchases  => 20,
   :is_voucher         => false,
   :retailer_id        => 1,
 })

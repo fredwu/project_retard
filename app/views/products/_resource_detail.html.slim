@@ -20,13 +20,16 @@ table.detail class="product"
     td= resource.rrp
   tr
     th Price
-    td= resource.price
+    td= resource.nice_price
   tr
     th Is Voucher?
     td= yes_or_no? resource.is_voucher
   tr
     th Limit Per Customer
     td= resource.limit_per_customer > 0 ? resource.limit_per_customer : "None"
+  tr
+    th Minimum Purchases
+    td= resource.minimum_purchases
   tr
     th Colours
     td= resource.colours.map(&:name) * ", "

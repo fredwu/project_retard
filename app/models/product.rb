@@ -9,6 +9,8 @@ class Product < ActiveRecord::Base
   property :rrp,                :decimal, :precision => 6, :scale => 2, :default => 0
   property :price,              :decimal, :precision => 6, :scale => 2
   property :limit_per_customer, :integer, :limit => 2, :default => 0
+  property :minimum_purchases,  :integer, :limit => 3, :default => 50
+  property :is_activated,       :boolean, :default => false
   property :is_voucher,         :boolean, :default => false
   property :published_on,       :date
   property :timestamps
@@ -59,7 +61,15 @@ class Product < ActiveRecord::Base
     !is_complete?
   end
 
+  def nice_rrp
+    number_to_currency(rrp)
+  end
+
   def nice_price
     number_to_currency(price)
+  end
+
+  def total_purchases
+    0
   end
 end

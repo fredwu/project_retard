@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.decimal  :rrp,                               :precision => 6, :scale => 2, :default => 0.0
     t.decimal  :price,                             :precision => 6, :scale => 2
     t.integer  :limit_per_customer, :limit => 2,                                 :default => 0
+    t.integer  :minimum_purchases,  :limit => 3,                                 :default => 50
     t.boolean  :is_voucher,         :limit => nil,                               :default => false
     t.date     :published_on
     t.integer  :retailer_id,        :limit => nil
