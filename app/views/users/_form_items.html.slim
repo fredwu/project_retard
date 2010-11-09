@@ -1,6 +1,7 @@
+= f.input :email
 = f.input :first_name
 = f.input :last_name
-= f.input :email
+= f.input :city, :as => :select, :collection => User::CITIES, :prompt => true
 - if defined?(show_password)
   = f.input :password
   = f.input :password_confirmation

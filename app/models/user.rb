@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Datamappify::Resource
 
+  CITIES      = %w{Adelaide Brisbane Canberra Darwin Hobart Melbourne Perth Sydney}
   EMAIL_REGEX = /^[A-Z0-9._%-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,6}$/i
 
   # Include default devise modules. Others available are:
@@ -15,6 +16,7 @@ class User < ActiveRecord::Base
   property  :email,                :string,  :default => "", :null => false
   property  :first_name,           :string,  :limit => 50
   property  :last_name,            :string,  :limit => 50
+  property  :city,                 :string,  :limit => 20
   property  :encrypted_password,   :string,  :limit => 128, :default => "", :null => false
   property  :password_salt,        :string,  :default => "", :null => false
   property  :reset_password_token, :string
@@ -40,6 +42,7 @@ class User < ActiveRecord::Base
   validates_presence_of   :first_name
   validates_presence_of   :last_name
   validates_presence_of   :email
+  validates_presence_of   :city
   validates_uniqueness_of :email
   validates_format_of     :email, :with => EMAIL_REGEX
 

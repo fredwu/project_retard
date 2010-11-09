@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   :email,                :limit => nil, :default => "",    :null => false
     t.string   :first_name,           :limit => 50
     t.string   :last_name,            :limit => 50
+    t.string   :city,                 :limit => 20
     t.string   :encrypted_password,   :limit => 128, :default => "",    :null => false
     t.string   :password_salt,        :limit => nil, :default => "",    :null => false
     t.string   :reset_password_token, :limit => nil

@@ -8,6 +8,7 @@
         th First Name
         th Last Name
         th Email
+        th City
         th Retailer
         th Show
         th Edit
@@ -17,6 +18,7 @@
         tr data-id=r.id
           td= r.first_name
           td= r.last_name
+          td= r.city
           td= r.email
           td= r.retailer.name if r.retailer
           td= link_to "Show", r
