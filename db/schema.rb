@@ -87,9 +87,10 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "product_vouchers", [:product_id, :code], :name => "index_product_vouchers_on_product_id_and_code"
 
   create_table "retailers", :force => true do |t|
-    t.string   :name,       :limit => nil
-    t.string   :code,       :limit => 10
-    t.text     :info
+    t.string   :name,            :limit => nil
+    t.string   :code,            :limit => 10
+    t.string   :website,         :limit => nil
+    t.text     :contact_details
     t.datetime :created_at
     t.datetime :updated_at
   end

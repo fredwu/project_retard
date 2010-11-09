@@ -3,6 +3,7 @@
     = display_errors!(resource)
     = f.input :code
     = f.input :name
-    = f.input :info
+    = f.input :website
+    = f.input :contact_details
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource

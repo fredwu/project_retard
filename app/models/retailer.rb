@@ -3,7 +3,8 @@ class Retailer < ActiveRecord::Base
 
   property :name, :string
   property :code, :string, :limit => 10
-  property :info, :text
+  property :website, :string
+  property :contact_details, :text
   property :timestamps
 
   add_index :name
@@ -11,7 +12,6 @@ class Retailer < ActiveRecord::Base
 
   validates_presence_of   :name
   validates_presence_of   :code
-  validates_uniqueness_of :name
   validates_uniqueness_of :code
   validates_format_of     :code, :with => /^[a-zA-Z0-9_]*$/, :message => "can only contain alphanumeric and underscore characters"
 

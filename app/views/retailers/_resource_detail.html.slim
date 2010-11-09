@@ -6,6 +6,9 @@ table.detail class=collection.first.class.to_s.downcase
     th Name
     td= resource.name
   tr
-    th Info
-    td= resource.info
+    th Website
+    td= resource.website
+  tr
+    th Contact Details
+    td= resource.contact_details
 p= link_to "Back", collection_url

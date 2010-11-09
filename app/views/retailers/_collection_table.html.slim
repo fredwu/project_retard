@@ -7,6 +7,7 @@
       tr
         th Code
         th Name
+        th Website
         th Edit
         th Destroy
     tbody
@@ -14,5 +15,6 @@
         tr data-id=r.id
           td= r.code
           td= link_to r.name, r
+          td= link_to "Website", r.website
           td= link_to "Edit", edit_resource_url(r)
           td= link_to_deletion "Destroy", r
