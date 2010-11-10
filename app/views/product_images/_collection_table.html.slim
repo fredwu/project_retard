@@ -1,24 +1,20 @@
 - if collection.empty?
   .message.info.nohide
-    | No product items found.
+    | No product images found.
 - else
-  table.collection.product_items
+  table.collection.sizes
     thead
       tr
         - unless params[:id]
           th Product
-        th Colour
-        th Size
-        th Stock
+        th Image
         th Edit
         th Destroy
     tbody
       - collection.each do |r|
         tr data-id=r.id
           - unless params[:id]
-            td= link_to r.product.name, product_url(r.product)
-          td= r.colour.name if r.colour
-          td= r.size.name if r.size
-          td= r.stock
+            td= r.product.name
+          td= link_to image_tag(r.file.thumb.url), r.file.url, :class => "fancybox"
           td= link_to "Edit", edit_resource_url(r)
           td= link_to_deletion "Destroy", r

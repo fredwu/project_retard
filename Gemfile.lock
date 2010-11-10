@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/brianmario/mysql2.git
-  revision: 99766a23036cf4240e94e72da593d7c72309d6fc
+  revision: d48846f13bf00aec17f0d3c808ddec139e04543b
   specs:
     mysql2 (0.2.6)
 
@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 0323ee7d0e594699fcc45f1cc60d986b855f3c3e
+  revision: b4c228f799fc0a7c738e980c8c9d7c8bb72d58a5
   specs:
     capybara (0.4.0)
       celerity (>= 0.7.9)
@@ -51,9 +51,9 @@ GIT
 
 GIT
   remote: git://github.com/judofyr/temple.git
-  revision: c0178a138a0a4acd62eebce45a05b534136a48ea
+  revision: 3ea7a774864e8edafea98d3d52c5ae88d99f96fe
   specs:
-    temple (0.1.4)
+    temple (0.1.5)
 
 GIT
   remote: git://github.com/leogalmeida/slim-rails.git
@@ -77,7 +77,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 4b33bd9888262d55789b5e72c67aa9ac75f3a03c
+  revision: 7611a0925c47e3cdb1989996f19285d95404d884
   branch: 3-0-stable
   specs:
     actionmailer (3.0.2.pre)
@@ -122,10 +122,10 @@ GIT
 
 GIT
   remote: git://github.com/stonean/slim.git
-  revision: ea7c63c241feb9a5d2b392171bda373f520dea75
+  revision: 8b794256f9fb64c637ac698b1e92c6cc9905d957
   specs:
-    slim (0.7.1)
-      temple (~> 0.1.4)
+    slim (0.7.2)
+      temple (~> 0.1.5)
       tilt (~> 1.1)
 
 GIT
@@ -195,6 +195,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mini_magick (3.1)
+      subexec (~> 0.0.4)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -238,6 +240,7 @@ GEM
     simple-navigation (3.0.2)
       activesupport (>= 2.3.2)
     simple_form (1.2.2)
+    subexec (0.0.4)
     thor (0.14.4)
     tilt (1.1)
     treetop (1.4.8)
@@ -275,6 +278,7 @@ DEPENDENCIES
   inherited_resources_views
   launchy
   meta_where!
+  mini_magick
   mysql2!
   parallel_tests!
   rails!

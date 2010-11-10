@@ -30,6 +30,14 @@ $(document).ready(function() {
   });
 
   /* --------------------
+    Fancybox
+  -------------------- */
+
+  $("a.fancybox").fancybox({
+    speedOut: 0
+  });
+
+  /* --------------------
     Styling - they're here to 'automagically' fix the stock Adminus theme
   -------------------- */
 

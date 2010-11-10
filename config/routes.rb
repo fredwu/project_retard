@@ -4,9 +4,11 @@ Shop2T::Application.routes.draw do
   scope "admin" do
     resources :colours
     resources :orders
+    resources :product_images
     resources :product_items
     resources :product_vouchers
     resources :products do
+      resources :product_images
       resources :product_items
       resources :product_vouchers
     end

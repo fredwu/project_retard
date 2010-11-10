@@ -1,2 +1,9 @@
 collection:
   per_page: 20
+product:
+  image:
+    width: 620
+    height: 240
+    thumbnail:
+      width: 78
+      height: 30

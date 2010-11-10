@@ -1,10 +1,12 @@
 = render_block :title => "Product", :show_edit_link => true do
   = render "resource_detail"
 
-- if resource.is_ready?
-  - if resource.is_voucher?
-    = render_block :title => "Product Vouchers", :show_add_link => new_product_product_voucher_path(:product_id => resource.id) do
-      = render "product_vouchers/collection_table", :collection => resource.product_vouchers
-  - else
-    = render_block :title => "Product Items", :show_add_link => new_product_product_item_path(:product_id => resource.id) do
-      = render "product_items/collection_table", :collection => resource.product_items
+- if resource.has_images?
+  = render_block :title => "Product Images", :show_add_link => new_product_product_image_path(:product_id => resource.id) do
+    = render "product_images/collection_table", :collection => resource.product_images
+- if resource.has_items?
+  = render_block :title => "Product Items", :show_add_link => new_product_product_item_path(:product_id => resource.id) do
+    = render "product_items/collection_table", :collection => resource.product_items
+- if resource.has_vouchers?
+  = render_block :title => "Product Vouchers", :show_add_link => new_product_product_voucher_path(:product_id => resource.id) do
+    = render "product_vouchers/collection_table", :collection => resource.product_vouchers

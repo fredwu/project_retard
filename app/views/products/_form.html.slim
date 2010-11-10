@@ -3,7 +3,7 @@
     = display_errors!(resource)
     - if resource.persisted?
       - unless resource.is_ready?
-        = render "no_item_or_voucher"
+        = render "not_ready"
       - else
         #start_at
           p

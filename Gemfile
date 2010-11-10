@@ -23,6 +23,7 @@ gem 'inherited_resources_views'
 gem 'devise',                    '~> 1.1.2'
 # gem 'cancan',                    '~> 1.3.0'
 gem 'carrierwave',               :git => 'git://github.com/jnicklas/carrierwave.git'
+gem 'mini_magick'
 
 # --------------------
 #   Presentation

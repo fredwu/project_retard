@@ -5,7 +5,8 @@
   table.collection.product_vouchers
     thead
       tr
-        th Product
+        - unless params[:id]
+          th Product
         th Voucher Code
         th Limit
         th Edit
@@ -13,7 +14,8 @@
     tbody
       - collection.each do |r|
         tr data-id=r.id
-          td= link_to r.product.name, product_url(r.product)
+          - unless params[:id]
+            td= link_to r.product.name, product_url(r.product)
           td= r.code
           td= r.limit
           td= link_to "Edit", edit_resource_url(r)

@@ -32,10 +32,11 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :code
   validates_format_of     :code, :with => /^[a-zA-Z0-9_]*$/, :message => "can only contain alphanumeric and underscore characters"
 
-  has_many :product_items
-  has_many :product_vouchers
-  has_many :colours, :through => :product_items
-  has_many :sizes,   :through => :product_items
+  has_many   :product_images,   :dependent => :delete_all, :limit => 5
+  has_many   :product_items,    :dependent => :delete_all
+  has_many   :product_vouchers, :dependent => :delete_all
+  has_many   :colours,          :through   => :product_items
+  has_many   :sizes,            :through   => :product_items
   belongs_to :retailer
 
   before_save :set_end_at
@@ -56,11 +57,27 @@ class Product < ActiveRecord::Base
   end
 
   def is_ready?
-    product_items.any? || product_vouchers.any?
+    has_images? && has_items_or_vouchers?
   end
 
   def is_not_ready?
     !is_ready?
+  end
+
+  def has_images?
+    product_images.any?
+  end
+
+  def has_items_or_vouchers?
+    has_items? || has_vouchers?
+  end
+
+  def has_items?
+    product_items.any?
+  end
+
+  def has_vouchers?
+    product_vouchers.any?
   end
 
   def nice_rrp

@@ -3,6 +3,8 @@ module ApplicationHelper
   #
   # @param [String] str
   def markdownize(str, options={})
+    return str if str.blank?
+
     options = { :sanitize => true }.merge(options)
     html    = RDiscount.new(str, :autolink).to_html
 

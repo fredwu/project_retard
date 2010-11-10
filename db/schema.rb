@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "products", [:start_at, :end_at, :is_activated], :name => "index_products_on_start_at_and_end_at_and_is_activated"
   add_index "products", [:start_at, :end_at], :name => "index_products_on_start_at_and_end_at"
 
+  create_table "product_images", :force => true do |t|
+    t.string  :file,       :limit => nil
+    t.integer :product_id, :limit => nil
+  end
+
+  add_index "product_images", :product_id, :name => "index_product_images_on_product_id"
+
   create_table "product_items", :force => true do |t|
     t.integer :stock,                     :default => 0
     t.integer :product_id, :limit => nil

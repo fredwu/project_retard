@@ -103,7 +103,7 @@ set :bundle_options, "--path /var/www/shared/bundle --deployment --quiet --witho
 # SHARED_PATH/db
 
 set :additional_shared_folders,
-  %w(public/system public/assets)
+  %w(public/system public/assets public/uploads public/product_images)
 
 
 ##
@@ -115,7 +115,7 @@ set :additional_shared_folders,
 # db/production.sqlite3 = RAILS_ROOT/db/production.sqlite3  => SHARED_PATH/db/production.sqlite3
 
 set :additional_shared_symlinks,
-  %w(public/system public/assets config/database.yml)
+  %w(public/system public/assets public/uploads public/product_images config/database.yml)
 
 
 ##

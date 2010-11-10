@@ -34,12 +34,8 @@ SimpleNavigation::Configuration.run do |navigation|
       products.item :products_new, "Add New Product", new_product_path
     end
 
-    menu.item :colours, "Colours", colours_path do |sizes|
-      sizes.item :colours_new, "Add New Colour", new_colour_path
-    end
-
-    menu.item :sizes, "Sizes", sizes_path do |sizes|
-      sizes.item :sizes_new, "Add New Size", new_size_path
+    menu.item :images, "Images", product_images_path do |images|
+      images.item :images_new, "Add New Images", new_product_image_path
     end
 
     menu.item :items, "Items", product_items_path do |items|
@@ -48,6 +44,14 @@ SimpleNavigation::Configuration.run do |navigation|
 
     menu.item :vouchers, "Vouchers", product_vouchers_path do |vouchers|
       vouchers.item :vouchers_new, "Add New Voucher", new_product_voucher_path
+    end
+
+    menu.item :colours, "Colours", colours_path do |sizes|
+      sizes.item :colours_new, "Add New Colour", new_colour_path
+    end
+
+    menu.item :sizes, "Sizes", sizes_path do |sizes|
+      sizes.item :sizes_new, "Add New Size", new_size_path
     end
 
     menu.item :orders, "Orders", orders_path do |orders|
