@@ -46,6 +46,11 @@ class Product < ActiveRecord::Base
   default_scope order("products.start_at IS NULL DESC", :start_at.desc, :end_at.desc)
   scope :vouchers, where(:is_voucher => true)
   scope :items, where(:is_voucher => false)
+  scope :activated, where(:is_activated => true).where(:end_at > Time.now)
+
+  def self.current
+    self.activated.last
+  end
 
   def is_protected?
     is_running? || is_ended?

@@ -36,7 +36,7 @@ html
         .hdrl
         .hdrr
         h1#logo 2threads Shop
-        = render_navigation :expand_all => true, :level => 1..2
+        = render_navigation :expand_all => true, :level => 1..2 if current_user
 
       - flash.each do |type, message|
         - type = case type
@@ -48,8 +48,9 @@ html
             p= message
 
       #content
-        #nav_menu= render_navigation :renderer => :breadcrumbs, :join_with => " &gt; "
-        #user_bar= render "layouts/user_bar" if current_user
+        - if current_user
+          #nav_menu= render_navigation :renderer => :breadcrumbs, :join_with => " &gt; "
+          #user_bar= render "layouts/user_bar"
         .clear
         = yield
 

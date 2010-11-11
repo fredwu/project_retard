@@ -1,4 +1,4 @@
-class SizesController < ApplicationController
+class SizesController < AdminController
   inherit_resources
 
   def create

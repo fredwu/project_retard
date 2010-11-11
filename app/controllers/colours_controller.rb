@@ -1,4 +1,4 @@
-class ColoursController < ApplicationController
+class ColoursController < AdminController
   inherit_resources
 
   def create

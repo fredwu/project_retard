@@ -1,0 +1,82 @@
+#userbar
+  .contentwrap
+    #welcome
+      - if current_user
+        = "Welcome #{current_user.first_name}!"
+    ul#useroptions.horizontalnav
+      - if current_user
+        li.navtext= link_to "log out", destroy_user_session_path
+      - else
+        li.navtext= link_to "log in", new_user_session_path
+        li.navtext= link_to "register", new_user_registration_path
+    .clear
+
+#header.contentwrap
+  a href="/"
+    img#headerlogo alt="2Threads Logo" height="92" src="http://2threads.com/wp-content/themes/carrington-jam-1.3/img/2threads-logo.png" width="200"
+  #leaderboard-top.leaderboard
+.contentwrap
+  #navmainwrap
+    ul#navmain.horizontalnav
+      li.cat-item
+        a href="/" title="View Latest Posts" The Latest
+      li.cat-item.cat-item-1
+        a href="http://2threads.com/cat/news" title="View all posts filed under News" News
+        ul.children
+          li.cat-item.cat-item-12
+            a href="http://2threads.com/cat/news/local" title="View all posts filed under Local" Local
+          li.cat-item.cat-item-13
+            a href="http://2threads.com/cat/news/international" title="View all posts filed under International" International
+          li.cat-item.cat-item-14
+            a href="http://2threads.com/cat/news/interviews" title="View all posts filed under Interviews" Interviews
+          li.cat-item.cat-item-15
+            a href="http://2threads.com/cat/news/fashion-campaigns" title="View all posts filed under Fashion Campaigns" Fashion Campaigns
+          li.cat-item.cat-item-16
+            a href="http://2threads.com/cat/news/style-profile" title="View all posts filed under Style Profile" Style Profile
+      li.cat-item.cat-item-3
+        a href="http://2threads.com/cat/fashion" title="View all posts filed under Fashion" Fashion
+        ul.children
+          li.cat-item.cat-item-17
+            a href="http://2threads.com/cat/fashion/trend-report" title="View all posts filed under Trend Report" Trend Report
+          li.cat-item.cat-item-18
+            a href="http://2threads.com/cat/fashion/lookbooks" title="View all posts filed under Lookbooks" Lookbooks
+          li.cat-item.cat-item-19
+            a href="http://2threads.com/cat/fashion/website-reviews" title="View all posts filed under Website Reviews" Website Reviews
+          li.cat-item.cat-item-23
+            a href="http://2threads.com/cat/fashion/photos" title="View all posts filed under Photos" Photos
+          li.cat-item.cat-item-24
+            a href="http://2threads.com/cat/fashion/videos" title="View all posts filed under Videos" Videos
+          li.cat-item.cat-item-94
+            a href="http://2threads.com/cat/fashion/beauty" title="View all posts filed under Beauty" Beauty
+      li.cat-item.cat-item-5
+        a href="http://2threads.com/cat/shopping" title="View all posts filed under Shopping" Shopping
+        ul.children
+          li.cat-item.cat-item-25
+            a href="http://2threads.com/cat/shopping/fashion-finds" title="View all posts filed under Fashion Finds" Fashion Finds
+          li.cat-item.cat-item-29
+            a href="http://2threads.com/cat/shopping/style-tips" title="View all posts filed under Style Tips" Style Tips
+          li.cat-item.cat-item-26
+            a href="http://2threads.com/cat/shopping/sale-alerts" title="View all posts filed under Sale Alerts" Sale Alerts
+          li.cat-item.cat-item-28
+            a href="http://2threads.com/cat/shopping/shopping-guides" title="View all posts filed under Shopping Guides" Shopping Guides
+          li.cat-item.cat-item-27
+            a href="http://2threads.com/cat/shopping/bargain-hunting" title="View all posts filed under Bargain Hunting" Bargain Hunting
+          li.cat-item.cat-item-30
+            a href="http://2threads.com/cat/shopping/stores" title="View all posts filed under Stores" Stores
+      li.cat-item.cat-item-4
+        a href="http://2threads.com/cat/events" title="View all posts filed under Events" Events
+        ul.children
+          li.cat-item.cat-item-31
+            a href="http://2threads.com/cat/events/photo-coverage" title="View all posts filed under Photo Coverage" Photo Coverage
+          li.cat-item.cat-item-33
+            a href="http://2threads.com/cat/events/event-listings" title="View all posts filed under Event Listings" Event Listings
+          li.cat-item.cat-item-32
+            a href="http://2threads.com/cat/events/reviews" title="View all posts filed under Reviews" Reviews
+      li.cat-item.cat-item-6
+        a href="http://2threads.com/cat/community" title="View all posts filed under Community" Community
+        ul.children
+          li.cat-item.cat-item-41
+            a href="http://2threads.com/cat/community/competitions" title="View all posts filed under Competitions" Competitions
+      li.cat-item.cat-item-100
+        a href="http://2threads.com/cat/fashion-awards" title="View all posts filed under Fashion Awards" Fashion Awards
+    .clear

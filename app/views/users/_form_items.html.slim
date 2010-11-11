@@ -1,9 +1,11 @@
-= f.input :email
-= f.input :first_name
-= f.input :last_name
-= f.input :city, :as => :select, :collection => User::CITIES, :prompt => true
-= f.input :email_notification
+p= f.input :email
+p= f.input :first_name
+p= f.input :last_name
+p= f.input :city, :as => :select, :collection => User::CITIES, :prompt => true
+br
+p= f.input :email_notification
+br
 - if defined?(show_password)
-  = f.input :password
-  = f.input :password_confirmation
+  p= f.input :password
+  p= f.input :password_confirmation
 p.input= f.button :submit, :class => "submit mid"

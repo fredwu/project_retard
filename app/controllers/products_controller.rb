@@ -1,13 +1,5 @@
-class ProductsController < ApplicationController
+class ProductsController < AdminController
   inherit_resources
-
-  def current
-    render :layout => "front"
-  end
-
-  def past
-    render :layout => "front"
-  end
 
   protected
 

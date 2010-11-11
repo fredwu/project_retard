@@ -1,8 +1,9 @@
-= render_block :classes => "small center login", :title => "Sign In" do
-  = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
-    p= f.input :email
-    p= f.input :password
-    - if devise_mapping.rememberable?
-      p= f.input :remember_me, :as => :boolean
-    p= f.submit "Sign In", :class => "submit"
-  = render "devise/shared/links"
+#login
+  = render_block :classes => "small center login", :title => "Sign In" do
+    = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
+      p= f.input :email
+      p= f.input :password
+      - if devise_mapping.rememberable?
+        p= f.input :remember_me, :as => :boolean
+        p= f.submit "Sign In", :class => "submit"
+    = render "devise/shared/links"

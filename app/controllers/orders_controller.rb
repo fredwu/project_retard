@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class OrdersController < AdminController
   inherit_resources
 
   protected

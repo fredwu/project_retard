@@ -1,4 +1,4 @@
-class ProductItemsController < ApplicationController
+class ProductItemsController < AdminController
   inherit_resources
 
   def create

@@ -17,8 +17,7 @@ Shop2T::Application.routes.draw do
     resources :users
   end
 
-  match "past/:id" => "products#past"
-  match "admin"    => "application#product_redirect"
+  match "admin" => "application#product_redirect"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -69,7 +68,7 @@ Shop2T::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "products#current"
+  root :to => "deals#current"
 
   # See how all your routes lay out with "rake routes"
 
