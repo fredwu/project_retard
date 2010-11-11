@@ -5,6 +5,10 @@
         = "Welcome #{current_user.first_name}!"
     ul#useroptions.horizontalnav
       - if current_user
+        - if current_user.is_admin?
+          li.navtext= link_to "admin", products_path
+        - elsif current_user.is_retailer?
+          li.navtext= link_to "retailer", orders_path
         li.navtext= link_to "log out", destroy_user_session_path
       - else
         li.navtext= link_to "log in", new_user_session_path
