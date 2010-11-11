@@ -115,7 +115,7 @@ set :additional_shared_folders,
 # db/production.sqlite3 = RAILS_ROOT/db/production.sqlite3  => SHARED_PATH/db/production.sqlite3
 
 set :additional_shared_symlinks,
-  %w(public/system public/assets public/uploads public/product_images config/database.yml)
+  %w(public/system public/assets public/uploads public/product_images)
 
 
 ##
@@ -141,6 +141,6 @@ namespace :deploy do
 
   desc "Removes cached JavaScript and CSS asset files"
   task :remove_cached_assets, :roles => :web do
-    run "cd #{current_release} && rake cache:assets:clear"
+    run "cd #{current_release} && rake cache:assets:clear RAILS_ENV=production"
   end
 end
