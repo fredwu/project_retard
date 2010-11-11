@@ -1,7 +1,10 @@
 = render_block :title => "#{action_name} Product Image" do
   = simple_form_for(resource, :html => { :multipart => true }) do |f|
     = display_errors!(resource)
-    = f.association :product, :selected => params[:product_id]
+    - if params[:product_id]
+      = f.association :product, :selected => params[:product_id]
+    - else
+      = f.association :product
     = f.input :file, :as => :file
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource

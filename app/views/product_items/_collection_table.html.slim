@@ -20,5 +20,5 @@
           td= r.colour.name if r.colour
           td= r.size.name if r.size
           td= r.stock
-          td= link_to "Edit", edit_resource_url(r)
+          td= link_to "Edit", params[:id] ? edit_product_product_item_url(r.product) : edit_resource_url(r)
           td= link_to_deletion "Destroy", r

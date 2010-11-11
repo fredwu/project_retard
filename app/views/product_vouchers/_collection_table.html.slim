@@ -18,5 +18,5 @@
             td= link_to r.product.name, product_url(r.product)
           td= r.code
           td= r.limit
-          td= link_to "Edit", edit_resource_url(r)
+          td= link_to "Edit", params[:id] ? edit_product_product_voucher_url(r.product) : edit_resource_url(r)
           td= link_to_deletion "Destroy", r

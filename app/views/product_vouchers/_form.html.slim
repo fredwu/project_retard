@@ -1,7 +1,10 @@
 = render_block :title => "#{action_name} Product Voucher" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    = f.association :product, :collection => Product.vouchers, :selected => params[:product_id]
+    - if params[:product_id]
+      = f.association :product, :collection => Product.vouchers, :selected => params[:product_id]
+    - else
+      = f.association :product, :collection => Product.vouchers
     = f.input :code
     = f.input :limit
     p.input= f.button :submit, :class => "submit long", :value => "Update Voucher"

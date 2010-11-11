@@ -1,7 +1,10 @@
 = render_block :title => "#{action_name} Product Item" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    = f.association :product, :collection => Product.items, :selected => params[:product_id]
+    - if params[:product_id]
+      = f.association :product, :collection => Product.items, :selected => params[:product_id]
+    - else
+      = f.association :product, :collection => Product.items
     = f.association :colour
     = f.association :size
     = f.input :stock
