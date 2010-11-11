@@ -29,4 +29,4 @@
           td= r.minimum_purchases
           td= r.total_purchases
           td= link_to "Edit", edit_resource_url(r)
-          td= link_to_deletion "Destroy", r
+          td= link_to_deletion "Destroy", r unless r.is_protected?

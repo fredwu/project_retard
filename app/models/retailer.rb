@@ -16,6 +16,7 @@ class Retailer < ActiveRecord::Base
   validates_format_of     :code, :with => /^[a-zA-Z0-9_]*$/, :message => "can only contain alphanumeric and underscore characters"
 
   has_many :products
+  has_many :orders
   has_many :users
 
   default_scope order(:name)

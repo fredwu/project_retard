@@ -1,6 +1,12 @@
 = render "not_ready" unless resource.is_ready?
 table.detail class="product"
   tr
+    th Start At
+    td= resource.start_at
+  tr
+    th End At
+    td= resource.end_at
+  tr
     th Retailer
     td= resource.retailer.name
   tr

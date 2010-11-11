@@ -9,6 +9,15 @@ table.detail class=collection.first.class.to_s.downcase
     th Email
     td= resource.email
   tr
+    th City
+    td= resource.city
+  tr
+    th Credit
+    td= resource.fancy_credit
+  tr
+    th Email Notification
+    td= yes_or_no?(resource.email_notification)
+  tr
     th Retailer
     td= resource.retailer.name if resource.retailer
   tr

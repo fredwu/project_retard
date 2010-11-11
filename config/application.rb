@@ -46,4 +46,15 @@ module Shop2T
       g.test_framework  :rspec
     end
   end
+
+  class AccessDenied < StandardError
+    def initialize(message = nil)
+      @message = message
+      @default_message = "You are not authorized to access this page."
+    end
+
+    def to_s
+      @message || @default_message
+    end
+  end
 end

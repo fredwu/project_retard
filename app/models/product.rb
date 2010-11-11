@@ -32,21 +32,36 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :code
   validates_format_of     :code, :with => /^[a-zA-Z0-9_]*$/, :message => "can only contain alphanumeric and underscore characters"
 
-  has_many   :product_images,   :dependent => :delete_all, :limit => 5
-  has_many   :product_items,    :dependent => :delete_all
-  has_many   :product_vouchers, :dependent => :delete_all
-  has_many   :colours,          :through   => :product_items
-  has_many   :sizes,            :through   => :product_items
+  has_many :product_images,   :dependent => :destroy, :limit => 5
+  has_many :product_items,    :dependent => :destroy
+  has_many :product_vouchers, :dependent => :destroy
+  has_many :colours,          :through   => :product_items
+  has_many :sizes,            :through   => :product_items
+  has_and_belongs_to_many :orders
   belongs_to :retailer
 
-  before_save :set_end_at
+  before_destroy :check_destroyable
+  before_save    :set_end_at
 
-  default_scope order("products.start_at IS NULL DESC", :end_at.desc)
-  scope :list_order, includes(:product_items, :product_vouchers).order(
-    { :product_items => :id, :product_vouchers => :id }, :updated_at.desc
-  )
+  default_scope order("products.start_at IS NULL DESC", :start_at.desc, :end_at.desc)
   scope :vouchers, where(:is_voucher => true)
   scope :items, where(:is_voucher => false)
+
+  def is_protected?
+    is_running? || is_ended?
+  end
+
+  def is_running?
+    is_activated? && start_at.present? && Time.now >= start_at && Time.now <= end_at
+  end
+
+  def is_ended?
+    end_at.present? && Time.now > end_at
+  end
+
+  def is_activated?
+    !!is_activated
+  end
 
   def is_voucher?
     is_voucher
@@ -96,5 +111,13 @@ class Product < ActiveRecord::Base
 
   def set_end_at
     self.end_at = 24.hours.since(start_at) if end_at.nil? && start_at
+  end
+
+  def check_destroyable
+    raise not_destroyable! if is_protected?
+  end
+
+  def not_destroyable!
+    Shop2T::AccessDenied.new("Cannot destroy a product that is currently running or is already ended.")
   end
 end

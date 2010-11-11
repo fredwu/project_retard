@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: git://github.com/ernie/meta_where.git
-  revision: 6cf1bcba70f898f1304f73f23f5ae730bb78749b
+  revision: ac44b21335718906e6f610d0ce81a29aae69634c
   branch: arel-2.0
   specs:
     meta_where (0.9.6)
@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: git://github.com/judofyr/temple.git
-  revision: 3ea7a774864e8edafea98d3d52c5ae88d99f96fe
+  revision: 2f77af964ab5e8d9fee56a67e0acee9b61b8d9d5
   specs:
     temple (0.1.5)
 

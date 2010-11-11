@@ -20,6 +20,8 @@ u = User.new({
   :first_name            => 'Fred',
   :last_name             => 'Wu',
   :city                  => 'Melbourne',
+  :credit                => 20,
+  :email_notification    => true,
   :confirmed_at          => Time.now,
   :is_admin              => true,
   :retailer_id           => 1,
@@ -33,6 +35,7 @@ u = User.new({
   :first_name            => 'Riley',
   :last_name             => 'Batchelor',
   :city                  => 'Sydney',
+  :email_notification    => true,
   :confirmed_at          => Time.now,
   :is_admin              => true,
   :retailer_id           => 1,
@@ -57,6 +60,8 @@ Product.create({
   :minimum_purchases  => 20,
   :is_voucher         => false,
   :retailer_id        => 1,
+  :is_activated       => true,
+  :start_at           => Time.now.tomorrow,
 })
 
   ProductItem.create({
@@ -91,7 +96,8 @@ Product.create({
   :limit_per_customer => 0,
   :is_voucher         => true,
   :retailer_id        => 1,
-  :start_at           => Time.now.tomorrow,
+  :is_activated       => true,
+  :start_at           => Time.now.yesterday,
 })
 
   ProductVoucher.create({
@@ -110,6 +116,7 @@ Product.create({
   :limit_per_customer => 1,
   :is_voucher         => false,
   :retailer_id        => 1,
+  :is_activated       => true,
   :start_at           => Time.now,
   :end_at             => 3.days.from_now,
 })

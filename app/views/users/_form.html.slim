@@ -4,6 +4,8 @@
     = f.input :first_name
     = f.input :last_name
     = f.input :email
+    = f.input :email_notification
     = f.association :retailer
+    = f.input :credit
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource

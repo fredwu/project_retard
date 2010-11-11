@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   property :first_name, :string, :limit => 50
   property :last_name,  :string, :limit => 50
   property :address,    :text
+  property :city,       :string, :limit => 20
   property :postcode,   :string, :limit => 10
   property :state,      :string, :limit => 30
   property :country,    :string, :limit => 50
@@ -14,6 +15,12 @@ class Order < ActiveRecord::Base
   property :notes,      :text
   property :shipped_at, :datetime
   property :timestamps
+
+  add_index :retailer_id
+
+  has_and_belongs_to_many :products
+  belongs_to :manager,  :class_name => :user
+  belongs_to :retailer
 
   default_scope order(:created_at.desc)
 end

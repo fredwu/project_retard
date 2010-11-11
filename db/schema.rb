@@ -23,21 +23,26 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "colours", :name, :name => "index_colours_on_name"
 
   create_table "orders", :force => true do |t|
-    t.string   :first_name, :limit => 50
-    t.string   :last_name,  :limit => 50
+    t.string   :first_name,  :limit => 50
+    t.string   :last_name,   :limit => 50
     t.text     :address
-    t.string   :postcode,   :limit => 10
-    t.string   :state,      :limit => 30
-    t.string   :country,    :limit => 50
-    t.decimal  :subtotal,                 :precision => 8, :scale => 2
-    t.decimal  :use_credit,               :precision => 6, :scale => 2
-    t.decimal  :shipping,                 :precision => 6, :scale => 2
-    t.decimal  :total,                    :precision => 8, :scale => 2
+    t.string   :city,        :limit => 20
+    t.string   :postcode,    :limit => 10
+    t.string   :state,       :limit => 30
+    t.string   :country,     :limit => 50
+    t.decimal  :subtotal,                   :precision => 8, :scale => 2
+    t.decimal  :use_credit,                 :precision => 6, :scale => 2
+    t.decimal  :shipping,                   :precision => 6, :scale => 2
+    t.decimal  :total,                      :precision => 8, :scale => 2
     t.text     :notes
     t.datetime :shipped_at
+    t.integer  :manager_id,  :limit => nil
+    t.integer  :retailer_id, :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end
+
+  add_index "orders", :retailer_id, :name => "index_orders_on_retailer_id"
 
   create_table "products", :force => true do |t|
     t.string   :code,               :limit => 20
@@ -114,25 +119,31 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "sizes", :name, :name => "index_sizes_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   :email,                :limit => nil, :default => "",    :null => false
-    t.string   :first_name,           :limit => 50
-    t.string   :last_name,            :limit => 50
-    t.string   :city,                 :limit => 20
-    t.string   :encrypted_password,   :limit => 128, :default => "",    :null => false
-    t.string   :password_salt,        :limit => nil, :default => "",    :null => false
-    t.string   :reset_password_token, :limit => nil
-    t.string   :remember_token,       :limit => nil
+    t.string   :email,                   :limit => nil,                               :default => "",    :null => false
+    t.string   :first_name,              :limit => 50
+    t.string   :last_name,               :limit => 50
+    t.string   :city,                    :limit => 20
+    t.text     :address
+    t.string   :postcode,                :limit => 10
+    t.boolean  :email_notification,      :limit => nil,                               :default => false
+    t.decimal  :credit,                                 :precision => 6, :scale => 2, :default => 0.0
+    t.boolean  :referral_credit_claimed, :limit => nil,                               :default => false
+    t.string   :encrypted_password,      :limit => 128,                               :default => "",    :null => false
+    t.string   :password_salt,           :limit => nil,                               :default => "",    :null => false
+    t.string   :reset_password_token,    :limit => nil
+    t.string   :remember_token,          :limit => nil
     t.datetime :remember_created_at
-    t.integer  :sign_in_count,        :limit => nil, :default => 0
+    t.integer  :sign_in_count,           :limit => nil,                               :default => 0
     t.datetime :current_sign_in_at
     t.datetime :last_sign_in_at
-    t.string   :current_sign_in_ip,   :limit => nil
-    t.string   :last_sign_in_ip,      :limit => nil
-    t.string   :confirmation_token,   :limit => nil
+    t.string   :current_sign_in_ip,      :limit => nil
+    t.string   :last_sign_in_ip,         :limit => nil
+    t.string   :confirmation_token,      :limit => nil
     t.datetime :confirmed_at
     t.datetime :confirmation_sent_at
-    t.boolean  :is_admin,             :limit => nil, :default => false
-    t.integer  :retailer_id,          :limit => nil
+    t.boolean  :is_admin,                :limit => nil,                               :default => false
+    t.integer  :retailer_id,             :limit => nil
+    t.integer  :referee_id,              :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end
@@ -140,5 +151,13 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "users", :confirmation_token, :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", :email, :name => "index_users_on_email", :unique => true
   add_index "users", :reset_password_token, :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "orders_products", :id => false, :force => true do |t|
+    t.integer "order_id",   :limit => nil
+    t.integer "product_id", :limit => nil
+  end
+
+  add_index "orders_products", "order_id", :name => "index_orders_products_on_order_id"
+  add_index "orders_products", "product_id", :name => "index_orders_products_on_product_id"
 
 end
