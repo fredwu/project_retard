@@ -13,5 +13,14 @@ class ProductVoucher < ActiveRecord::Base
   validates_presence_of     :code
   validates_numericality_of :limit, :greater_than_or_equal_to => 0
 
-  default_scope joins(:product.outer).order(:product_id.desc, :code)
+  default_scope includes(:product).order(:product_id.desc, :code)
+
+  before_destroy :check_product_status
+  before_update  :check_product_status
+
+  private
+
+  def check_product_status
+    raise Shop2T::AccessDenied.new("The product associated is currently running or is ended.") if product.is_protected?
+  end
 end

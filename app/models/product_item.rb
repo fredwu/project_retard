@@ -15,5 +15,14 @@ class ProductItem < ActiveRecord::Base
   validates_presence_of     :product_id
   validates_numericality_of :stock, :greater_than_or_equal_to => 0
 
+  before_destroy :check_product_status
+  before_update  :check_product_status
+
   default_scope includes(:product, :colour, :size).order(:product_id.desc, :colour_id, :size_id)
+
+  private
+
+  def check_product_status
+    raise Shop2T::AccessDenied.new("The product associated is currently running or is ended.") if product.is_protected?
+  end
 end

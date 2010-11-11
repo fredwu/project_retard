@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end if Rails.env.production?
 
+  rescue_from Shop2T::AccessDenied do |exception|
+    flash[:errormsg] = exception.to_s
+    redirect_to root_url
+  end
+
   before_filter :require_login
   before_filter :pass_current_user_to_model
 
