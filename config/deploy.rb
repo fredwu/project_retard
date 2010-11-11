@@ -125,8 +125,8 @@ set :additional_shared_symlinks,
 # Passenger restarts the application. You invoke the by simply calling "run_custom_task"
 # For a list of all the available tasks that you could add to this "after_deploy" method, run: cap -T
 def after_deploy
-  # run_custom_task "my_custom_task"
-  # run_custom_task "nested:my_custom_task"
+  run_custom_task "copy_db_config"
+  run_custom_task "remove_cached_assets"
 end
 
 ##
@@ -134,15 +134,13 @@ end
 # In here you may specify any application specific and/or other tasks that are not handled by Deployer
 # These can be invoked by creating a "run_custom_task" method in the "after_deploy" method above
 namespace :deploy do
-  desc "Invoke this task manually by running: 'cap deploy:my_custom_task'"
-  task :my_custom_task do
-    # run "some command"
+  desc "Copies production database config"
+  task :copy_db_config, :roles => :web do
+    run "cp #{current_release}/config/database.production.yml #{current_release}/config/database.yml"
   end
 
-  namespace :nested do
-    desc "Invoke this task manually by running: 'cap deploy:nested:my_custom_task'"
-    task :my_custom_task do
-      # system "some command"
-    end
+  desc "Removes cached JavaScript and CSS asset files"
+  task :remove_cached_assets, :roles => :web do
+    run "cd #{current_release} && rake cache:assets:clear"
   end
 end
