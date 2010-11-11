@@ -1,1 +1,4 @@
-h2= @product.name
+- unless @product
+  h1 There is currently no deals running, please check back later.
+- else
+  h2= @product.name
