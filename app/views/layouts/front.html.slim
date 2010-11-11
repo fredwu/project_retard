@@ -6,11 +6,12 @@ html
       | &nbsp;-&nbsp;
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
-    = stylesheet_link_tag 'compiled/front', :media => 'all'
+    = stylesheet_link_tag "slideshow", "compiled/front", :media => "all"
     = javascript_include_tag(Rails.env.production? ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" : "jquery.min")
-    = javascript_include_tag        \
-      "jquery.inline-confirmation", \
-      "application",                \
+    = javascript_include_tag         \
+      "jquery.inline-confirmation",  \
+      "jquery.slideshow.lite-0.5.3", \
+      "application",                 \
       :cache => "cached/application.all"
     = csrf_meta_tag
 

@@ -7,6 +7,6 @@ tmp/*
 tmp/**/*
 *.swp
 *.swo
-public/uploads
-public/product_images
+public/uploads/*
+public/product_images/*
 public/javascripts/cached/*
