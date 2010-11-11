@@ -51,6 +51,10 @@ class Product < ActiveRecord::Base
     is_running? || is_ended?
   end
 
+  def is_not_protected?
+    !is_protected?
+  end
+
   def is_running?
     is_activated? && start_at.present? && Time.now >= start_at && Time.now <= end_at
   end

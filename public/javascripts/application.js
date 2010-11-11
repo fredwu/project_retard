@@ -82,46 +82,27 @@ $(document).ready(function() {
     }
   });
 
+  $("input:disabled").css({color: "#999"});
+
   /* --------------------
     Product publish toggle
   -------------------- */
 
-  $("input#to_publish").change(function() {
+  $("input#product_is_activated").change(function() {
     show_publish_block($(this));
   });
 
-  $("input#set_end_at").change(function() {
-    show_publish_end_block($(this));
-  });
-
-  if ($("input#to_publish").length >= 0) {
-    show_publish_block($("input#to_publish"));
-    show_publish_end_block($("input#set_end_at"));
+  if ($("input#product_is_activated").length >= 0) {
+    show_publish_block($("input#product_is_activated"));
   }
 
   function show_publish_block(scope) {
     if ($(scope).attr("checked")) {
-      $("#start_at p.datetime").fadeIn();
-      $("#start_at p.datetime select").attr("disabled", false);
-
-      $("#end_at, p#to_set_end_at").fadeIn();
-      $("#end_at p.datetime select").attr("disabled", false);
+      $("#start_at p.datetime, #end_at p.datetime").fadeIn();
+      $("#start_at p.datetime select, #end_at p.datetime select").attr("disabled", false);
     } else {
-      $("#start_at p.datetime").hide();
-      $("#start_at p.datetime select").attr("disabled", true);
-
-      $("#end_at").hide();
-      $("#end_at p.datetime select").attr("disabled", true);
-    }
-  }
-
-  function show_publish_end_block(scope) {
-    if ($(scope).attr("checked")) {
-      $("#end_at p.datetime").fadeIn();
-      $("#end_at p.datetime select").attr("disabled", false);
-    } else {
-      $("#end_at p.datetime").hide();
-      $("#end_at p.datetime select").attr("disabled", true);
+      $("#start_at p.datetime, #end_at p.datetime").hide();
+      $("#start_at p.datetime select, #end_at p.datetime select").attr("disabled", true);
     }
   }
 });

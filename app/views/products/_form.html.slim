@@ -2,30 +2,27 @@
   = simple_form_for resource do |f|
     = display_errors!(resource)
     - if resource.persisted?
-      - unless resource.is_ready?
-        = render "not_ready"
-      - else
+      - if resource.is_not_ready? || resource.is_protected?
+        = render "not_ready" if resource.is_not_ready?
+        = render "is_protected" if resource.is_protected?
+      - elsif resource.is_not_protected?
         #start_at
-          p
-            = check_box_tag :to_publish
-            = label_tag :to_publish
-          = f.input :start_at, :disabled => true
-      #end_at
-        p#to_set_end_at
-          = check_box_tag :set_end_at
-          = label_tag :set_end_at
-        = f.input :end_at
-      hr
-    = f.association :retailer
-    = f.input :code
+          = f.input :is_activated, :label => "To publish"
+          = f.input :start_at
+      - unless resource.is_protected?
+        #end_at
+          = f.input :end_at
+        hr
+    = f.association :retailer, :input_html => { :disabled => resource.is_protected? }
+    = f.input :code, :input_html => { :disabled => resource.is_protected? }
     = f.input :name
     = f.input :details
     = f.input :highlights
     = f.input :terms
-    = f.input :rrp, :label => "RRP"
-    = f.input :price
-    = f.input :is_voucher
-    = f.input :limit_per_customer
-    = f.input :minimum_purchases
+    = f.input :rrp, :label => "RRP", :input_html => { :disabled => resource.is_protected? }
+    = f.input :price, :input_html => { :disabled => resource.is_protected? }
+    = f.input :is_voucher, :input_html => { :disabled => resource.is_protected? }
+    = f.input :limit_per_customer, :input_html => { :disabled => resource.is_protected? }
+    = f.input :minimum_purchases, :input_html => { :disabled => resource.is_protected? }
     p.input= f.button :submit, :class => "submit long"
   p= link_to "Back", resource
