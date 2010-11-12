@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout lambda{ |c| c.request.xhr? ? false : "front" }
+  layout lambda{ |c| c.request.xhr? ? false : "public" }
 
   rescue_from ActionController::RoutingError do |exception|
     flash[:errormsg] = "The page you are trying to access does not exist."

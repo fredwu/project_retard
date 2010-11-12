@@ -6,7 +6,7 @@ html
       | &nbsp;-&nbsp;
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
-    = stylesheet_link_tag "slideshow", "compiled/front", :media => "all"
+    = stylesheet_link_tag "slideshow", "compiled/public", :media => "all"
     = javascript_include_tag(Rails.env.production? ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" : "jquery.min")
     = javascript_include_tag         \
       "jquery.inline-confirmation",  \
@@ -15,7 +15,7 @@ html
       :cache => "cached/application.all"
     = csrf_meta_tag
 
-  body
+  body#public
     #ajax_loader Loading ...
     #ajax_error Error occurred! Please try again later.
 
