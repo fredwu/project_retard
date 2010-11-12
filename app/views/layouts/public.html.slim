@@ -10,9 +10,10 @@ html
     = javascript_include_tag(Rails.env.production? ? "http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" : "jquery.min")
     = javascript_include_tag         \
       "jquery.inline-confirmation",  \
-      "jquery.slideshow.lite-0.5.3", \
+      "jquery.slideshow.lite",       \
       "application",                 \
-      :cache => "cached/application.all"
+      "public",                      \
+      :cache => "cached/public.all"
     = csrf_meta_tag
 
   body#public
