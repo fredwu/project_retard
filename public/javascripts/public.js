@@ -9,7 +9,7 @@ $(document).ready(function() {
   -------------------- */
 
   $("#deal #images").slideshow({
-    width: 620,
+    width: 616,
     height: 240,
     pauseSeconds: 5,
     caption: false
