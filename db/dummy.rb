@@ -1,3 +1,21 @@
+module Shop2T
+  module Dummy
+    module Helpers
+      class << self
+        def image_path(filename)
+          File.join(Rails.root, "db", "fixtures", "images", filename)
+        end
+
+        def image_file(filename)
+          File.open(image_path(filename))
+        end
+      end
+    end
+  end
+end
+
+helpers = Shop2T::Dummy::Helpers
+
 Retailer.create({
   :code            => "TEST_RET",
   :name            => "Test Retailer",
@@ -34,7 +52,7 @@ Size.create({:name => "L"})
 Colour.create({:hex => "00ffff", :name => "Red"})
 Colour.create({:hex => "ffff00", :name => "Blue"})
 
-Product.create({
+p = Product.create({
   :code               => "TEST_PROD",
   :name               => "Test Product",
   :details            => "This is a test product.",
@@ -52,27 +70,33 @@ Product.create({
 })
 
   ProductItem.create({
-    :stock      => 10,
-    :product_id => 1,
-    :colour_id  => 1,
-    :size_id    => 1,
+    :product   => p,
+    :stock     => 10,
+    :colour_id => 1,
+    :size_id   => 1,
   })
 
   ProductItem.create({
-    :stock      => 10,
-    :product_id => 1,
-    :colour_id  => 1,
-    :size_id    => 2,
+    :product   => p,
+    :stock     => 10,
+    :colour_id => 1,
+    :size_id   => 2,
   })
 
   ProductItem.create({
-    :stock      => 0,
-    :product_id => 1,
-    :colour_id  => 2,
-    :size_id    => 3,
+    :product   => p,
+    :stock     => 10,
+    :colour_id => 2,
+    :size_id   => 3,
   })
 
-Product.create({
+  (1..3).each do |i|
+    img = ProductImage.create(:product => p)
+    img.file.store!(helpers.image_file("#{i}_b.jpg"))
+    p.product_images << img
+  end
+
+p = Product.create({
   :code               => "TEST_PROD_2",
   :name               => "Test Product 2",
   :details            => "This is another test product.",
@@ -93,7 +117,11 @@ Product.create({
     :product_id => 2,
   })
 
-Product.create({
+  img = ProductImage.create(:product => p)
+  img.file.store!(helpers.image_file("4_b.jpg"))
+  p.product_images << img
+
+p = Product.create({
   :code               => "TEST_PROD_3",
   :name               => "Test Product 3",
   :details            => "This is yet another test product.",
@@ -117,7 +145,13 @@ Product.create({
     :size_id    => 2,
   })
 
-Product.create({
+  (5..6).each do |i|
+    img = ProductImage.create(:product => p)
+    img.file.store!(helpers.image_file("#{i}_b.jpg"))
+    p.product_images << img
+  end
+
+p = Product.create({
   :code               => "TEST_PROD_4",
   :name               => "Test Product 4",
   :details            => "This is a test product as well.",
@@ -128,3 +162,9 @@ Product.create({
   :limit_per_customer => 1,
   :retailer_id        => 1,
 })
+
+  (7..9).each do |i|
+    img = ProductImage.create(:product => p)
+    img.file.store!(helpers.image_file("#{i}_b.jpg"))
+    p.product_images << img
+  end

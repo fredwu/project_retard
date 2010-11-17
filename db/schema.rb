@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.text     :terms
     t.decimal  :rrp,                               :precision => 6, :scale => 2, :default => 0.0
     t.decimal  :price,                             :precision => 6, :scale => 2
-    t.decimal  :shipping_au,                       :precision => 5, :scale => 2, :default => 15.0
-    t.decimal  :shipping_int,                      :precision => 5, :scale => 2, :default => 25.0
+    t.decimal  :shipping_au,                       :precision => 5, :scale => 2, :default => 0.0
+    t.decimal  :shipping_int,                      :precision => 5, :scale => 2, :default => 0.0
     t.integer  :limit_per_customer, :limit => 2,                                 :default => 0
     t.integer  :minimum_purchases,  :limit => 3,                                 :default => 50
     t.boolean  :is_activated,       :limit => nil,                               :default => false

@@ -8,11 +8,11 @@ class ProductImage < ActiveRecord::Base
   add_index :product_id
 
   validates_presence_of :product_id
-  validates_presence_of :file
+  # validates_presence_of :file
 
   belongs_to :product
 
-  after_create  :update_file_name
+  after_create :update_file_name
 
   private
 
