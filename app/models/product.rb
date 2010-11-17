@@ -9,6 +9,8 @@ class Product < ActiveRecord::Base
   property :terms,              :text
   property :rrp,                :decimal, :precision => 6, :scale => 2, :default => 0
   property :price,              :decimal, :precision => 6, :scale => 2
+  property :shipping_au,        :decimal, :precision => 5, :scale => 2, :default => 0
+  property :shipping_int,       :decimal, :precision => 5, :scale => 2, :default => 0
   property :limit_per_customer, :integer, :limit => 2, :default => 0
   property :minimum_purchases,  :integer, :limit => 3, :default => 50
   property :is_activated,       :boolean, :default => false

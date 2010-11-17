@@ -21,6 +21,8 @@
     = f.input :terms
     = f.input :rrp, :label => "RRP", :input_html => { :disabled => resource.is_protected? }
     = f.input :price, :input_html => { :disabled => resource.is_protected? }
+    = f.input :shipping_au, :input_html => { :disabled => resource.is_protected? }
+    = f.input :shipping_int, :input_html => { :disabled => resource.is_protected? }
     = f.input :is_voucher, :input_html => { :disabled => resource.is_protected? }
     = f.input :limit_per_customer, :input_html => { :disabled => resource.is_protected? }
     = f.input :minimum_purchases, :input_html => { :disabled => resource.is_protected? }

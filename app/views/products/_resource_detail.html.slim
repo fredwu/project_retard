@@ -31,6 +31,12 @@ table.detail class="product"
     th Price
     td= resource.nice_price
   tr
+    th Shipping AU
+    td= resource.shipping_au
+  tr
+    th Shipping International
+    td= resource.shipping_int
+  tr
     th Is Voucher?
     td= yes_or_no? resource.is_voucher
   tr
