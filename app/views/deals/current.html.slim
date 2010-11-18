@@ -1,9 +1,0 @@
-#deal
-  - unless @product
-    h1 There is currently no deals running, please check back later.
-  - else
-    h2= @product.name
-
-    #images
-      - @product.product_images.each do |image|
-        = image_tag image.file.url

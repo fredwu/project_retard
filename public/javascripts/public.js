@@ -8,7 +8,7 @@ $(document).ready(function() {
     Product images
   -------------------- */
 
-  $("#deal #images").slideshow({
+  $("#deal .product_images").slideshow({
     width: 616,
     height: 240,
     pauseSeconds: 5,

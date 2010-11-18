@@ -5,6 +5,7 @@
   table.collection.products
     thead
       tr
+        th Running?
         th Ready?
         th Start
         th End
@@ -19,6 +20,7 @@
     tbody
       - collection.each do |r|
         tr data-id=r.id
+          td= yes_or_no?(r.is_running?)
           td= yes_or_no?(r.is_ready?)
           td= r.start_at || "Not yet"
           td= r.end_at || "Not set"

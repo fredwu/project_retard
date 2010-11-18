@@ -48,9 +48,12 @@ u.save :validate => false
 Size.create({:name => "S"})
 Size.create({:name => "M"})
 Size.create({:name => "L"})
+Size.create({:name => "XL"})
+Size.create({:name => "XXL"})
 
 Colour.create({:hex => "00ffff", :name => "Red"})
 Colour.create({:hex => "ffff00", :name => "Blue"})
+Colour.create({:hex => "ff00ff", :name => "Green"})
 
 p = Product.create({
   :code               => "TEST_PROD",
@@ -66,7 +69,8 @@ p = Product.create({
   :is_voucher         => false,
   :retailer_id        => 1,
   :is_activated       => true,
-  :start_at           => Time.now.tomorrow,
+  :start_at           => Time.now,
+  :end_at             => 20.days.from_now,
 })
 
   ProductItem.create({
@@ -108,7 +112,7 @@ p = Product.create({
   :is_voucher         => true,
   :retailer_id        => 1,
   :is_activated       => true,
-  :start_at           => Time.now.yesterday,
+  :start_at           => 10.days.from_now,
 })
 
   ProductVoucher.create({
@@ -135,7 +139,7 @@ p = Product.create({
   :retailer_id        => 1,
   :is_activated       => true,
   :start_at           => Time.now,
-  :end_at             => 3.days.from_now,
+  :end_at             => 10.days.from_now,
 })
 
   ProductItem.create({
@@ -161,10 +165,30 @@ p = Product.create({
   :shipping_int       => 25,
   :limit_per_customer => 1,
   :retailer_id        => 1,
+  :start_at           => Time.now,
 })
+
+  ProductItem.create({
+    :stock      => 10,
+    :product_id => 4,
+    :colour_id  => 3,
+    :size_id    => 3,
+  })
 
   (7..9).each do |i|
     img = ProductImage.create(:product => p)
     img.file.store!(helpers.image_file("#{i}_b.jpg"))
     p.product_images << img
   end
+
+p = Product.create({
+  :code               => "TEST_PROD_5",
+  :name               => "Test Product 5",
+  :details            => "Yet another test product as well.",
+  :rrp                => 9.95,
+  :price              => 4.95,
+  :shipping_au        => 15,
+  :shipping_int       => 25,
+  :limit_per_customer => 1,
+  :retailer_id        => 1,
+})

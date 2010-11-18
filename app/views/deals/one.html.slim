@@ -1,0 +1,9 @@
+#deal
+  h2= @product.name
+  .product_images
+    - @product.product_images.each do |image|
+      = image_tag image.file.url
+  .grid_4
+    | test
+  .grid_3
+    | test 2

@@ -49,10 +49,7 @@ class Product < ActiveRecord::Base
   scope :vouchers, where(:is_voucher => true)
   scope :items, where(:is_voucher => false)
   scope :activated, where(:is_activated => true).where(:end_at > Time.now)
-
-  def self.current
-    self.activated.last
-  end
+  scope :running, activated.where(:start_at <= Time.now)
 
   def is_protected?
     is_running? || is_ended?
