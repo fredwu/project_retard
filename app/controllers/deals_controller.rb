@@ -1,4 +1,7 @@
 class DealsController < ApplicationController
+  def coming_soon
+  end
+
   def home
     if Product.running.count == 1
       @product ||= Product.running.last
