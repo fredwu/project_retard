@@ -122,7 +122,7 @@ GIT
 
 GIT
   remote: git://github.com/stonean/slim.git
-  revision: fff02a4981142a110fb8c0e9b357d14e6e655c85
+  revision: 332db6398b38430d58d83e0dc1ad8e181637f075
   specs:
     slim (0.7.3)
       activesupport (~> 3.0.0)
