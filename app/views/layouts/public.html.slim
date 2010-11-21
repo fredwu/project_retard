@@ -3,7 +3,7 @@ html
   head
     title
       = @site_title ||= '2threads Shop'
-      | &nbsp;-&nbsp;
+      '  -
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
     = stylesheet_link_tag "slideshow", "compiled/public", :media => "all"

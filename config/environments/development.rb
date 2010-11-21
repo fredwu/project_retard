@@ -26,16 +26,16 @@ Shop2T::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  config.after_initialize do
-    Bullet.enable                = false
-    Bullet.disable_browser_cache = true
-    Bullet.bullet_logger         = true
-    Bullet.console               = true
-    Bullet.rails_logger          = false
-    Bullet.growl                 = false
-    Bullet.alert                 = false
-    Bullet.xmpp                  = false
-  end
+  # config.after_initialize do
+  #   Bullet.enable                = false
+  #   Bullet.disable_browser_cache = true
+  #   Bullet.bullet_logger         = true
+  #   Bullet.console               = true
+  #   Bullet.rails_logger          = false
+  #   Bullet.growl                 = false
+  #   Bullet.alert                 = false
+  #   Bullet.xmpp                  = false
+  # end
 
   Slim::Engine.set_default_options :pretty => true
 end

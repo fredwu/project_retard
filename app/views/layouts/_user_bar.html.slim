@@ -1,11 +1,11 @@
 ul
   li
-    | Welcome&nbsp;
+    ' Welcome
     = link_to current_user.first_name, current_user
     | !
   li
-    | You can&nbsp;
+    ' You can
     = link_to "edit your profile", edit_user_registration_path
-    |  or&nbsp;
+    '  or
     = link_to "logout", destroy_user_session_path
     | .

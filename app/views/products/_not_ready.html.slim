@@ -1,11 +1,11 @@
 .message.warning.nohide
   | This product is not yet ready for publishing.
   - if !resource.has_images?
-    |  Please add&nbsp;
+    '  Please add
     = link_to "a product image", new_product_product_image_path(:product_id => resource.id)
     | .
   - if !resource.has_items_or_vouchers?
-    |  Please add&nbsp;
+    '  Please add
     - if resource.is_voucher?
       = link_to "a voucher", new_product_product_voucher_path(:product_id => resource.id)
     - else

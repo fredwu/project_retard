@@ -3,7 +3,7 @@ html
   head
     title
       = @site_title ||= "2threads Shop"
-      |  -&nbsp;
+      '  -
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
     = stylesheet_link_tag                  \
@@ -56,7 +56,7 @@ html
         = yield
 
       #footer
-        | Copyright &copy;&nbsp;
+        ' Copyright &copy;
         = Time.now.year
-        | &nbsp;
+        '
         = link_to "2threads", "http://2threads.com/", :target => "_blank"
