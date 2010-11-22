@@ -24,16 +24,15 @@ html
     br
 
     #container.container_12
-      .grid_8
-        - flash.each do |type, message|
-          - type = case type
-            - when :notice then :info
-            - when :alert  then :errormsg
-            - else type
-          .block.nostyle
-            .message class=type
-              p= message
-        = yield
+      - flash.each do |type, message|
+        - type = case type
+          - when :notice then :info
+          - when :alert  then :errormsg
+          - else type
+        .block.nostyle
+          .message class=type
+            p= message
+      = yield
       .grid_4
         |
 
