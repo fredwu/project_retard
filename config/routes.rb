@@ -68,7 +68,8 @@ Shop2T::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  match "home" => "deals#home"
+  match "home"     => "deals#home"
+  match "deal/:id" => "deals#show", :as => "deal"
   root :to => "deals#coming_soon"
 
   # See how all your routes lay out with "rake routes"
