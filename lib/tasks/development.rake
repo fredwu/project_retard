@@ -15,3 +15,8 @@ namespace :dev do
     Rake::Task["db:dummy"].invoke
   end
 end
+
+desc "Runs default dev tasks"
+task :dev do
+  Rake::Task["dev:all"].invoke
+end
