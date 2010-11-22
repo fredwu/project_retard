@@ -114,7 +114,11 @@ class Product < ActiveRecord::Base
   end
 
   def discount
-    "%.2f%" % ((price - rrp) / price * 100)
+    if rrp == 0
+      "N/A"
+    else
+      "%.2f%" % ((price - rrp) / price * 100)
+    end
   end
 
   def time_left
