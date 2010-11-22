@@ -2,6 +2,101 @@
 @import 'grid'
 @import '2threads'
 
+/* Variables */
+
+$branded_colour = #ec268f
+$shadow_colour = #ddd
+$faded_colour = #eee
+
+/* Layout */
+
+#full_container, #main_container, #sidebar_container
+  float: left
+  position: relative
+
+#full_container
+  width: 960px
+
+#main_container
+  width: 640px
+
+  #spec, #info
+    float: left
+    width: 320px
+
+#sidebar_container
+  width: 320px
+
+/* Elements */
+
+p
+  font-size: 12px
+
+hr
+  border: 1px solid transparent
+  border-top-color: $shadow_colour
+
+/* Sidebar */
+
+#sidebar_container
+  .sidebar_div
+    border: 1px solid #111
+    background: #eee
+    padding: 20px
+    margin-bottom: 10px
+    h2
+      font-size: 16px
+      text-transform: uppercase
+    ul
+      list-style: inside
+      li
+        font-size: 14px
+
+/* Products */
+
+.button-action
+  font-size: 22px
+  padding: 10px 15px
+  color: #fff
+  background: $branded_colour
+  &:hover
+    background: #111
+
+h2#price
+  font-size: 32px
+  color: $branded_colour
+
+#info
+  ul
+    list-style: none
+    margin-top: -10px
+    li
+      float: left
+      a
+        display: block
+        width: 150px
+        margin-bottom: 10px
+        padding: 5px 0
+        text-align: center
+        font-size: 16px
+        text-transform: uppercase
+        border-bottom: 1px solid $faded_colour
+        &:hover
+          background: $faded_colour
+
+#terms
+  display: none
+
+ul#swatches
+  li
+    float: left
+    list-style: none
+    padding-right: 5px
+    a
+      display: block
+      width: 20px
+      height: 20px
+
 /* Messages */
 
 .block .message

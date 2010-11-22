@@ -1,9 +1,55 @@
 #deal.grid_8
-  h2= @product.name
+  h1= @product.name
   .product_images
     - @product.product_images.each do |image|
       = image_tag image.file.url
-.grid_5
-  | test
-.grid_3
-  | test 2
+  br
+.grid_8
+  hr
+  br
+#spec
+  .grid_2
+    = simple_form_for @product do |f|
+      = f.button :submit, :value => "Buy Now", :class => "button-primary button-action"
+      br
+      br
+      h3 Choose Colour and Size
+      = select_tag "product_item", options_for_select([["", nil]] + @product.product_items.map { |i| [ "#{i.colour.name} / #{i.size.name}", i.id ] })
+  .grid_2
+    h2#price= @product.nice_price
+    h3
+      ' Discount:
+      = @product.discount
+    h3
+      ' Normal Price:
+      = @product.nice_rrp
+  .grid_4
+    h2
+      = @product.time_left
+      ' ,
+      - if @product.total_purchases > 0
+        = pluralize(@product.total_purchases, "person")
+        |  have bought this.
+      - else
+        | be quick and buy it now!
+#info
+  .grid_4
+    ul
+      li= link_to "Highlights", "#", :"data-id" => "highlights"
+      li= link_to "Terms", "#", :"data-id" => "terms"
+    .info_div#highlights
+      = markdownize(@product.highlights)
+    .info_div#terms
+      = markdownize(@product.terms)
+.grid_8
+  hr
+  br
+#desc.grid_5
+  = markdownize(@product.details)
+#retailer_info.grid_3
+  p
+    | Website:
+    = link_to @product.retailer.website, @product.retailer.website
+  p= markdownize(@product.retailer.contact_details)
+#retailer_logo.grid_3
+  = image_tag @product.retailer.logo.url

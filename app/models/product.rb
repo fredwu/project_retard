@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   include Datamappify::Resource
   include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::DateHelper
 
   property :code,               :string,  :limit => 20
   property :name,               :string
@@ -50,6 +51,7 @@ class Product < ActiveRecord::Base
   scope :items, where(:is_voucher => false)
   scope :activated, where(:is_activated => true).where(:end_at > Time.now)
   scope :running, activated.where(:start_at <= Time.now)
+  scope :upcoming, activated.where(:start_at > Time.now)
 
   def is_protected?
     is_running? || is_ended?
@@ -109,6 +111,14 @@ class Product < ActiveRecord::Base
 
   def nice_price
     number_to_currency(price)
+  end
+
+  def discount
+    "%.2f%" % ((price - rrp) / price * 100)
+  end
+
+  def time_left
+    "%s left" % distance_of_time_in_words(Time.now, end_at)
   end
 
   def total_purchases

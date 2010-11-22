@@ -1,3 +1,5 @@
+website:
+  name: 2threads Finds
 collection:
   per_page: 20
 product:
@@ -7,3 +9,9 @@ product:
     thumbnail:
       width: 78
       height: 30
+retailer:
+  logo:
+    width: 200
+    height: 80
+invite:
+  credit: 10

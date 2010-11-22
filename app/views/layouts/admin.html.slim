@@ -2,7 +2,7 @@
 html
   head
     title
-      = @site_title ||= "2threads Shop"
+      = @site_title ||= Settings.website.name
       '  -
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
@@ -60,3 +60,4 @@ html
         = Time.now.year
         '
         = link_to "2threads", "http://2threads.com/", :target => "_blank"
+        |  ABN 50 127 257 907

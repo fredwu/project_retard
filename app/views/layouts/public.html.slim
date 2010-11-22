@@ -2,7 +2,7 @@
 html
   head
     title
-      = @site_title ||= '2threads Shop'
+      = @site_title ||= Settings.website.name
       '  -
       = @page_title ||= "#{controller.controller_name.titleize} #{controller.action_name.titleize}"
 
@@ -32,9 +32,24 @@ html
         .block.nostyle
           .message class=type
             p= message
-      = yield
-      .grid_4
-        |
+      - if @hide_sidebar
+        #full_container
+      - else
+        #main_container
+          = yield
+      - unless @hide_sidebar
+        #sidebar_container
+          .grid_4
+            .sidebar_div#invite_friends
+              h2= link_to "Invite Friends and Get $#{Settings.invite.credit} Credit", "#"
+            .sidebar_div#feature_your_brand
+              h2= link_to "Want to Feature Your Brand On #{Settings.website.name}? Email Us", "#"
+            .sidebar_div#upcoming_deals
+              h2 Upcoming Deals
+              ul
+                - Product.upcoming.each do |deal|
+                  li
+                    = link_to "#{deal.name} from #{deal.retailer.name}", deal_path(deal)
 
       .clear
 

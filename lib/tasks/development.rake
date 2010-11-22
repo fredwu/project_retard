@@ -4,6 +4,7 @@ namespace :dev do
       desc "Removes uploaded images"
       task :clear => :environment do
         FileUtils.rm_rf Dir["public/product_images/"]
+        FileUtils.rm_rf Dir["public/retailer_logos/"]
       end
     end
   end

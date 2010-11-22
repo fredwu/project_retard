@@ -15,7 +15,7 @@ module ApplicationHelper
   #
   # @param [Object] resource ActiveRecord object
   def display_errors!(resource)
-    html = ""
+    html = []
     if resource.errors.any?
       html << "<div class='message errormsg nohide'>"
       html << "<h2>#{pluralize(resource.errors.count, 'error')} found:</h2>"
@@ -26,7 +26,7 @@ module ApplicationHelper
       html << "</ul>"
       html << "</div>"
     end
-    html.html_safe
+    html.join("\n").html_safe
   end
 
   # renders a block with some default structrual HTML

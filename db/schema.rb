@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   :code,            :limit => 10
     t.string   :website,         :limit => nil
     t.text     :contact_details
+    t.string   :logo,            :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end

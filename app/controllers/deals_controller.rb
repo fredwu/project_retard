@@ -1,5 +1,6 @@
 class DealsController < ApplicationController
   def coming_soon
+    @hide_sidebar = true
   end
 
   def home

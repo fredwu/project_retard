@@ -9,4 +9,5 @@ tmp/**/*
 *.swo
 public/uploads/*
 public/product_images/*
+public/retailer_logos/*
 public/javascripts/cached/*
