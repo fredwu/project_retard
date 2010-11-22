@@ -106,11 +106,11 @@ class Product < ActiveRecord::Base
   end
 
   def nice_rrp
-    number_to_currency(rrp)
+    number_to_currency(rrp, :unit => "A$")
   end
 
   def nice_price
-    number_to_currency(price)
+    number_to_currency(price, :unit => "A$")
   end
 
   def discount
