@@ -46,10 +46,11 @@
   br
 #desc.grid_5
   = markdownize(@product.details)
-#retailer_info.grid_3
-  p
-    | Website:
-    = link_to @product.retailer.website, @product.retailer.website
-  p= markdownize(@product.retailer.contact_details)
-#retailer_logo.grid_3
-  = image_tag @product.retailer.logo.url
+.grid_3
+  #retailer_info
+    p
+      | Website:
+      = link_to @product.retailer.website, @product.retailer.website
+    p= markdownize(@product.retailer.contact_details)
+  #retailer_logo
+    = image_tag @product.retailer.logo.url
