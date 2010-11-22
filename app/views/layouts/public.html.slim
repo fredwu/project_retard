@@ -34,6 +34,7 @@ html
             p= message
       - if @hide_sidebar
         #full_container
+          = yield
       - else
         #main_container
           = yield
