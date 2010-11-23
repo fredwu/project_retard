@@ -41,7 +41,7 @@ $(document).ready(function() {
     confirm: "<a href='#' class='confirm-delete'>Delete!</a>",
     cancel: "<a href='#' class='confirm-cancel'>Cancel</a>",
     reverse: true,
-    expiresIn: 3,
+    expiresIn: 5,
     confirmCallback: function(action) {
       var id = action.attr("data-id");
 

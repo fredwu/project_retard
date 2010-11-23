@@ -65,7 +65,7 @@ module ApplicationHelper
       :"data-id" => resource.id
     }.merge(options)
 
-    link_to(label, resource, options)
+    link_to(label, options[:url] || resource, options)
   end
 
   # removes :controller and :action elements so that the params can be passed on
@@ -88,5 +88,9 @@ module ApplicationHelper
     else
       attribute ? "Yes" : "No"
     end
+  end
+
+  def product_item_line(product_item)
+    "#{product_item.colour.name} / #{product_item.size.name}"
   end
 end

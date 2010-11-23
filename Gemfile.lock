@@ -22,6 +22,13 @@ GIT
       arel (~> 2.0.2)
 
 GIT
+  remote: git://github.com/fredwu/acts_as_shopping_cart.git
+  revision: 552d2c2484e9cd02a045d799f83cdc2b56a98717
+  specs:
+    acts_as_shopping_cart (0.0.0)
+      activerecord (~> 3.0.0)
+
+GIT
   remote: git://github.com/grosser/parallel_tests.git
   revision: da4b90618a462966d35c0635f50c7a5b0ece7631
   specs:
@@ -260,6 +267,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_shopping_cart!
   arel!
   bullet (~> 2.0.0.rc1)
   by_star (~> 1.0.0)

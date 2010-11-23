@@ -9,20 +9,24 @@
   br
 #spec
   .grid_2
-    = simple_form_for @product do |f|
-      = f.button :submit, :value => "Buy Now", :class => "button-primary button-action"
+    = form_tag "/orders/add_to_cart" do
+      = submit_tag "Buy Now", :class => "button-primary button-action"
       br
       br
-      h3 Choose Colour and Size
-      = select_tag "product_item", options_for_select([["", nil]] + @product.product_items.map { |i| [ "#{i.colour.name} / #{i.size.name}", i.id ] })
+      - if @product.is_item?
+        h3 Choose Colour and Size
+        = select_tag "product_item", options_for_select([["", nil]] + @product.product_items.map { |i| [ product_item_line(i), i.id ] })
+      - else
+        = hidden_field_tag "product_voucher", @product.product_vouchers.first.id
   .grid_2
     h2#price= @product.nice_price
-    h3
-      ' Discount:
-      = @product.discount
-    h3
-      ' Normal Price:
-      = @product.nice_rrp
+    - if @product.is_item?
+      h3
+        ' Discount:
+        = @product.discount
+      h3
+        ' Normal Price:
+        = @product.nice_rrp
   .grid_4
     h2
       = @product.time_left

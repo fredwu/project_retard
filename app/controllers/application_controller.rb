@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :pass_current_user_to_model
 
+  def e!(message = "You are not authorized to access this page.")
+    raise Shop2T::AccessDenied.new(message)
+  end
+
+  protected
+
   def pass_current_user_to_model
     ActiveRecord::Base.send :cattr_accessor, :current_user
     ActiveRecord::Base.send :current_user=, current_user

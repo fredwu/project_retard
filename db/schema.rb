@@ -12,6 +12,22 @@
 
 ActiveRecord::Schema.define(:version => 0) do
 
+  create_table "carts", :force => true do |t|
+  end
+
+  create_table "cart_items", :force => true do |t|
+    t.integer :cart_id,   :limit => nil
+    t.integer :item_id,   :limit => nil
+    t.integer :cart_id,   :limit => nil
+    t.string  :cart_type, :limit => nil
+    t.integer :item_id,   :limit => nil
+    t.string  :item_type, :limit => nil
+    t.integer :quantity,  :limit => nil
+    t.decimal :price,                    :precision => 6, :scale => 2, :default => 0.0
+  end
+
+  add_index "cart_items", :cart_id, :name => "index_cart_items_on_cart_id"
+
   create_table "colours", :force => true do |t|
     t.string   :name,       :limit => nil
     t.string   :hex,        :limit => nil

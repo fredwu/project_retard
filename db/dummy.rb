@@ -100,7 +100,8 @@ p = Product.create({
   :is_voucher         => true,
   :retailer_id        => 1,
   :is_activated       => true,
-  :start_at           => 10.days.from_now,
+  :start_at           => 10.days.ago,
+  :end_at             => 7.days.from_now,
 })
 
   ProductVoucher.create({

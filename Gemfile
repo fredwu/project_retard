@@ -24,6 +24,8 @@ gem 'devise',                    '~> 1.1.2'
 # gem 'cancan',                    '~> 1.3.0'
 gem 'carrierwave',               :git => 'git://github.com/jnicklas/carrierwave.git'
 gem 'mini_magick'
+gem 'acts_as_shopping_cart',     :git => 'git://github.com/fredwu/acts_as_shopping_cart.git'
+# gem 'acts_as_shopping_cart',     :path => '/Users/Fred/Downloads/Repos/_Rails/fredwu-acts_as_shopping_cart'
 
 # --------------------
 #   Presentation

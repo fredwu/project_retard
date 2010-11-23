@@ -1,0 +1,21 @@
+.grid_8
+  h2 Your Cart
+  - if @cart.items.empty?
+    h3 Your cart is empty.
+  - else
+    table
+      tr
+        th Product
+        th Item
+        th Unit Price
+        th Quantity
+        th Subtotal
+        th Remove
+      - @cart.items.each do |item|
+        tr
+          td= product_name(item)
+          td= product_specs(item)
+          td= item.price
+          td= item.quantity
+          td= item.subtotal
+          td= link_to_deletion "X", item, :url => "/orders/remove_from_cart"
