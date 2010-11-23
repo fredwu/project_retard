@@ -51,9 +51,9 @@ GIT
 
 GIT
   remote: git://github.com/judofyr/temple.git
-  revision: fecebdc51824691f5086280c97ae1c50a4d4629f
+  revision: c5db1224751fd2b0c876b63228bcac30916f1713
   specs:
-    temple (0.1.5)
+    temple (0.1.6)
 
 GIT
   remote: git://github.com/leogalmeida/slim-rails.git
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 43b0b628dad3966f3234317b4ae48bfd5547eb51
+  revision: 3e928ee400d083e7391474c61c8fcef74f0c848a
   specs:
     arel (2.0.4.20101119081136)
 
@@ -122,11 +122,10 @@ GIT
 
 GIT
   remote: git://github.com/stonean/slim.git
-  revision: 332db6398b38430d58d83e0dc1ad8e181637f075
+  revision: df5ffcca20dc99f3a28762ce25a0617971b7ba36
   specs:
-    slim (0.7.3)
-      activesupport (~> 3.0.0)
-      temple (~> 0.1.5)
+    slim (0.7.4)
+      temple (~> 0.1.6)
       tilt (~> 1.1)
 
 GIT

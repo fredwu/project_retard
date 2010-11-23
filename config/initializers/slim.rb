@@ -1,1 +1,0 @@
-String.send(:define_method, :html_safe?) { true }
