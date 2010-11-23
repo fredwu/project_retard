@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :pass_current_user_to_model
 
-  def e!(message = "You are not authorized to access this page.")
+  def e!(message = nil)
     raise Shop2T::AccessDenied.new(message)
   end
 
