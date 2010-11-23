@@ -14,18 +14,18 @@ class ApplicationController < ActionController::Base
 
   before_filter :pass_current_user_to_model
 
+  protected
+
   def e!(message = nil)
     raise Shop2T::AccessDenied.new(message)
   end
 
-  protected
+  def product_redirect
+    redirect_to products_url
+  end
 
   def pass_current_user_to_model
     ActiveRecord::Base.send :cattr_accessor, :current_user
     ActiveRecord::Base.send :current_user=, current_user
-  end
-
-  def product_redirect
-    redirect_to products_url
   end
 end
