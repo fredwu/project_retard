@@ -10,9 +10,10 @@
     h2= link_to "Invite Friends and Get $#{Settings.invite.credit} Credit", "#"
   .sidebar_div#feature_your_brand
     h2= link_to "Want to Feature Your Brand On #{Settings.website.name}? Email Us", "#"
-  .sidebar_div#upcoming_deals
-    h2 Upcoming Deals
-    ul
-      - Product.upcoming.each do |deal|
-        li
-          = link_to "#{deal.name} from #{deal.retailer.name}", deal_path(deal)
+  - if Product.upcoming.any?
+    .sidebar_div#upcoming_deals
+      h2 Upcoming Deals
+      ul
+        - Product.upcoming.each do |deal|
+          li
+            = link_to "#{deal.name} from #{deal.retailer.name}", deal_path(deal)
