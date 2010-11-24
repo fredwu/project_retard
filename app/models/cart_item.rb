@@ -19,6 +19,15 @@ class CartItem < ActiveRecord::Base
 
   before_create :attach_product_id
 
+  def item_specs
+    case item_type
+    when "ProductItem"
+      "#{item.colour.name} / #{item.size.name}"
+    when "ProductVoucher"
+      "Voucher"
+    end
+  end
+
   private
 
   def attach_product_id

@@ -89,8 +89,4 @@ module ApplicationHelper
       attribute ? "Yes" : "No"
     end
   end
-
-  def product_item_line(product_item)
-    "#{product_item.colour.name} / #{product_item.size.name}"
-  end
 end

@@ -15,7 +15,7 @@
       br
       - if @product.is_item?
         h3 Choose Colour and Size
-        = select_tag "product_item", options_for_select([["", nil]] + @product.product_items.map { |i| [ product_item_line(i), i.id ] })
+        = select_tag "product_item", options_for_select([["", nil]] + @product.product_items.map { |i| "#{i.colour.name} / #{i.size.name}", i.id ] })
       - else
         = hidden_field_tag "product_voucher", @product.product_vouchers.first.id
       h3 Order Quantity

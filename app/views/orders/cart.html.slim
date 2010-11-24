@@ -12,9 +12,9 @@
         th Subtotal
         th Remove
       - @cart.items.each do |item|
-        tr
-          td= product_name(item)
-          td= product_specs(item)
+        tr data-id=item.id
+          td= item.product.name
+          td= item.item_specs
           td= item.price
           td= item.quantity
           td= item.subtotal
