@@ -21,14 +21,14 @@
       h3 Order Quantity
       = select_tag "quantity", options_for_select((1..@product.limit_per_customer))
   .grid_2
-    h2#price= @product.nice_price
+    h2#price= nice_price(@product.price)
     - if @product.is_item?
       h3
         ' Discount:
         = @product.discount
       h3
         ' Normal Price:
-        = @product.nice_rrp
+        = nice_price(@product.rrp)
   .grid_4
     h2
       = @product.time_left

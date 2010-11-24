@@ -26,10 +26,10 @@ table.detail class="product"
     td= markdownize(resource.terms)
   tr
     th RRP
-    td= resource.rrp
+    td= nice_price(resource.rrp)
   tr
     th Price
-    td= resource.nice_price
+    td= nice_price(resource.price)
   tr
     th Shipping AU
     td= resource.shipping_au

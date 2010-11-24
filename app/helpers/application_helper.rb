@@ -89,4 +89,12 @@ module ApplicationHelper
       attribute ? "Yes" : "No"
     end
   end
+
+  # outputs nicely formatted price
+  #
+  # @param [Mixed] price
+  # @return [String]
+  def nice_price(price)
+    number_to_currency(price, :unit => "A$")
+  end
 end

@@ -1,6 +1,5 @@
 class Product < ActiveRecord::Base
   include Datamappify::Resource
-  include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::DateHelper
 
   property :code,               :string,  :limit => 20
@@ -104,14 +103,6 @@ class Product < ActiveRecord::Base
 
   def has_vouchers?
     product_vouchers.any?
-  end
-
-  def nice_rrp
-    number_to_currency(rrp, :unit => "A$")
-  end
-
-  def nice_price
-    number_to_currency(price, :unit => "A$")
   end
 
   def discount

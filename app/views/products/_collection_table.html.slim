@@ -11,7 +11,7 @@
         th End
         th Code
         th Name
-        th Price (RRP)
+        th Price
         th Voucher?
         th Min.P
         th Total.P
@@ -26,7 +26,7 @@
           td= r.end_at || "Not set"
           td= r.code
           td= link_to r.name, r
-          td= "#{r.nice_price} (#{r.nice_rrp})"
+          td= nice_price(r.price)
           td= yes_or_no? r.is_voucher
           td= r.minimum_purchases
           td= r.total_purchases
