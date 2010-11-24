@@ -20,7 +20,7 @@ html
     #ajax_loader Loading ...
     #ajax_error Error occurred! Please try again later.
 
-    = render "layouts/2threads/header"
+    = render "layouts/public/header"
     br
 
     #container.container_12
@@ -40,9 +40,9 @@ html
           = yield
       - unless @hide_sidebar
         #sidebar_container
-          = render "layouts/sidebar"
+          = render "layouts/public/sidebar"
       .clear
 
     br
-    = render "layouts/2threads/footer"
+    = render "layouts/public/footer"
     = render "layouts/google_analytics"

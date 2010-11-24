@@ -13,6 +13,13 @@
 ActiveRecord::Schema.define(:version => 0) do
 
   create_table "carts", :force => true do |t|
+    t.string   :first_name,    :limit => 50
+    t.string   :last_name,     :limit => 50
+    t.text     :address
+    t.string   :city,          :limit => 20
+    t.string   :state,         :limit => 20
+    t.string   :postcode,      :limit => 10
+    t.string   :country,       :limit => 50
     t.decimal  :shipping_cost,                :precision => 5, :scale => 2, :default => 0.0
     t.integer  :user_id,       :limit => nil
     t.datetime :created_at
@@ -52,8 +59,8 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   :last_name,   :limit => 50
     t.text     :address
     t.string   :city,        :limit => 20
+    t.string   :state,       :limit => 20
     t.string   :postcode,    :limit => 10
-    t.string   :state,       :limit => 30
     t.string   :country,     :limit => 50
     t.decimal  :subtotal,                   :precision => 8, :scale => 2
     t.decimal  :use_credit,                 :precision => 6, :scale => 2
@@ -147,31 +154,29 @@ ActiveRecord::Schema.define(:version => 0) do
   add_index "sizes", :name, :name => "index_sizes_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   :email,                   :limit => nil,                               :default => "",    :null => false
-    t.string   :first_name,              :limit => 50
-    t.string   :last_name,               :limit => 50
-    t.string   :city,                    :limit => 20
-    t.text     :address
-    t.string   :postcode,                :limit => 10
-    t.boolean  :email_notification,      :limit => nil,                               :default => false
-    t.decimal  :credit,                                 :precision => 6, :scale => 2, :default => 0.0
-    t.boolean  :referral_credit_claimed, :limit => nil,                               :default => false
-    t.string   :encrypted_password,      :limit => 128,                               :default => "",    :null => false
-    t.string   :password_salt,           :limit => nil,                               :default => "",    :null => false
-    t.string   :reset_password_token,    :limit => nil
-    t.string   :remember_token,          :limit => nil
+    t.string   :email,                    :limit => nil,                               :default => "",    :null => false
+    t.string   :first_name,               :limit => 50
+    t.string   :last_name,                :limit => 50
+    t.string   :deal_city,                :limit => 20
+    t.boolean  :email_notification,       :limit => nil,                               :default => false
+    t.decimal  :credit,                                  :precision => 6, :scale => 2, :default => 0.0
+    t.boolean  :referral_credit_released, :limit => nil,                               :default => false
+    t.boolean  :is_admin,                 :limit => nil,                               :default => false
+    t.string   :encrypted_password,       :limit => 128,                               :default => "",    :null => false
+    t.string   :password_salt,            :limit => nil,                               :default => "",    :null => false
+    t.string   :reset_password_token,     :limit => nil
+    t.string   :remember_token,           :limit => nil
     t.datetime :remember_created_at
-    t.integer  :sign_in_count,           :limit => nil,                               :default => 0
+    t.integer  :sign_in_count,            :limit => nil,                               :default => 0
     t.datetime :current_sign_in_at
     t.datetime :last_sign_in_at
-    t.string   :current_sign_in_ip,      :limit => nil
-    t.string   :last_sign_in_ip,         :limit => nil
-    t.string   :confirmation_token,      :limit => nil
+    t.string   :current_sign_in_ip,       :limit => nil
+    t.string   :last_sign_in_ip,          :limit => nil
+    t.string   :confirmation_token,       :limit => nil
     t.datetime :confirmed_at
     t.datetime :confirmation_sent_at
-    t.boolean  :is_admin,                :limit => nil,                               :default => false
-    t.integer  :retailer_id,             :limit => nil
-    t.integer  :referee_id,              :limit => nil
+    t.integer  :retailer_id,              :limit => nil
+    t.integer  :referee_id,               :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end

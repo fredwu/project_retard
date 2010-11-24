@@ -46,7 +46,7 @@ class OrdersController < AdminController
   private
 
   def find_or_create_cart!
-    @cart = Cart.create unless current_user.cart
+    @cart = current_user.cart || Cart.create
   end
 
   def item_over_purchase_limit?

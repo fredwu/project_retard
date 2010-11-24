@@ -5,8 +5,8 @@ class Order < ActiveRecord::Base
   property :last_name,  :string, :limit => 50
   property :address,    :text
   property :city,       :string, :limit => 20
+  property :state,      :string, :limit => 20
   property :postcode,   :string, :limit => 10
-  property :state,      :string, :limit => 30
   property :country,    :string, :limit => 50
   property :subtotal,   :decimal, :precision => 8, :scale => 2
   property :use_credit, :decimal, :precision => 6, :scale => 2

@@ -1,7 +1,7 @@
 h1 Please check back soon.
-/ #login
-/   = render_block :classes => "small center login", :title => "Sign Up" do
-/     = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
-/       = devise_error_messages!
-/       = render "users/form_items", :f => f, :show_password => true
-/     = render "devise/shared/links"
+#login
+  = render_block :classes => "small center login", :title => "Sign Up" do
+    = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
+      = devise_error_messages!
+      = render "users/form_items", :f => f, :show_password => true
+    = render "devise/shared/links"

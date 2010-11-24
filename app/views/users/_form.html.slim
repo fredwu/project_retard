@@ -1,11 +1,7 @@
 = render_block :title => "#{action_name} #{resource.class.name.titleize}" do
   = simple_form_for resource do |f|
     = display_errors!(resource)
-    = f.input :first_name
-    = f.input :last_name
-    = f.input :email
-    = f.input :email_notification
     = f.association :retailer
     = f.input :credit
-    p.input= f.button :submit, :class => "submit long"
+    = render "form_items", :f => f
   p= link_to "Back", resource

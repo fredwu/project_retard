@@ -4,7 +4,7 @@ u = User.new({
   :password_confirmation => 'test',
   :first_name            => 'Fred',
   :last_name             => 'Wu',
-  :city                  => 'Melbourne',
+  :deal_city             => 'Melbourne',
   :credit                => 20,
   :email_notification    => true,
   :confirmed_at          => Time.now,
@@ -12,13 +12,24 @@ u = User.new({
 })
 u.save :validate => false
 
+  Cart.create({
+    :user       => u,
+    :first_name => 'Fred',
+    :last_name  => 'Wu',
+    :address    => 'Earth',
+    :city       => 'Melbourne',
+    :state      => 'Victoria',
+    :postcode   => '3000',
+    :country    => 'Australia',
+  })
+
 u = User.new({
   :email                 => 'riley@socialistamedia.com',
   :password              => 'bondi1000',
   :password_confirmation => 'bondi1000',
   :first_name            => 'Riley',
   :last_name             => 'Batchelor',
-  :city                  => 'Sydney',
+  :deal_city             => 'Sydney',
   :email_notification    => true,
   :confirmed_at          => Time.now,
   :is_admin              => true,
@@ -32,7 +43,7 @@ u = User.new({
   :password_confirmation => 'password123',
   :first_name            => 'Katrina',
   :last_name             => 'Goh',
-  :city                  => 'Sydney',
+  :deal_city             => 'Sydney',
   :email_notification    => true,
   :confirmed_at          => Time.now,
   :is_admin              => true,

@@ -1,6 +1,11 @@
 Shop2T::Application.routes.draw do
   devise_for :users
 
+  resources :cart, :scope => "orders"
+
+  match "home"     => "deals#home"
+  match "deal/:id" => "deals#show", :as => "deal"
+
   scope "admin" do
     resources :colours
     resources :orders
@@ -18,9 +23,6 @@ Shop2T::Application.routes.draw do
   end
 
   match "admin" => "application#product_redirect"
-
-  match "home"     => "deals#home"
-  match "deal/:id" => "deals#show", :as => "deal"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

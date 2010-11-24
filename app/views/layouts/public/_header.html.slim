@@ -5,6 +5,7 @@
         = "Welcome #{current_user.first_name}!"
     ul#useroptions.horizontalnav
       - if current_user
+        li.navtext= link_to "edit profile", edit_user_registration_path
         - if current_user.is_admin?
           li.navtext= link_to "admin", products_path
         - elsif current_user.is_retailer?

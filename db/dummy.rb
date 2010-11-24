@@ -22,7 +22,7 @@ u = User.new({
   :password_confirmation => 'test',
   :first_name            => 'Test',
   :last_name             => 'User',
-  :city                  => 'Melbourne',
+  :deal_city             => 'Melbourne',
   :confirmed_at          => Time.now,
 })
 u.save :validate => false
