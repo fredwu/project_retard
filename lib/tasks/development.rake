@@ -10,13 +10,19 @@ namespace :dev do
   end
 
   desc "Runs default dev tasks"
-  task :all => :environment do
+  task :default => :environment do
     Rake::Task["dev:uploads:images:clear"].invoke
     Rake::Task["db:dummy"].invoke
+  end
+
+  desc "Runs default dev tasks and updates the db schema"
+  task :all => :environment do
+    Rake::Task["db:schema:update"].invoke
+    Rake::Task["dev:default"].invoke
   end
 end
 
 desc "Runs default dev tasks"
 task :dev do
-  Rake::Task["dev:all"].invoke
+  Rake::Task["dev:default"].invoke
 end
