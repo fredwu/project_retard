@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :pass_current_user_to_model
-  before_filter :user_cart
+  before_filter :user_cart, :if => lambda { current_user }
 
   protected
 

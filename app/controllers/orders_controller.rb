@@ -30,6 +30,7 @@ class OrdersController < AdminController
   end
 
   def cart
+    e! unless @cart
     render :layout => "public"
   end
 
