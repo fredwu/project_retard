@@ -1,6 +1,6 @@
 module OrdersHelper
   def product_name(item)
-    item.item_type.constantize.find(item.item_id).product.name
+    item.item.product.name
   end
 
   def product_specs(item)
