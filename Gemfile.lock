@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: git://github.com/cavalle/steak.git
-  revision: 6140580c5da9cf945777db025942a09e97b52b5c
+  revision: 58e0f57be6117b83efd5d2d6a41c508163f21bad
   specs:
-    steak (1.0.0.rc.4)
+    steak (1.0.0)
       rspec
 
 GIT
@@ -23,16 +23,16 @@ GIT
 
 GIT
   remote: git://github.com/fredwu/acts_as_shopping_cart.git
-  revision: 552d2c2484e9cd02a045d799f83cdc2b56a98717
+  revision: e69c60e52652cb03129d39fc65e37b867560b755
   specs:
     acts_as_shopping_cart (0.0.0)
       activerecord (~> 3.0.0)
 
 GIT
   remote: git://github.com/grosser/parallel_tests.git
-  revision: da4b90618a462966d35c0635f50c7a5b0ece7631
+  revision: c5a9149e5759ce7bb348010b3a83f623d2e19e44
   specs:
-    parallel_tests (0.4.7)
+    parallel_tests (0.4.8)
       parallel
 
 GIT
@@ -78,13 +78,13 @@ GIT
 
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 3e928ee400d083e7391474c61c8fcef74f0c848a
+  revision: 6667cfb995a49bffe66231a7ffc5a78ca7f5140f
   specs:
     arel (2.0.4.20101119081136)
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 28a0ee0f0c5c5fd902d71a87794d4a111a160c38
+  revision: 55b13c532f8c1dbbe34695f356c62fe395274d59
   branch: 3-0-stable
   specs:
     actionmailer (3.0.3)
