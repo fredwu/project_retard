@@ -13,20 +13,26 @@
 ActiveRecord::Schema.define(:version => 0) do
 
   create_table "carts", :force => true do |t|
+    t.datetime :created_at
+    t.datetime :updated_at
   end
 
   create_table "cart_items", :force => true do |t|
-    t.integer :cart_id,   :limit => nil
-    t.integer :item_id,   :limit => nil
-    t.integer :cart_id,   :limit => nil
-    t.string  :cart_type, :limit => nil
-    t.integer :item_id,   :limit => nil
-    t.string  :item_type, :limit => nil
-    t.integer :quantity,  :limit => nil
-    t.decimal :price,                    :precision => 6, :scale => 2, :default => 0.0
+    t.integer  :cart_id,    :limit => nil
+    t.integer  :item_id,    :limit => nil
+    t.integer  :cart_id,    :limit => nil
+    t.string   :cart_type,  :limit => nil
+    t.integer  :item_id,    :limit => nil
+    t.string   :item_type,  :limit => nil
+    t.integer  :quantity,   :limit => nil
+    t.decimal  :price,                     :precision => 6, :scale => 2, :default => 0.0
+    t.integer  :product_id, :limit => nil
+    t.datetime :created_at
+    t.datetime :updated_at
   end
 
-  add_index "cart_items", :cart_id, :name => "index_cart_items_on_cart_id"
+  add_index "cart_items", :product_id, :name => "index_cart_items_on_product_id"
+  add_index "cart_items", [:cart_id, :cart_type], :name => "index_cart_items_on_cart_id_and_cart_type"
 
   create_table "colours", :force => true do |t|
     t.string   :name,       :limit => nil

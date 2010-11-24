@@ -129,6 +129,10 @@ class Product < ActiveRecord::Base
     0
   end
 
+  def total_ordered_quantity_by_customer
+    CartItem.where(:product_id => id).sum(:quantity)
+  end
+
   private
 
   def set_end_at

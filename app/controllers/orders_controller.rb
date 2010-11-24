@@ -8,14 +8,22 @@ class OrdersController < AdminController
       redirect_to :back, :alert => "Please choose a colour and size" and return
     end
 
-    find_or_create_cart
-    add_item_to_cart
+    find_or_create_cart!
+
+    @item = params[:product_item].present? ? ProductItem.find(params[:product_item]) : ProductVoucher.find(params[:product_voucher])
+
+    if item_over_purchase_limit?
+      error_redirect_to :back, "You have hit the purchase limit for this product."
+      return
+    end
+
+    add_item_to_cart!
 
     redirect_to :action => :cart
   end
 
   def cart
-    find_cart
+    find_or_create_cart!
 
     render :layout => "public"
   end
@@ -31,21 +39,20 @@ class OrdersController < AdminController
 
   private
 
-  def find_cart
-    @cart = Cart.find(session[:cart_id])
-  end
-
-  def find_or_create_cart
+  def find_or_create_cart!
     if session[:cart_id]
-      @cart = Cart.find(session[:cart_id])
+      @cart ||= Cart.find_or_create_by_id(session[:cart_id])
     else
       @cart = Cart.create
       session[:cart_id] = @cart.id
     end
   end
 
-  def add_item_to_cart
-    item = params[:product_item].present? ? ProductItem.find(params[:product_item]) : ProductVoucher.find(params[:product_voucher])
-    @cart.add(item, item.product.price)
+  def item_over_purchase_limit?
+    @item.product.total_ordered_quantity_by_customer + params[:quantity].to_i > @item.product.limit_per_customer
+  end
+
+  def add_item_to_cart!
+    @cart.add(@item, @item.product.price, params[:quantity])
   end
 end

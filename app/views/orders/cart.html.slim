@@ -18,4 +18,4 @@
           td= item.price
           td= item.quantity
           td= item.subtotal
-          td= link_to_deletion "X", item, :url => "/orders/remove_from_cart"
+          td.delete= link_to_deletion "X", item, :url => "/orders/remove_from_cart"

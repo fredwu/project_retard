@@ -46,11 +46,18 @@ hr
 
 table
   font-size: 13px
+  text-align: left
+  margin-bottom: 15px
   tr
-    th, td
-      padding: 5px 10px
-    th
+    &.even td
+      background: #fbfbfb
+    td, th
+      border-bottom: 1px solid #ddd
+      padding: 10px
+      line-height: normal
       text-align: left
+    td.delete
+      text-align: center
 
 #leaderboard-top
   text-align: right

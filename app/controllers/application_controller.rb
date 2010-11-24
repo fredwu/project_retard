@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     raise Shop2T::AccessDenied.new(message)
   end
 
+  def error_redirect_to(destination, message = "An error has occured, please try again later.")
+    redirect_to destination, :alert => message
+  end
+
   def product_redirect
     redirect_to products_url
   end
