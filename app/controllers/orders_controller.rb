@@ -30,8 +30,6 @@ class OrdersController < AdminController
   end
 
   def cart
-    find_or_create_cart!
-
     render :layout => "public"
   end
 
@@ -47,12 +45,7 @@ class OrdersController < AdminController
   private
 
   def find_or_create_cart!
-    if session[:cart_id]
-      @cart ||= Cart.find_or_create_by_id(session[:cart_id])
-    else
-      @cart = Cart.create
-      session[:cart_id] = @cart.id
-    end
+    @cart = Cart.create unless current_user.cart
   end
 
   def item_over_purchase_limit?

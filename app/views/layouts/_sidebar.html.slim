@@ -1,5 +1,5 @@
 .grid_4
-  - if current_user && current_user.cart.items.count > 0
+  - if current_user && @cart.items.count > 0
     .sidebar_div#cart
       h2= link_to "Your Cart", "/orders/cart"
       ul

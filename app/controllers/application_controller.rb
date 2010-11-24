@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :pass_current_user_to_model
+  before_filter :user_cart
 
   protected
 
@@ -31,5 +32,9 @@ class ApplicationController < ActionController::Base
   def pass_current_user_to_model
     ActiveRecord::Base.send :cattr_accessor, :current_user
     ActiveRecord::Base.send :current_user=, current_user
+  end
+
+  def user_cart
+    @cart = current_user.cart
   end
 end
