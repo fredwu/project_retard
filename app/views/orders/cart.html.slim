@@ -15,7 +15,22 @@
         tr data-id=item.id
           td= item.product.name
           td= item.item_specs
-          td= item.price
+          td= nice_price(item.price)
           td= item.quantity
-          td= item.subtotal
+          td= nice_price(item.subtotal)
           td.delete= link_to_deletion "X", item, :url => "/orders/remove_from_cart"
+      tr
+        td colspan="6" &nbsp;
+      tr
+        td colspan="4"
+        td Shipping
+        td= nice_price(@cart.shipping_cost)
+      tr
+        td colspan="4"
+        td GST
+        td= nice_price(@cart.gst)
+      tr
+        th
+        th colspan="3"
+        th Total inc. GST
+        th= nice_price(@cart.total)

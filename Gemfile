@@ -64,7 +64,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails',             '~> 2.0.0'
+  gem 'rspec-rails',             '~> 2.1.0'
   gem 'steak',                   :git => 'git://github.com/cavalle/steak.git'
   gem 'capybara',                :git => 'git://github.com/jnicklas/capybara.git'
   gem 'factory_girl',            :git => 'git://github.com/thoughtbot/factory_girl.git'

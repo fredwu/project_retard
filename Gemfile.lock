@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: git://github.com/fredwu/acts_as_shopping_cart.git
-  revision: e69c60e52652cb03129d39fc65e37b867560b755
+  revision: e88c4205f7f1ab3fb379efa2d33fbcced27747ac
   specs:
     acts_as_shopping_cart (0.0.0)
       activerecord (~> 3.0.0)
@@ -225,18 +225,16 @@ GEM
     rake (0.8.7)
     rdiscount (1.6.5)
     responders (0.6.2)
-    rspec (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-      rspec-mocks (~> 2.0.1)
-    rspec-core (2.0.1)
-    rspec-expectations (2.0.1)
-      diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-    rspec-rails (2.0.1)
-      rspec (~> 2.0.0)
+    rspec (2.1.0)
+      rspec-core (~> 2.1.0)
+      rspec-expectations (~> 2.1.0)
+      rspec-mocks (~> 2.1.0)
+    rspec-core (2.1.0)
+    rspec-expectations (2.1.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.1.0)
+    rspec-rails (2.1.0)
+      rspec (~> 2.1.0)
     rubyzip (0.9.4)
     sanitize (1.2.1)
       nokogiri (~> 1.4.1)
@@ -294,7 +292,7 @@ DEPENDENCIES
   rails!
   rails_config
   rdiscount (>= 1.6.5)
-  rspec-rails (~> 2.0.0)
+  rspec-rails (~> 2.1.0)
   sanitize
   simple-navigation (~> 3.0.0)
   simple_form (~> 1.2.0)
