@@ -50,6 +50,10 @@ class OrdersController < AdminController
   end
 
   def item_over_purchase_limit?
-    @item.product.total_ordered_quantity_by_customer + params[:quantity].to_i > @item.product.limit_per_customer
+    if @item.product.limit_per_customer == 0
+      false
+    else
+      @item.product.total_ordered_quantity_by_customer + params[:quantity].to_i > @item.product.limit_per_customer
+    end
   end
 end
