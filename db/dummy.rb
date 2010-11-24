@@ -16,6 +16,17 @@ end
 
 helpers = Shop2T::Dummy::Helpers
 
+u = User.new({
+  :email                 => 'test@test.com',
+  :password              => 'test',
+  :password_confirmation => 'test',
+  :first_name            => 'Test',
+  :last_name             => 'User',
+  :city                  => 'Melbourne',
+  :confirmed_at          => Time.now,
+})
+u.save :validate => false
+
 r = Retailer.create({
   :code            => "2THREADS",
   :name            => "2threads",
