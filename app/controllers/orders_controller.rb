@@ -15,7 +15,7 @@ class OrdersController < AdminController
     if item_over_purchase_limit?
       error_redirect_to :back, "You have hit the purchase limit for this product."
     else
-      add_item_to_cart!
+      @cart.add(@item, @item.product.price, params[:quantity].to_i)
       redirect_to :action => :cart
     end
   end
@@ -48,9 +48,5 @@ class OrdersController < AdminController
 
   def item_over_purchase_limit?
     @item.product.total_ordered_quantity_by_customer + params[:quantity].to_i > @item.product.limit_per_customer
-  end
-
-  def add_item_to_cart!
-    @cart.add(@item, @item.product.price, params[:quantity].to_i)
   end
 end
