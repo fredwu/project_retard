@@ -113,6 +113,10 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def order_limit_per_customer
+    limit_per_customer > 0 ? limit_per_customer : 5
+  end
+
   def time_left
     "%s left" % distance_of_time_in_words(Time.now, end_at)
   end

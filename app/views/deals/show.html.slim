@@ -19,7 +19,7 @@
       - else
         = hidden_field_tag "product_voucher", @product.product_vouchers.first.id
       h3 Order Quantity
-      = select_tag "quantity", options_for_select((1..@product.limit_per_customer))
+      = select_tag "quantity", options_for_select((1..@product.order_limit_per_customer))
   .grid_2
     h2#price= nice_price(@product.price)
     - if @product.is_item?
