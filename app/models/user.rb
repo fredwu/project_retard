@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   add_index :confirmation_token,   :unique => true
   add_index :reset_password_token, :unique => true
 
+  has_one    :cart, :dependent => :destroy
   belongs_to :retailer
   belongs_to :referee, :class_name => :user
 

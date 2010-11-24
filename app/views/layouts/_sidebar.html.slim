@@ -1,0 +1,20 @@
+.grid_4
+  - if current_user && current_user.cart.items.count > 0
+    .sidebar_div#cart
+      h2 Your Cart
+      ul
+        - @cart.items.each do |item|
+          li= "#{item.product.name} (#{item.item_specs}) - #{nice_price(item.price)}"
+      h3.align-right
+        ' Total price:
+        = nice_price(@cart.total)
+  .sidebar_div#invite_friends
+    h2= link_to "Invite Friends and Get $#{Settings.invite.credit} Credit", "#"
+  .sidebar_div#feature_your_brand
+    h2= link_to "Want to Feature Your Brand On #{Settings.website.name}? Email Us", "#"
+  .sidebar_div#upcoming_deals
+    h2 Upcoming Deals
+    ul
+      - Product.upcoming.each do |deal|
+        li
+          = link_to "#{deal.name} from #{deal.retailer.name}", deal_path(deal)
