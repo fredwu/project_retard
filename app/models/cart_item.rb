@@ -15,6 +15,7 @@ class CartItem < ActiveRecord::Base
   add_index :product_id
 
   belongs_to :product
+  belongs_to :cart # dummy association for eager loading
 
   before_create :attach_product_id
 

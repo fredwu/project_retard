@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(:version => 0) do
 
   create_table "carts", :force => true do |t|
+    t.integer  :user_id,    :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(:version => 0) do
     t.integer  :quantity,   :limit => nil
     t.decimal  :price,                     :precision => 6, :scale => 2, :default => 0.0
     t.integer  :product_id, :limit => nil
+    t.integer  :cart_id,    :limit => nil
     t.datetime :created_at
     t.datetime :updated_at
   end

@@ -130,7 +130,7 @@ class Product < ActiveRecord::Base
   end
 
   def total_ordered_quantity_by_customer
-    CartItem.where(:product_id => id).sum(:quantity)
+    CartItem.joins(:cart).where(:product_id => id, :carts => { :user_id => current_user.id }).sum(:quantity)
   end
 
   private

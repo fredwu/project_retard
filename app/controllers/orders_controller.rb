@@ -51,6 +51,6 @@ class OrdersController < AdminController
   end
 
   def add_item_to_cart!
-    @cart.add(@item, @item.product.price, params[:quantity])
+    @cart.add(@item, @item.product.price, params[:quantity].to_i)
   end
 end
