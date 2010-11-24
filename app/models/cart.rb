@@ -13,12 +13,13 @@ class Cart < ActiveRecord::Base
   property :shipping_cost, :decimal, :precision => 5, :scale => 2, :default => 0
   property :timestamps
 
-  validates_presence_of :first_name, :on => :update
-  validates_presence_of :last_name,  :on => :update
-  validates_presence_of :address,    :on => :update
-  validates_presence_of :city,       :on => :update
-  validates_presence_of :state,      :on => :update
-  validates_presence_of :country,    :on => :update
+  validates_presence_of   :first_name, :on => :update
+  validates_presence_of   :last_name,  :on => :update
+  validates_presence_of   :address,    :on => :update
+  validates_presence_of   :city,       :on => :update
+  validates_presence_of   :state,      :on => :update
+  validates_presence_of   :country,    :on => :update
+  validates_uniqueness_of :user_id
 
   belongs_to :user
 
