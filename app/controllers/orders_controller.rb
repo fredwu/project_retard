@@ -20,6 +20,15 @@ class OrdersController < AdminController
     end
   end
 
+  def remove_from_cart
+    e! unless request.xhr?
+
+    find_or_create_cart!
+    # @cart.delete(CartItem.find(params[:id]).item)
+
+    render :nothing => true
+  end
+
   def cart
     find_or_create_cart!
 
