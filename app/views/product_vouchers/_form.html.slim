@@ -6,6 +6,6 @@
     - else
       = f.association :product, :collection => Product.vouchers
     = f.input :code
-    = f.input :limit
+    = f.input :stock
     p.input= f.button :submit, :class => "submit long", :value => "Update Voucher"
   p= link_to "Back", resource

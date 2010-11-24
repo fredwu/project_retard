@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table "product_vouchers", :force => true do |t|
     t.string  :code,       :limit => 20
-    t.integer :limit,                     :default => 0
+    t.integer :stock,      :limit => 5,   :default => 0
     t.integer :product_id, :limit => nil
   end
 

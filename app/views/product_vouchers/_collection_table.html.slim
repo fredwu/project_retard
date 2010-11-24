@@ -8,7 +8,7 @@
         - unless params[:id]
           th Product
         th Voucher Code
-        th Limit
+        th Stock
         th Edit
         th Destroy
     tbody
@@ -17,6 +17,6 @@
           - unless params[:id]
             td= link_to r.product.name, product_url(r.product)
           td= r.code
-          td= r.limit
+          td= r.stock
           td= link_to "Edit", params[:id] ? edit_product_product_voucher_url(r.product) : edit_resource_url(r)
           td= link_to_deletion "Destroy", r

@@ -66,7 +66,7 @@ p = Product.create({
   :limit_per_customer => 3,
   :minimum_purchases  => 20,
   :is_voucher         => false,
-  :retailer_id        => 1,
+  :retailer           => r,
   :is_activated       => true,
   :start_at           => Time.now,
   :end_at             => 20.days.from_now,
@@ -109,7 +109,7 @@ p = Product.create({
   :price              => 49.95,
   :limit_per_customer => 0,
   :is_voucher         => true,
-  :retailer_id        => 1,
+  :retailer           => r,
   :is_activated       => true,
   :start_at           => 10.days.ago,
   :end_at             => 7.days.from_now,
@@ -118,7 +118,7 @@ p = Product.create({
   ProductVoucher.create({
     :product => p,
     :code    => "VOUCHER_TEST_PROD_2",
-    :limit   => 10,
+    :stock   => 10,
   })
 
   img = ProductImage.create(:product => p)
@@ -137,7 +137,7 @@ p = Product.create({
   :shipping_int       => 25,
   :limit_per_customer => 3,
   :is_voucher         => false,
-  :retailer_id        => 1,
+  :retailer           => r,
   :is_activated       => true,
   :start_at           => Time.now,
   :end_at             => 10.days.from_now,
@@ -152,14 +152,14 @@ p = Product.create({
 
   ProductItem.create({
     :product   => p,
-    :stock     => 10,
+    :stock     => 0,
     :colour_id => 1,
     :size_id   => 3,
   })
 
   ProductItem.create({
     :product   => p,
-    :stock     => 10,
+    :stock     => 1,
     :colour_id => 1,
     :size_id   => 2,
   })
@@ -179,7 +179,7 @@ p = Product.create({
   :shipping_au        => 15,
   :shipping_int       => 25,
   :limit_per_customer => 1,
-  :retailer_id        => 1,
+  :retailer           => r,
   :start_at           => Time.now,
 })
 
@@ -205,5 +205,5 @@ p = Product.create({
   :shipping_au        => 15,
   :shipping_int       => 25,
   :limit_per_customer => 1,
-  :retailer_id        => 1,
+  :retailer           => r,
 })

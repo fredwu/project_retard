@@ -9,17 +9,20 @@
   br
 #spec
   .grid_2
-    = form_tag "/orders/add_to_cart" do
-      = submit_tag "Buy Now", :class => "button-primary button-action"
-      br
-      br
-      - if @product.is_item?
-        h3 Choose Colour and Size
-        = select_tag "product_item", options_for_select([["", nil]] + @product.product_items.map { |i| ["#{i.colour.name} / #{i.size.name}", i.id ] })
-      - else
-        = hidden_field_tag "product_voucher", @product.product_vouchers.first.id
-      h3 Order Quantity
-      = select_tag "quantity", options_for_select((1..@product.order_limit_per_customer))
+    - if @product.is_sold_out?
+      h2#sold_out Sold Out
+    - else
+      = form_tag "/orders/add_to_cart" do
+        = submit_tag "Buy Now", :class => "button-primary button-action"
+        br
+        br
+        - if @product.is_item?
+          h3 Choose Colour and Size
+          = select_tag "product_item", options_for_select([["", nil]] + @product.available_product_items.map { |i| ["#{i.colour.name} / #{i.size.name}", i.id ] })
+        - else
+          = hidden_field_tag "product_voucher", @product.product_vouchers.first.id
+        h3 Order Quantity
+        = select_tag "quantity", options_for_select((1..@product.order_limit_per_customer))
   .grid_2
     h2#price= nice_price(@product.price)
     - if @product.is_item?

@@ -34,11 +34,13 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :code
   validates_format_of     :code, :with => /^[a-zA-Z0-9_]*$/, :message => "can only contain alphanumeric and underscore characters"
 
-  has_many :product_images,   :dependent => :destroy, :limit => 5
-  has_many :product_items,    :dependent => :destroy
-  has_many :product_vouchers, :dependent => :destroy
-  has_many :colours,          :through   => :product_items
-  has_many :sizes,            :through   => :product_items
+  has_many :product_images,             :dependent => :destroy, :limit => 5
+  has_many :product_items,              :dependent => :destroy
+  has_many :product_vouchers,           :dependent => :destroy
+  has_many :available_product_items,    :class_name => "ProductItem",    :conditions => "product_items.stock > 0"
+  has_many :available_product_vouchers, :class_name => "ProductVoucher", :conditions => "product_items.stock > 0"
+  has_many :colours,                    :through   => :product_items
+  has_many :sizes,                      :through   => :product_items
   has_many :cart_items
   has_and_belongs_to_many :orders
   belongs_to :retailer
@@ -87,6 +89,10 @@ class Product < ActiveRecord::Base
 
   def is_not_ready?
     !is_ready?
+  end
+
+  def is_sold_out?
+    is_item? ? available_product_items.empty? : available_product_vouchers.empty?
   end
 
   def has_images?

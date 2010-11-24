@@ -20,6 +20,10 @@ class ProductItem < ActiveRecord::Base
 
   default_scope includes(:product, :colour, :size).order(:product_id.desc, :colour_id, :size_id)
 
+  def available
+    stock > 0
+  end
+
   private
 
   def check_product_status
