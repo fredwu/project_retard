@@ -40,6 +40,7 @@ class Product < ActiveRecord::Base
   has_many :product_vouchers, :dependent => :destroy
   has_many :colours,          :through   => :product_items
   has_many :sizes,            :through   => :product_items
+  has_many :cart_items
   has_and_belongs_to_many :orders
   belongs_to :retailer
 
@@ -130,7 +131,7 @@ class Product < ActiveRecord::Base
   end
 
   def total_ordered_quantity_by_customer
-    CartItem.joins(:cart).where(:product_id => id, :carts => { :user_id => current_user.id }).sum(:quantity)
+    cart_items.joins(:cart).where(:carts => { :user_id => current_user.id }).sum(:quantity)
   end
 
   private
