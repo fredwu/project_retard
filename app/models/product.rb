@@ -38,7 +38,7 @@ class Product < ActiveRecord::Base
   has_many :product_items,              :dependent => :destroy
   has_many :product_vouchers,           :dependent => :destroy
   has_many :available_product_items,    :class_name => "ProductItem",    :conditions => "product_items.stock > 0"
-  has_many :available_product_vouchers, :class_name => "ProductVoucher", :conditions => "product_items.stock > 0"
+  has_many :available_product_vouchers, :class_name => "ProductVoucher", :conditions => "product_vouchers.stock > 0"
   has_many :colours,                    :through   => :product_items
   has_many :sizes,                      :through   => :product_items
   has_many :cart_items
