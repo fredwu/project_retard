@@ -2,7 +2,7 @@ br
 #footer-upper
   p
     | Copyright &copy; 2threads.com (ABN: 50 127 257 907)
-    '  |
+    br
     = link_to "Goods and Services", pages_path(:goods_and_services)
     '  |
     = link_to "Shipping and Delivery", pages_path(:shipping_and_delivery)
@@ -16,9 +16,9 @@ br
     = link_to "Security", pages_path(:security)
 
   p
-  = image_tag "logo-visa.png", :size => "60x38"
-  | &nbsp;&nbsp;
-  = image_tag "logo-mastercard.png", :size => "60x38"
+    = image_tag "logo-visa.png", :size => "60x38"
+    | &nbsp;&nbsp;
+    = image_tag "logo-mastercard.png", :size => "60x38"
 
 #footer
   .dotbg
