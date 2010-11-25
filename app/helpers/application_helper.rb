@@ -97,4 +97,17 @@ module ApplicationHelper
   def nice_price(price)
     number_to_currency(price, :unit => "A$")
   end
+
+  # shortcut for creating primary, action buttons
+  # same API as rails' builtin `submit_tag`
+  #
+  # @param [String] label
+  # @param [Hash] options
+  def action_button(label, options = {})
+    options = {
+      :class => "button-primary button-action"
+    }.merge(options)
+
+    submit_tag(label, options)
+  end
 end

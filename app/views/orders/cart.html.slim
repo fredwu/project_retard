@@ -28,8 +28,8 @@
         th= nice_price(@cart.subtotal)
 
   #login
-    = render_block :title => "Shipping Details" do
-      = simple_form_for @cart do |f|
+    = simple_form_for @cart do |f|
+      = render_block :title => "Shipping Details" do
         = display_errors!(@cart)
         p= f.input :first_name
         p= f.input :last_name
@@ -38,3 +38,5 @@
         p= f.input :state
         p= f.input :postcode
         p= f.input :country, :priority => ["Australia", "United States", "Canada", "United Kingdom"]
+        br
+        p= f.submit "Next", :class => "button-primary button-action"

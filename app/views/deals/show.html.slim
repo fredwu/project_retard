@@ -13,7 +13,7 @@
       h2#sold_out Sold Out
     - else
       = form_tag "/orders/add_to_cart" do
-        = submit_tag "Buy Now", :class => "button-primary button-action"
+        = action_button "Buy Now"
         br
         br
         - if @product.is_item?
