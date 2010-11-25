@@ -1,0 +1,11 @@
+.grid_8
+  h1= @heading
+  p
+    ' Shopping on
+    = Settings.website.name
+    '  is fully secure. Our order and payment pages are protected by SSL and our payment is powered by
+    = link_to "eWay", "http://www.eway.com.au/"
+    | .
+  p
+    = link_to image_tag("logo-eway.png"), "http://www.eway.com.au/"
+

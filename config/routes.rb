@@ -3,8 +3,9 @@ Shop2T::Application.routes.draw do
 
   resources :cart, :scope => "orders"
 
-  match "home"     => "deals#home"
-  match "deal/:id" => "deals#show", :as => "deal"
+  match "home"      => "deals#home"
+  match "deal/:id"  => "deals#show", :as => "deal"
+  match "pages/:id" => "pages#show", :as => "pages"
 
   scope "admin" do
     resources :colours
