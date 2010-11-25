@@ -17,8 +17,10 @@ class CartItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :cart # dummy association for eager loading
 
-  before_create :attach_product_id
-  after_save    :calculate_shipping_cost_for_the_cart
+  before_create  :attach_product_id
+  after_create   :stock_down
+  before_destroy :stock_up
+  after_save     :calculate_shipping_cost_for_the_cart
 
   def item_specs
     case item_type
@@ -33,6 +35,16 @@ class CartItem < ActiveRecord::Base
 
   def attach_product_id
     self.product_id = ProductItem.find(item_id).product.id
+  end
+
+  def stock_down
+    item.stock -= quantity
+    item.save
+  end
+
+  def stock_up
+    item.stock += quantity
+    item.save
   end
 
   def calculate_shipping_cost_for_the_cart

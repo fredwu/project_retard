@@ -16,7 +16,6 @@ class ProductVoucher < ActiveRecord::Base
   default_scope includes(:product).order(:product_id.desc, :code)
 
   before_destroy :check_product_status
-  before_update  :check_product_status
 
   def available
     stock > 0
