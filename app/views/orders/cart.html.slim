@@ -18,7 +18,7 @@
           td= nice_price(item.price)
           td= item.quantity
           td= nice_price(item.subtotal)
-          td.delete= link_to_deletion "X", item, :url => "/orders/remove_from_cart"
+          td.delete= link_to_deletion "X", item, :url => "/orders/remove_from_cart", :"data-reload_page" => true
       tr
         td colspan="6" &nbsp;
       tr

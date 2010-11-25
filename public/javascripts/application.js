@@ -42,14 +42,17 @@ $(document).ready(function() {
     cancel: "<a href='#' class='confirm-cancel'>Cancel</a>",
     reverse: true,
     expiresIn: 5,
-    confirmCallback: function(action) {
-      var id = action.attr("data-id");
+    confirmCallback: function(scope) {
+      var id = scope.data("id");
 
-      $.post(action.attr("href"), {
+      $.post(scope.attr("href"), {
         _method: "delete",
         id: id
       }, function() {
         $("tr[data-id=" + id + "]").fadeOut();
+        if (scope.data("reload_page") == true) {
+          window.setTimeout("window.location.reload();", 1000);
+        }
       })
     }
   });
